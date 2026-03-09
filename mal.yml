@@ -1,10 +1,10 @@
 metadataId: a26e57bc-15bd-46db-8504-6c6ed1e7c501
 output_directory: produktspesifikasjon
-product_slug: grusogpukk
-updated: 2025-01-01
+product_slug: gruspukk
+updated: 2026-03-09
 # 
 #ogc_feature_api: https://kos-pygeoapi.atkv3-dev.kartverket.cloud/collections
-#xmi_url: https://sosi.geonorge.no/svn/SOSI/SOSI Del 3/Statens kartverk/Havnedata_testing.xml
+xmi_url: https://sosi.geonorge.no/svn/SOSI/SOSI Del 3/NGU/GrusPukk 3.0.xml
 #include_only_features:
 #  - Uttak
 #
