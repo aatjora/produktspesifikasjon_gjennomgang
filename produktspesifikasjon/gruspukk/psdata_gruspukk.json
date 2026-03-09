@@ -1,0 +1,346 @@
+{
+  "title": "Grus og pukk",
+  "date": {
+    "creation": "2000-09-05",
+    "revision": "2026-03-02"
+  },
+  "language": "nor",
+  "contact": {
+    "organizationName": "Norges geologiske undersøkelse",
+    "logo": "https://register.geonorge.no/data/organizations/970188290_NGU_liten.png",
+    "electronicMailAddress": "ressursdatabaser@ngu.no",
+    "role": "owner"
+  },
+  "identificationSection": {
+    "title": "Grus og pukk",
+    "abstract": "Grus- og Pukkdatabasen ved NGU inneholder opplysninger om de aller fleste grus- og pukkforekomster og uttakssteder i Norge for utnyttelse som råstoff for bygge- og anleggsvirksomhet. Databasen gir også informasjon om arealbruk, volum, kvalitet og hvor viktige ressursene er som råstoff til byggetekniske formål.",
+    "purpose": {
+      "summary": "Målsetningen med Grus-, pukk- og steintippdatabasen er å gi informasjon om forekomster av sand, grus og pukk til byggeformål, og være et redskap i lokal og regional forvaltning for å sikre tilgangen av disse ressursene  i et langsiktig perspektiv.",
+      "useCase": {
+        "name": "Bruksområde",
+        "summary": "Datasettet gir en oversikt over sand-, grus-, pukk- og steintippforekomster og uttakssteder i Norge som kan utnyttes som råstoff i bygge- og anleggsvirksomhet. En av nytteverdiene er å sikre at områder for eksisterende og fremtidig uttak av grus og pukk blir tatt med i kommunale arealplaner. Arealavgrensning av grus- og pukkforekomster er primært tiltenkt som støtte for kommunal arealplanlegging, og for næringsinteressenter  som har behov for å etablere nye uttak."
+      }
+    },
+    "topicCategory": [
+      "Geovitenskapelig informasjon"
+    ],
+    "spatialRepresentationType": "Vektor",
+    "spatialResolution": {
+      "equivalentScale": "20000"
+    },
+    "uniqueId": "a26e57bc-15bd-46db-8504-6c6ed1e7c501",
+    "keyword": [
+      "Byggeråstoffer",
+      "Geologi",
+      "Grus",
+      "Løsmasser",
+      "Pukk",
+      "Ressurs",
+      "Sand",
+      "Steinindustri",
+      "Norge",
+      "Mineralressurser",
+      "Inspire",
+      "Det offentlige kartgrunnlaget",
+      "Norge digitalt",
+      "geodataloven",
+      "dataNorgeNo",
+      "modellbaserteVegprosjekter",
+      "fellesDatakatalog"
+    ],
+    "restriction": {
+      "resourceConstraints": {
+        "useLimitations": "Anbefalt bruksmålestokk er 1:50.000. Der ØK var tilgjengelig ble imidlertid dataene etablert i 1:20.000-1:5000."
+      },
+      "legalConstraints": {
+        "accessConstraints": "Åpne data",
+        "useConstraints": "Lisens",
+        "license": "Norsk lisens for offentlige data (NLOD)",
+        "licenseUrl": "http://data.norge.no/nlod/no/1.0",
+        "otherConstraints": "Ingen begrensninger oppgitt."
+      },
+      "securityConstraints": {
+        "classification": "Ugradert"
+      }
+    },
+    "contact": [
+      {
+        "organizationName": "Norges geologiske undersøkelse",
+        "electronicMailAddress": "ressursdatabaser@ngu.no",
+        "role": "owner"
+      },
+      {
+        "individualName": "Janne Grete Wesche",
+        "organizationName": "Norges geologiske undersøkelse",
+        "electronicMailAddress": "metadataansvarlig@ngu.no",
+        "role": "pointOfContact"
+      },
+      {
+        "organizationName": "Norges geologiske undersøkelse",
+        "electronicMailAddress": "wmsdrift@ngu.no",
+        "role": "publisher"
+      }
+    ],
+    "maintenance": "Etter behov",
+    "extent": {
+      "geographicElement": {
+        "westBoundLongitude": "-1.9",
+        "eastBoundLongitude": "40.4",
+        "southBoundLatitude": "57.0",
+        "northBoundLatitude": "71.8"
+      },
+      "temporalElement": {
+        "timePeriod": {
+          "beginPosition": "2000-09-05",
+          "endPosition": "2026-03-02"
+        }
+      }
+    },
+    "date": {
+      "creation": "2000-09-05",
+      "publication": "2000-09-05",
+      "revision": "2026-03-02"
+    },
+    "language": "nor"
+  },
+  "scopeSection": [
+    {
+      "specificationScope": {
+        "scopeIdentification": "hele datasettet",
+        "level": "dataset",
+        "extent": {
+          "description": "National"
+        }
+      }
+    }
+  ],
+  "dataContentAndStructureSection": {
+    "narrativeDescription": "Datasettet gir en oversikt over sand-, grus-, pukk- og steintippforekomster og uttakssteder i Norge som kan utnyttes som råstoff i bygge- og anleggsvirksomhet. En av nytteverdiene er å sikre at områder for eksisterende og fremtidig uttak av grus og pukk blir tatt med i kommunale arealplaner. Arealavgrensning av grus- og pukkforekomster er primært tiltenkt som støtte for kommunal arealplanlegging, og for næringsinteressenter  som har behov for å etablere nye uttak."
+  },
+  "referenceSystemSection": {
+    "spatialReferenceSystem": [
+      {
+        "code": "EPSG:4258",
+        "name": "EUREF 89 Geografisk (ETRS 89) 2d"
+      },
+      {
+        "code": "EPSG:25832",
+        "name": "EUREF89 UTM sone 32, 2d"
+      },
+      {
+        "code": "EPSG:25833",
+        "name": "EUREF89 UTM sone 33, 2d"
+      },
+      {
+        "code": "EPSG:25835",
+        "name": "EUREF89 UTM sone 35, 2d"
+      },
+      {
+        "code": "EPSG:4258",
+        "name": "EUREF 89 Geografisk (ETRS 89) 2d"
+      }
+    ]
+  },
+  "dataQualitySection": {
+    "scope": {
+      "level": "dataset"
+    },
+    "report": [
+      {
+        "nameOfMeasure": "COMMISSION REGULATION (EU) No 1089/2010 of 23 November 2010 implementing Directive 2007/2/EC of the European Parliament and of the Council as regards interoperability of spatial data sets and services",
+        "measureDescription": "Dataene er ikke vurdert iht produktspesifikasjonen",
+        "descriptiveResult": "Dataene er ikke vurdert iht produktspesifikasjonen"
+      },
+      {
+        "nameOfMeasure": "SOSI produktspesifikasjon: Grus og pukk",
+        "measureDescription": "Dataene er i henhold til produktspesifikasjonen",
+        "descriptiveResult": "Dataene er i henhold til produktspesifikasjonen"
+      },
+      {
+        "nameOfMeasure": "Sosi applikasjonsskjema",
+        "measureDescription": "SOSI-filer er i henhold til applikasjonsskjema",
+        "descriptiveResult": "SOSI-filer er i henhold til applikasjonsskjema"
+      },
+      {
+        "nameOfMeasure": "Prosentvis oppfyllelse av FAIR-prinsipper",
+        "measureDescription": "Angir fullstendighet i forhold til krav fra FAIR-prinsippene (The FAIR Guiding Principles for scientific data management and stewardship)",
+        "result": "93"
+      },
+      {
+        "nameOfMeasure": "FAIR",
+        "result": "Prosentvis oppfyllelse av FAIR-prinsipper: 93%"
+      }
+    ]
+  },
+  "maintenanceSection": {
+    "maintenanceAndUpdateFrequency": "Etter behov",
+    "maintenanceAndUpdateStatement": "Kontinuerlig oppdatert"
+  },
+  "dataCaptureAndProductionSection": {
+    "DataAcquisitionAndProcessing": {
+      "processStep": [
+        {
+          "description": "Registrert på feltkart under feltundersøkelser. Omriss og punkter er borddigitalisert i FYSAK. Nyere punktregistreringer kan være stedfestet med GPS. Utplukksprogram fra Oracle-databasen. Kontroll utført i ArcGIS."
+        }
+      ]
+    }
+  },
+  "portrayal": {
+    "name": "Tegneregler",
+    "linkage": "https://register.geonorge.no/register/versjoner/tegneregler/norges-geologiske-undersøkelse/grus-og-pukk"
+  },
+  "deliverySection": [
+    {
+      "delivery": {
+        "deliveryMedium": {
+          "unitsOfDelivery": "landsfiler, fylkesvis",
+          "deliveryMediumName": "Geonorge nedlastning",
+          "deliveryService": {
+            "serviceEndpoint": "https://nedlasting.ngu.no/api/capabilities/",
+            "serviceProperty": {
+              "type": "Geonorge nedlastning",
+              "value": "GEONORGE:DOWNLOAD"
+            }
+          }
+        },
+        "deliveryFormat": [
+          {
+            "formatName": "FGDB"
+          },
+          {
+            "formatName": "Shape"
+          },
+          {
+            "formatName": "SOSI"
+          }
+        ]
+      }
+    },
+    {
+      "delivery": {
+        "deliveryMedium": {
+          "unitsOfDelivery": "landsfiler, kommunevis",
+          "deliveryMediumName": "Egen nedlastningsside",
+          "deliveryService": {
+            "serviceEndpoint": "https://geo.ngu.no/download/order?dataset=800",
+            "serviceProperty": {
+              "type": "Egen nedlastningsside",
+              "value": "WWW:DOWNLOAD-1.0-http--download"
+            }
+          }
+        },
+        "deliveryFormat": [
+          {
+            "formatName": "FGDB"
+          },
+          {
+            "formatName": "Shape"
+          },
+          {
+            "formatName": "SOSI"
+          }
+        ]
+      }
+    },
+    {
+      "delivery": {
+        "deliveryMedium": {
+          "unitsOfDelivery": "landsfiler, fylkesvis",
+          "deliveryMediumName": "Atom Feed",
+          "deliveryService": {
+            "serviceEndpoint": "https://nedlasting.ngu.no/api/atom/a26e57bc-15bd-46db-8504-6c6ed1e7c501",
+            "serviceProperty": {
+              "type": "Atom Feed",
+              "value": "W3C:AtomFeed"
+            }
+          }
+        },
+        "deliveryFormat": [
+          {
+            "formatName": "FGDB"
+          },
+          {
+            "formatName": "Shape"
+          },
+          {
+            "formatName": "SOSI"
+          },
+          {
+            "formatName": "MS_EXCEL"
+          }
+        ]
+      }
+    },
+    {
+      "delivery": {
+        "deliveryMedium": {
+          "deliveryMediumName": "Grus og pukk WMS",
+          "deliveryService": {
+            "serviceEndpoint": "https://geo.ngu.no/mapserver/GrusPukkWMS5?request=GetCapabilities&service=WMS",
+            "serviceProperty": {
+              "type": "Grus og pukk WMS",
+              "value": "WMS-tjeneste"
+            }
+          }
+        },
+        "deliveryFormat": [
+          {
+            "formatName": "WMS-tjeneste"
+          }
+        ],
+        "deliveryScope": "Tjeneste"
+      }
+    }
+  ],
+  "metadataSection": {
+    "metadataStandard": "ISO19115",
+    "metadataStandardVersion": "2003",
+    "metadataDate": "2026-03-08",
+    "language": "nor",
+    "contact": {
+      "organizationName": "Norges geologiske undersøkelse",
+      "individualName": "Janne Grete Wesche",
+      "logo": "https://register.geonorge.no/data/organizations/970188290_NGU_liten.png",
+      "electronicMailAddress": "metadataansvarlig@ngu.no",
+      "role": "pointOfContact"
+    },
+    "metadataIdentifier": {
+      "authority": "Geonorge",
+      "code": "a26e57bc-15bd-46db-8504-6c6ed1e7c501",
+      "codeSpace": "https://kartkatalog.geonorge.no/metadata/",
+      "metadataLinkage": "https://kartkatalog.geonorge.no/metadata/a26e57bc-15bd-46db-8504-6c6ed1e7c501"
+    },
+    "links": [
+      {
+        "href": "https://www.geonorge.no/geonetwork/srv/nor/csw?service=CSW&request=GetRecordById&version=2.0.2&outputSchema=http://www.isotc211.org/2005/gmd&elementSetName=full&id=a26e57bc-15bd-46db-8504-6c6ed1e7c501",
+        "rel": "describedby",
+        "type": "application/xml",
+        "title": "Metadata (ISO 19139)"
+      },
+      {
+        "href": "http://www.ngu.no/sites/default/files/6_2016fokus_bygger%C3%A5stoff_screen.pdf",
+        "rel": "about",
+        "type": "text/html",
+        "title": "Produktside"
+      },
+      {
+        "href": "https://nedlasting.ngu.no/api/capabilities/",
+        "rel": "enclosure",
+        "type": "text/html",
+        "title": "Nedlasting"
+      },
+      {
+        "href": "#!?zoom=3&lon=306722&lat=7197864&wms=https://geo.ngu.no/mapserver/GrusPukkWMS5",
+        "rel": "service",
+        "type": "text/html",
+        "title": "Tjeneste"
+      },
+      {
+        "href": "https://geo.ngu.no/mapserver/GrusPukkWMS5?request=GetCapabilities&service=WMS",
+        "rel": "service",
+        "type": "application/xml",
+        "title": "Tjeneste-distribusjon"
+      }
+    ]
+  }
+}
