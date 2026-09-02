@@ -1,0 +1,679 @@
+# Open Data Contract Standard (ODCS) v3.1.0 — generert fra datamodellen.
+apiVersion: v3.1.0
+kind: DataContract
+id: urn:odcs:stemmekretser-stortings-og-sametingsvalget-2025-uml:1.0.0
+version: 1.0.0
+status: active
+name: Stemmekretser - stortings- og sametingsvalget 2025 - UML
+schema:
+- name: Grense
+  physicalName: grense
+  logicalType: object
+  physicalType: table
+  description: Generell avgrensingslinje
+  customProperties:
+  - property: sosiObjektType
+    value: Grense
+  - property: inheritsFrom
+    value: SOSI_Objekt
+  properties:
+  - name: identifikasjon
+    logicalType: object
+    properties:
+    - name: lokalId
+      logicalType: string
+      description: 'lokal identifikator av et objekt
+
+
+        Merknad: Det er dataleverandørens ansvar å sørge for at den lokale identifikatoren
+        er unik innenfor navnerommet.'
+      required: true
+    - name: navnerom
+      logicalType: string
+      description: 'navnerom som unikt identifiserer datakilden til et objekt, anbefales
+        å være en http-URI
+
+
+        Eksempel: http://data.geonorge.no/SentraltStedsnavnsregister/1.0
+
+
+        Merknad : Verdien for navnerom vil eies av den dataprodusent som har ansvar
+        for de unike identifikatorene og må være registrert i data.geonorge.no eller
+        data.norge.no'
+      required: true
+    - name: versjonId
+      logicalType: string
+      description: identifikasjon av en spesiell versjon av et geografisk objekt (instans)
+    description: unik identifikasjon av et objekt
+    required: true
+  - name: oppdateringsdato
+    logicalType: timestamp
+    description: 'tidspunkt for siste endring på objektet
+
+
+      Merknad:
+
+      Oppdateringsdato kan være forskjellig fra datafangsdato ved at data som er registrert
+      kan bufres en kortere eller lengre periode før disse legges inn i datasystemet
+      (databasen).'
+    required: true
+  - name: gyldigFra
+    logicalType: timestamp
+    description: Tidspunktet når objektet oppstod i den virkelige verden
+  - name: gyldigTil
+    logicalType: timestamp
+    description: Tidspunktet når objektet opphørte å eksistere i den virkelige verden
+  - name: datafangstdato
+    logicalType: timestamp
+    description: 'dato når objektet siste gang ble registrert/observert/målt i terrenget
+
+
+      Merknad: I mange tilfeller er denne forskjellig fra oppdateringsdato, da registrerte
+      endringer kan bufres i en kortere eller lengre periode før disse legges inn
+      i databasen.
+
+      Ved førstegangsregistrering settes Datafangstdato lik førsteDatafangstdato.'
+  - name: førsteDigitaliseringsdato
+    logicalType: timestamp
+    description: 'dato når en representasjon av objektet i digital form første gang
+      ble etablert
+
+
+      Merknad:
+
+      førsteDigitaliseringsdato kan skille seg fra førsteDatafangstdato ved at den
+      første datafangsten skjedde analogt og gjort om til digital form senere i en
+      produksjonsprosess.
+
+      Eventuelt at innlegging i databasen skjedde på et senere tidspunkt enn registreringen
+      /observasjonen / målingen av objektet.'
+    required: true
+  - name: kvalitet
+    logicalType: object
+    properties:
+    - name: målemetode
+      logicalType: string
+      authoritativeDefinitions:
+      - url: http://skjema.geonorge.no/SOSI/generelleKonsepter/generelleTyper/5.1/Målemetode
+        type: businessDefinition
+      customProperties:
+      - property: sosiCodeList
+        value: Målemetode
+      - property: asDictionary
+        value: 'true'
+      description: metode for måling i grunnriss (x,y), og høyde (z) når metoden er
+        den samme som ved måling i grunnriss
+      required: true
+    - name: nøyaktighet
+      logicalType: integer
+      description: 'punktstandardavviket i grunnriss for punkter samt tverravvik for
+        linjer
+
+
+        Merknad:
+
+        Oppgitt i cm'
+    - name: synbarhet
+      logicalType: string
+      logicalTypeOptions:
+        pattern: ^(fulltSynligOgGjenfinnbarITerrenget|dårligGjenfinnbarITerrenget|middelsSynligIFlybilde|dårligSynligIFlybilde)$
+      customProperties:
+      - property: allowedValues
+        value:
+        - value: fulltSynligOgGjenfinnbarITerrenget
+          label: 'Fullt ut synlig/gjenfinnbar i terrenget
+
+            Default'
+        - value: dårligGjenfinnbarITerrenget
+          label: 'Dårlig gjenfinnbar i terreng.
+
+            Forøvrig grei å innmåle. (Benyttes bl.a. for innmåling av ledninger på
+            lukket grøft)'
+        - value: middelsSynligIFlybilde
+          label: Middels synlig i flybilde/modell
+        - value: dårligSynligIFlybilde
+          label: Dårlig/ikke synlig i flybilde/modell
+      description: hvor godt den kartlagte detalj var synbar ved kartleggingen
+    - name: målemetodeHøyde
+      logicalType: string
+      authoritativeDefinitions:
+      - url: http://skjema.geonorge.no/SOSI/generelleKonsepter/generelleTyper/5.1/MålemetodeHøyde
+        type: businessDefinition
+      customProperties:
+      - property: sosiCodeList
+        value: MålemetodeHøyde
+      - property: asDictionary
+        value: 'true'
+      description: metode for å måle høyden
+    - name: nøyaktighetHøyde
+      logicalType: integer
+      description: nøyaktighet for høyden i cm
+    - name: maksimaltAvvik
+      logicalType: integer
+      description: absolutt toleranse for geometriske avvik
+    description: beskrivelse av kvaliteten på stedfestingen
+  - name: opphav
+    logicalType: string
+    description: 'referanse til opphavsmaterialet, kildematerialet, organisasjons/publiseringskilde
+
+
+      Merknad:
+
+      Kan også beskrive navn på person og årsak til oppdatering'
+  - name: informasjon
+    logicalType: array
+    items:
+      logicalType: string
+    description: 'generell opplysning
+
+
+      Merknad:
+
+      mulighet til å legge inn utfyllende informasjon om objektet'
+  - name: grense
+    logicalType: object
+    physicalType: geometry(LineString)
+    required: true
+    customProperties:
+    - property: geometryType
+      value: LineString
+  - name: avgrensningstype
+    logicalType: string
+    logicalTypeOptions:
+      pattern: ^(Riksgrense|Territorialgrense|AvtaltAvgrensningslinje|Kommunegrense|Fylkesgrense|Grunnkretsgrense|Delområdegrense|Stemmekretsgrense)$
+    customProperties:
+    - property: allowedValues
+      value:
+      - value: Riksgrense
+        label: avgrensningen av nasjonen Norge på land mot andre nasjoner
+      - value: Territorialgrense
+        label: avgrensning i havet av statens suverenitetsområde, beregnet 12 nm (22
+          224 m) utenfor og parallelt med grunnlinjen
+      - value: AvtaltAvgrensningslinje
+        label: 'avtalt avgrensningslinje til havs basert på folkerettslig bindende
+          avtaler
+
+
+          Merknad:
+
+          Avtalt avgrensningslinje vil normalt gjelde alle aktuelle former for kyststatsjurisdiksjon.
+          Detaljene vil framgå av den aktuelle avgrensningsavtale.
+
+
+          Merknad 2:
+
+          Benyttes også som avgrensning av kontinentalsokkel i internasjonalt farvann,
+          der flere stater kan framlegge dokumentasjon om rettigheter til sokkelen,
+          men der statene har kommet til enighet om en avgrensningslinje.'
+      - value: Kommunegrense
+        label: avgrensing av kommune
+      - value: Fylkesgrense
+        label: avgrensning av fylke
+      - value: Grunnkretsgrense
+        label: avgrensning av grunnkrets
+      - value: Delområdegrense
+        label: avgrensning av delområde
+      - value: Stemmekretsgrense
+        label: avgrensing av Stemmekrets
+    description: angir type avgreisningslinje. Ulike objekter avgrenses av ulike typer
+      grenser.
+    required: true
+- name: Fylke
+  physicalName: fylke
+  logicalType: object
+  physicalType: table
+  description: 'administrativ inndeling av nasjonen på regionalt nivå
+
+
+    Merknad: Tilsvarer NUTS 3 på internasjonalt statistisk nivå'
+  customProperties:
+  - property: sosiObjektType
+    value: Fylke
+  - property: inheritsFrom
+    value: AdministrativEnhet
+  properties:
+  - name: område
+    logicalType: object
+    physicalType: geometry(MultiSurface)
+    required: true
+    customProperties:
+    - property: geometryType
+      value: MultiSurface
+  - name: posisjon
+    logicalType: object
+    physicalType: geometry(Point)
+    required: true
+    customProperties:
+    - property: geometryType
+      value: Point
+  - name: land
+    logicalType: string
+    logicalTypeOptions:
+      pattern: ^(BouvetIsland|Denmark|FaroeIslands|Finland|Greenland|Iceland|Norway|RussianFederation|SvalbardAndJanMayen|Sweden|UnitedKingdom)$
+    customProperties:
+    - property: allowedValues
+      value:
+      - value: BouvetIsland
+        label: Landkode for Boyvetøya
+      - value: Denmark
+        label: Landkode for Danmark
+      - value: FaroeIslands
+        label: Landkode for Færøyene
+      - value: Finland
+        label: Landkode for Finland
+      - value: Greenland
+        label: Landkode for Grønland
+      - value: Iceland
+        label: Landkode for Island
+      - value: Norway
+        label: Landkode for Norge
+      - value: RussianFederation
+        label: Landkode for Russland
+      - value: SvalbardAndJanMayen
+        label: Landkode for Svalbard og Jan Mayen
+      - value: Sweden
+        label: Landkode for Sverige
+      - value: UnitedKingdom
+        label: Landkode for Storbritania
+    description: 'stat som den administrative enheten hører til
+
+
+      Merknad: Alfanumerisk kode (ISO 3166-1 alpha-2) for land som definert i ISO
+      3166'
+  - name: administrativKode
+    logicalType: string
+    description: 'tematisk identifikator som tilsvarer kode for den nasjonale administrative
+      inndelingen
+
+
+      Merknad: I Norge skal alltid fire sifre benyttes. For eksempel Ringerike kommune:
+      3007; Viken fylke: 3000; Norge: 0000'
+  - name: samiskForvaltningsområde
+    logicalType: boolean
+    description: angir om fylket er en del ac samisk forvaltningaområde
+  - name: fylkesnummer
+    logicalType: string
+    authoritativeDefinitions:
+    - url: https://register.geonorge.no/sosi-kodelister/inndelinger/inndelingsbase/fylkesnummer?
+      type: businessDefinition
+    customProperties:
+    - property: sosiCodeList
+      value: Fylkesnummer
+    description: 'nummerering av fylker i henhold til Statistisk sentralbyrå sin offisielle
+      liste
+
+
+      Merknad:
+
+      Det presiseres at fylkesnummer alltid skal ha 2 sifre, dvs. eventuelt med ledende
+      null. Fylkesnummer benyttes for kopling mot en rekke andre registre som også
+      benytter 2 sifre.'
+    required: true
+- name: AdministrativEnhet
+  physicalName: administrativenhet
+  logicalType: object
+  physicalType: table
+  description: område hvor det utøves offentlig forvaltning på lokalt, regionalt eller
+    nasjonalt nivå
+  customProperties:
+  - property: sosiObjektType
+    value: AdministrativEnhet
+  properties:
+  - name: område
+    logicalType: object
+    physicalType: geometry(MultiSurface)
+    required: true
+    customProperties:
+    - property: geometryType
+      value: MultiSurface
+  - name: posisjon
+    logicalType: object
+    physicalType: geometry(Point)
+    required: true
+    customProperties:
+    - property: geometryType
+      value: Point
+  - name: land
+    logicalType: string
+    logicalTypeOptions:
+      pattern: ^(BouvetIsland|Denmark|FaroeIslands|Finland|Greenland|Iceland|Norway|RussianFederation|SvalbardAndJanMayen|Sweden|UnitedKingdom)$
+    customProperties:
+    - property: allowedValues
+      value:
+      - value: BouvetIsland
+        label: Landkode for Boyvetøya
+      - value: Denmark
+        label: Landkode for Danmark
+      - value: FaroeIslands
+        label: Landkode for Færøyene
+      - value: Finland
+        label: Landkode for Finland
+      - value: Greenland
+        label: Landkode for Grønland
+      - value: Iceland
+        label: Landkode for Island
+      - value: Norway
+        label: Landkode for Norge
+      - value: RussianFederation
+        label: Landkode for Russland
+      - value: SvalbardAndJanMayen
+        label: Landkode for Svalbard og Jan Mayen
+      - value: Sweden
+        label: Landkode for Sverige
+      - value: UnitedKingdom
+        label: Landkode for Storbritania
+    description: 'stat som den administrative enheten hører til
+
+
+      Merknad: Alfanumerisk kode (ISO 3166-1 alpha-2) for land som definert i ISO
+      3166'
+  - name: administrativKode
+    logicalType: string
+    description: 'tematisk identifikator som tilsvarer kode for den nasjonale administrative
+      inndelingen
+
+
+      Merknad: I Norge skal alltid fire sifre benyttes. For eksempel Ringerike kommune:
+      3007; Viken fylke: 3000; Norge: 0000'
+- name: Stemmekrets
+  physicalName: stemmekrets
+  logicalType: object
+  physicalType: table
+  description: 'stemmekretsene har som formål å være en hensiktsmessig inndeling av
+    kommuner ved valg, bl.a. for at velgerne ikke skal få for stor avstand til valglokalet
+
+
+    Merknad: Inndelingen skal ivareta administrative formål, men har også i en viss
+    grad blitt nyttet til å samle inn statistikk for planleggingsformål.'
+  customProperties:
+  - property: sosiObjektType
+    value: Stemmekrets
+  - property: inheritsFrom
+    value: SOSI_Objekt
+  - property: associations
+    value:
+    - role: stemmekretsgrense
+      target: Grense
+      cardinality: 1..*
+    - role: fylke
+      target: Fylke
+      cardinality: '1'
+    - role: kommune
+      target: Kommune
+      cardinality: '1'
+  properties:
+  - name: identifikasjon
+    logicalType: object
+    properties:
+    - name: lokalId
+      logicalType: string
+      description: 'lokal identifikator av et objekt
+
+
+        Merknad: Det er dataleverandørens ansvar å sørge for at den lokale identifikatoren
+        er unik innenfor navnerommet.'
+      required: true
+    - name: navnerom
+      logicalType: string
+      description: 'navnerom som unikt identifiserer datakilden til et objekt, anbefales
+        å være en http-URI
+
+
+        Eksempel: http://data.geonorge.no/SentraltStedsnavnsregister/1.0
+
+
+        Merknad : Verdien for navnerom vil eies av den dataprodusent som har ansvar
+        for de unike identifikatorene og må være registrert i data.geonorge.no eller
+        data.norge.no'
+      required: true
+    - name: versjonId
+      logicalType: string
+      description: identifikasjon av en spesiell versjon av et geografisk objekt (instans)
+    description: unik identifikasjon av et objekt
+    required: true
+  - name: oppdateringsdato
+    logicalType: timestamp
+    description: 'tidspunkt for siste endring på objektet
+
+
+      Merknad:
+
+      Oppdateringsdato kan være forskjellig fra datafangsdato ved at data som er registrert
+      kan bufres en kortere eller lengre periode før disse legges inn i datasystemet
+      (databasen).'
+    required: true
+  - name: gyldigFra
+    logicalType: timestamp
+    description: Tidspunktet når objektet oppstod i den virkelige verden
+  - name: gyldigTil
+    logicalType: timestamp
+    description: Tidspunktet når objektet opphørte å eksistere i den virkelige verden
+  - name: datafangstdato
+    logicalType: timestamp
+    description: 'dato når objektet siste gang ble registrert/observert/målt i terrenget
+
+
+      Merknad: I mange tilfeller er denne forskjellig fra oppdateringsdato, da registrerte
+      endringer kan bufres i en kortere eller lengre periode før disse legges inn
+      i databasen.
+
+      Ved førstegangsregistrering settes Datafangstdato lik førsteDatafangstdato.'
+  - name: førsteDigitaliseringsdato
+    logicalType: timestamp
+    description: 'dato når en representasjon av objektet i digital form første gang
+      ble etablert
+
+
+      Merknad:
+
+      førsteDigitaliseringsdato kan skille seg fra førsteDatafangstdato ved at den
+      første datafangsten skjedde analogt og gjort om til digital form senere i en
+      produksjonsprosess.
+
+      Eventuelt at innlegging i databasen skjedde på et senere tidspunkt enn registreringen
+      /observasjonen / målingen av objektet.'
+    required: true
+  - name: kvalitet
+    logicalType: object
+    properties:
+    - name: målemetode
+      logicalType: string
+      authoritativeDefinitions:
+      - url: http://skjema.geonorge.no/SOSI/generelleKonsepter/generelleTyper/5.1/Målemetode
+        type: businessDefinition
+      customProperties:
+      - property: sosiCodeList
+        value: Målemetode
+      - property: asDictionary
+        value: 'true'
+      description: metode for måling i grunnriss (x,y), og høyde (z) når metoden er
+        den samme som ved måling i grunnriss
+      required: true
+    - name: nøyaktighet
+      logicalType: integer
+      description: 'punktstandardavviket i grunnriss for punkter samt tverravvik for
+        linjer
+
+
+        Merknad:
+
+        Oppgitt i cm'
+    - name: synbarhet
+      logicalType: string
+      logicalTypeOptions:
+        pattern: ^(fulltSynligOgGjenfinnbarITerrenget|dårligGjenfinnbarITerrenget|middelsSynligIFlybilde|dårligSynligIFlybilde)$
+      customProperties:
+      - property: allowedValues
+        value:
+        - value: fulltSynligOgGjenfinnbarITerrenget
+          label: 'Fullt ut synlig/gjenfinnbar i terrenget
+
+            Default'
+        - value: dårligGjenfinnbarITerrenget
+          label: 'Dårlig gjenfinnbar i terreng.
+
+            Forøvrig grei å innmåle. (Benyttes bl.a. for innmåling av ledninger på
+            lukket grøft)'
+        - value: middelsSynligIFlybilde
+          label: Middels synlig i flybilde/modell
+        - value: dårligSynligIFlybilde
+          label: Dårlig/ikke synlig i flybilde/modell
+      description: hvor godt den kartlagte detalj var synbar ved kartleggingen
+    - name: målemetodeHøyde
+      logicalType: string
+      authoritativeDefinitions:
+      - url: http://skjema.geonorge.no/SOSI/generelleKonsepter/generelleTyper/5.1/MålemetodeHøyde
+        type: businessDefinition
+      customProperties:
+      - property: sosiCodeList
+        value: MålemetodeHøyde
+      - property: asDictionary
+        value: 'true'
+      description: metode for å måle høyden
+    - name: nøyaktighetHøyde
+      logicalType: integer
+      description: nøyaktighet for høyden i cm
+    - name: maksimaltAvvik
+      logicalType: integer
+      description: absolutt toleranse for geometriske avvik
+    description: beskrivelse av kvaliteten på stedfestingen
+  - name: opphav
+    logicalType: string
+    description: 'referanse til opphavsmaterialet, kildematerialet, organisasjons/publiseringskilde
+
+
+      Merknad:
+
+      Kan også beskrive navn på person og årsak til oppdatering'
+  - name: informasjon
+    logicalType: array
+    items:
+      logicalType: string
+    description: 'generell opplysning
+
+
+      Merknad:
+
+      mulighet til å legge inn utfyllende informasjon om objektet'
+  - name: område
+    logicalType: object
+    physicalType: geometry(MultiSurface)
+    required: true
+    customProperties:
+    - property: geometryType
+      value: MultiSurface
+  - name: stremmekretsid
+    logicalType: object
+    properties:
+    - name: stemmekretsnummer
+      logicalType: string
+      description: løpenummer innenfor stemmekretsens kommune
+      required: true
+    - name: stemmekretsnavn
+      logicalType: string
+      description: navn til stemmekrets
+      required: true
+    - name: tellekretsnummer
+      logicalType: string
+      description: entydig nummer innen kommune for tellekretser.En tellekrets kan
+        telle stemmer for flere stemmekretser.
+    - name: tellekretsnavn
+      logicalType: string
+      description: <font color="#1f497d">navn på tellekrets innenfor en kommune. En
+        tellekrets består av flere stemmekretser, og benyttes til opptelling av stemmer.
+        </font>
+    - name: valgdistriktsnummer
+      logicalType: string
+      description: <font color="#1f497d">nummerering av valgdistrikter ved stortingsvalg</font>
+    description: <font color="#1f497d">navn og nummer for stemmekrets og eventuelt
+      tilhørighet til tellekrets, valgdistrikt og fylke.</font>
+    required: true
+  - name: kommunenummer
+    logicalType: string
+    authoritativeDefinitions:
+    - url: https://register.geonorge.no/sosi-kodelister/inndelinger/inndelingsbase/kommunenummer
+      type: businessDefinition
+    customProperties:
+    - property: sosiCodeList
+      value: Kommunenummer
+    description: 'nummerering av kommunen i henhold til Statistisk sentralbyrå sin
+      offisielle liste
+
+
+      Merknad: Det presiseres at kommune alltid skal ha 4 siffer, dvs. eventuelt med
+      ledende null. Kommune benyttes for kopling mot en rekke andre registre som også
+      benytter 4 siffer.'
+    required: true
+- name: Kommune
+  physicalName: kommune
+  logicalType: object
+  physicalType: table
+  description: 'inndeling i administrative og politiske enheter innenfor fylket
+
+
+    Merknad: Tilsvarer NUTS 5 og LAU 2 på internasjonalt statistisk nivå'
+  customProperties:
+  - property: sosiObjektType
+    value: Kommune
+  - property: inheritsFrom
+    value: AdministrativEnhet
+  properties:
+  - name: område
+    logicalType: object
+    physicalType: geometry(MultiSurface)
+    required: true
+    customProperties:
+    - property: geometryType
+      value: MultiSurface
+  - name: posisjon
+    logicalType: object
+    physicalType: geometry(Point)
+    required: true
+    customProperties:
+    - property: geometryType
+      value: Point
+  - name: land
+    logicalType: string
+    logicalTypeOptions:
+      pattern: ^(BouvetIsland|Denmark|FaroeIslands|Finland|Greenland|Iceland|Norway|RussianFederation|SvalbardAndJanMayen|Sweden|UnitedKingdom)$
+    customProperties:
+    - property: allowedValues
+      value:
+      - value: BouvetIsland
+        label: Landkode for Boyvetøya
+      - value: Denmark
+        label: Landkode for Danmark
+      - value: FaroeIslands
+        label: Landkode for Færøyene
+      - value: Finland
+        label: Landkode for Finland
+      - value: Greenland
+        label: Landkode for Grønland
+      - value: Iceland
+        label: Landkode for Island
+      - value: Norway
+        label: Landkode for Norge
+      - value: RussianFederation
+        label: Landkode for Russland
+      - value: SvalbardAndJanMayen
+        label: Landkode for Svalbard og Jan Mayen
+      - value: Sweden
+        label: Landkode for Sverige
+      - value: UnitedKingdom
+        label: Landkode for Storbritania
+    description: 'stat som den administrative enheten hører til
+
+
+      Merknad: Alfanumerisk kode (ISO 3166-1 alpha-2) for land som definert i ISO
+      3166'
+  - name: administrativKode
+    logicalType: string
+    description: 'tematisk identifikator som tilsvarer kode for den nasjonale administrative
+      inndelingen
+
+
+      Merknad: I Norge skal alltid fire sifre benyttes. For eksempel Ringerike kommune:
+      3007; Viken fylke: 3000; Norge: 0000'
+  - name: samiskForvaltningsområde
+    logicalType: boolean
+    description: angir om kommunen er en del ac samisk forvaltningaområde

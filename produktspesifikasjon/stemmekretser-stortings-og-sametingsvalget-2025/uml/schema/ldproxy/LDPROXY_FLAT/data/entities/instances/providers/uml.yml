@@ -1,0 +1,189 @@
+---
+id: uml
+enabled: true
+providerType: FEATURE
+providerSubType: SQL
+nativeCrs:
+  code: 25833
+  forceAxisOrder: NONE
+nativeTimeZone: Europe/Oslo
+connectionInfo:
+  database: FIXME
+  host: FIXME
+  user: FIXME
+  password: FIXME-base64-encoded
+  schemas:
+  - public
+sourcePathDefaults:
+  primaryKey: objid
+  sortKey: objid
+types:
+  administrativenhet:
+    sourcePath: /administrativenhet
+    type: OBJECT
+    objectType: AdministrativEnhet
+    properties:
+      oid:
+        sourcePath: objid
+        type: INTEGER
+        role: ID
+      område:
+        sourcePath: område
+        type: GEOMETRY
+        role: PRIMARY_GEOMETRY
+        geometryType: MULTI_POLYGON
+      posisjon:
+        sourcePath: posisjon
+        type: GEOMETRY
+        geometryType: POINT
+      land:
+        sourcePath: land
+        type: STRING
+        constraints:
+          codelist: Landkode
+      administrativKode:
+        sourcePath: administrativkode
+        type: STRING
+  fylke:
+    sourcePath: /fylke
+    type: OBJECT
+    objectType: Fylke
+    properties:
+      oid:
+        sourcePath: objid
+        type: INTEGER
+        role: ID
+      samiskForvaltningsområde:
+        sourcePath: samiskforvaltningsområde
+        type: BOOLEAN
+      fylkesnummer:
+        sourcePath: fylkesnummer
+        type: STRING
+        constraints:
+          codelist: Fylkesnummer
+          required: true
+  grense:
+    sourcePath: /grense
+    type: OBJECT
+    objectType: Grense
+    properties:
+      oid:
+        sourcePath: objid
+        type: INTEGER
+        role: ID
+      grense:
+        sourcePath: grense
+        type: GEOMETRY
+        role: PRIMARY_GEOMETRY
+        geometryType: LINE_STRING
+        constraints:
+          required: true
+      avgrensningstype:
+        sourcePath: avgrensningstype
+        type: STRING
+        constraints:
+          codelist: TypeAvgrensning
+          required: true
+  kommune:
+    sourcePath: /kommune
+    type: OBJECT
+    objectType: Kommune
+    properties:
+      oid:
+        sourcePath: objid
+        type: INTEGER
+        role: ID
+      samiskForvaltningsområde:
+        sourcePath: samiskforvaltningsområde
+        type: BOOLEAN
+  stemmekrets:
+    sourcePath: /stemmekrets
+    type: OBJECT
+    objectType: Stemmekrets
+    properties:
+      oid:
+        sourcePath: objid
+        type: INTEGER
+        role: ID
+      område:
+        sourcePath: område
+        type: GEOMETRY
+        role: PRIMARY_GEOMETRY
+        geometryType: MULTI_POLYGON
+        constraints:
+          required: true
+      stremmekretsid_stemmekretsnummer:
+        sourcePath: stremmekretsid_stemmekretsnummer
+        type: STRING
+        constraints:
+          required: true
+      stremmekretsid_stemmekretsnavn:
+        sourcePath: stremmekretsid_stemmekretsnavn
+        type: STRING
+        constraints:
+          required: true
+      stremmekretsid_tellekretsnummer:
+        sourcePath: stremmekretsid_tellekretsnummer
+        type: STRING
+      stremmekretsid_tellekretsnavn:
+        sourcePath: stremmekretsid_tellekretsnavn
+        type: STRING
+      stremmekretsid_valgdistriktsnummer:
+        sourcePath: stremmekretsid_valgdistriktsnummer
+        type: STRING
+      kommunenummer:
+        sourcePath: kommunenummer
+        type: STRING
+        constraints:
+          codelist: Kommunenummer
+          required: true
+      stemmekretsgrense:
+        sourcePath: "[objid=stemmekretsobjid]Stemmekrets_stemmekretsgrense/[grenseobjid=objid]grense"
+        type: OBJECT_ARRAY
+        objectType: Link
+        constraints:
+          required: true
+          minOccurrence: 1
+        properties:
+          title:
+            sourcePath: objid
+            type: STRING
+            label: Grense-title
+          href:
+            sourcePath: objid
+            type: STRING
+            label: Grense-ID
+            transformations:
+            - stringFormat: "{{serviceUrl}}/collections/grense/items/{{value}}"
+      fylke:
+        type: OBJECT
+        objectType: Link
+        constraints:
+          required: true
+        properties:
+          title:
+            sourcePath: fylke
+            type: STRING
+            label: Fylke-title
+          href:
+            sourcePath: fylke
+            type: STRING
+            label: Fylke-ID
+            transformations:
+            - stringFormat: "{{serviceUrl}}/collections/fylke/items/{{value}}"
+      kommune:
+        type: OBJECT
+        objectType: Link
+        constraints:
+          required: true
+        properties:
+          title:
+            sourcePath: kommune
+            type: STRING
+            label: Kommune-title
+          href:
+            sourcePath: kommune
+            type: STRING
+            label: Kommune-ID
+            transformations:
+            - stringFormat: "{{serviceUrl}}/collections/kommune/items/{{value}}"

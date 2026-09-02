@@ -1,0 +1,298 @@
+{
+  "$comment": "JSON Schema document created by ShapeChange - https://shapechange.net/",
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://skjema.geonorge.no/SOSI/produktspesifikasjon/stemmekretser-stortings-og-sametingsvalget-2025/uml/uml/uml.json",
+  "definitions": {
+    "AdministrativEnhet": {
+      "type": "object",
+      "properties": {
+        "@type": {
+          "type": "string"
+        },
+        "id": {
+          "type": "string"
+        },
+        "område": {
+          "$ref": "https://geojson.org/schema/MultiPolygon.json"
+        },
+        "posisjon": {
+          "$ref": "https://geojson.org/schema/Point.json"
+        },
+        "land": {
+          "$ref": "#/definitions/Landkode"
+        },
+        "administrativKode": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "@type"
+      ]
+    },
+    "Fylke": {
+      "allOf": [
+        {
+          "$ref": "#/definitions/AdministrativEnhet"
+        },
+        {
+          "type": "object",
+          "properties": {
+            "samiskForvaltningsområde": {
+              "type": "boolean"
+            },
+            "fylkesnummer": {
+              "$ref": "#/definitions/Fylkesnummer"
+            }
+          },
+          "required": [
+            "fylkesnummer"
+          ]
+        }
+      ]
+    },
+    "Fylkesnummer": {
+      "type": "string",
+      "format": "uri"
+    },
+    "Grense": {
+      "allOf": [
+        {
+          "$ref": "#/definitions/SOSI_Objekt"
+        },
+        {
+          "type": "object",
+          "properties": {
+            "geometry": {
+              "$ref": "https://geojson.org/schema/LineString.json"
+            },
+            "avgrensningstype": {
+              "$ref": "#/definitions/TypeAvgrensning"
+            }
+          },
+          "required": [
+            "avgrensningstype"
+          ]
+        }
+      ]
+    },
+    "Identifikasjon": {
+      "type": "object",
+      "properties": {
+        "lokalId": {
+          "type": "string"
+        },
+        "navnerom": {
+          "type": "string"
+        },
+        "versjonId": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "lokalId",
+        "navnerom"
+      ]
+    },
+    "Kommune": {
+      "allOf": [
+        {
+          "$ref": "#/definitions/AdministrativEnhet"
+        },
+        {
+          "type": "object",
+          "properties": {
+            "samiskForvaltningsområde": {
+              "type": "boolean"
+            }
+          }
+        }
+      ]
+    },
+    "Kommunenummer": {
+      "type": "string",
+      "format": "uri"
+    },
+    "Landkode": {
+      "type": "string",
+      "format": "uri"
+    },
+    "Målemetode": {
+      "type": "string",
+      "format": "uri"
+    },
+    "MålemetodeHøyde": {
+      "type": "string",
+      "format": "uri"
+    },
+    "Posisjonskvalitet": {
+      "type": "object",
+      "properties": {
+        "målemetode": {
+          "$ref": "#/definitions/Målemetode"
+        },
+        "nøyaktighet": {
+          "type": "integer"
+        },
+        "synbarhet": {
+          "$ref": "#/definitions/Synbarhet"
+        },
+        "målemetodeHøyde": {
+          "$ref": "#/definitions/MålemetodeHøyde"
+        },
+        "nøyaktighetHøyde": {
+          "type": "integer"
+        },
+        "maksimaltAvvik": {
+          "type": "integer"
+        }
+      },
+      "required": [
+        "målemetode"
+      ]
+    },
+    "SOSI_Fellesegenskaper": {
+      "type": "object",
+      "properties": {
+        "@type": {
+          "type": "string"
+        },
+        "id": {
+          "type": "string"
+        },
+        "identifikasjon": {
+          "$ref": "#/definitions/Identifikasjon"
+        },
+        "oppdateringsdato": {
+          "type": "string",
+          "format": "date"
+        },
+        "gyldigFra": {
+          "type": "string",
+          "format": "date"
+        },
+        "gyldigTil": {
+          "type": "string",
+          "format": "date"
+        }
+      },
+      "required": [
+        "@type",
+        "identifikasjon",
+        "oppdateringsdato"
+      ]
+    },
+    "SOSI_Objekt": {
+      "allOf": [
+        {
+          "$ref": "#/definitions/SOSI_Fellesegenskaper"
+        },
+        {
+          "type": "object",
+          "properties": {
+            "datafangstdato": {
+              "type": "string",
+              "format": "date"
+            },
+            "førsteDigitaliseringsdato": {
+              "type": "string",
+              "format": "date"
+            },
+            "kvalitet": {
+              "$ref": "#/definitions/Posisjonskvalitet"
+            },
+            "opphav": {
+              "type": "string"
+            },
+            "informasjon": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              },
+              "uniqueItems": true
+            }
+          },
+          "required": [
+            "førsteDigitaliseringsdato"
+          ]
+        }
+      ]
+    },
+    "Stemmekrets": {
+      "allOf": [
+        {
+          "$ref": "#/definitions/SOSI_Objekt"
+        },
+        {
+          "type": "object",
+          "properties": {
+            "geometry": {
+              "$ref": "https://geojson.org/schema/MultiPolygon.json"
+            },
+            "stremmekretsid": {
+              "$ref": "#/definitions/StemmekretsId"
+            },
+            "kommunenummer": {
+              "$ref": "#/definitions/Kommunenummer"
+            },
+            "stemmekretsgrense": {
+              "type": "array",
+              "minItems": 1,
+              "items": {
+                "type": "string",
+                "format": "uri"
+              },
+              "uniqueItems": true
+            },
+            "fylke": {
+              "type": "string",
+              "format": "uri"
+            },
+            "kommune": {
+              "type": "string",
+              "format": "uri"
+            }
+          },
+          "required": [
+            "fylke",
+            "kommune",
+            "kommunenummer",
+            "stemmekretsgrense",
+            "stremmekretsid"
+          ]
+        }
+      ]
+    },
+    "StemmekretsId": {
+      "type": "object",
+      "properties": {
+        "stemmekretsnummer": {
+          "type": "string"
+        },
+        "stemmekretsnavn": {
+          "type": "string"
+        },
+        "tellekretsnummer": {
+          "type": "string"
+        },
+        "tellekretsnavn": {
+          "type": "string"
+        },
+        "valgdistriktsnummer": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "stemmekretsnavn",
+        "stemmekretsnummer"
+      ]
+    },
+    "Synbarhet": {
+      "type": "string",
+      "format": "uri"
+    },
+    "TypeAvgrensning": {
+      "type": "string",
+      "format": "uri"
+    }
+  }
+}

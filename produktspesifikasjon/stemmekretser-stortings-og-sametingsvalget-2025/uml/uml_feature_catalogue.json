@@ -1,0 +1,529 @@
+[
+  {
+    "name": "SOSI_Objekt",
+    "description": "abstrakt objekttype som bærer en rekke egenskaper som er fagområde-uavhengige og kan benyttes for alle objekttyper\n\nMerknad:\nSpesielt i produktspesifikasjonsarbeid vil en velge egenskaper og avgrensningslinjer fra denne klassen.",
+    "attributes": [
+      {
+        "name": "datafangstdato",
+        "type": "DateTime",
+        "description": "dato når objektet siste gang ble registrert/observert/målt i terrenget\n\nMerknad: I mange tilfeller er denne forskjellig fra oppdateringsdato, da registrerte endringer kan bufres i en kortere eller lengre periode før disse legges inn i databasen.\nVed førstegangsregistrering settes Datafangstdato lik førsteDatafangstdato.",
+        "cardinality": "0..1",
+        "taggedValues": {
+          "SOSI_navn": "DATAFANGSTDATO"
+        }
+      },
+      {
+        "name": "førsteDigitaliseringsdato",
+        "type": "DateTime",
+        "description": "dato når en representasjon av objektet i digital form første gang ble etablert\n\nMerknad:\nførsteDigitaliseringsdato kan skille seg fra førsteDatafangstdato ved at den første datafangsten skjedde analogt og gjort om til digital form senere i en produksjonsprosess.\nEventuelt at innlegging i databasen skjedde på et senere tidspunkt enn registreringen /observasjonen / målingen av objektet.",
+        "cardinality": "1",
+        "taggedValues": {
+          "SOSI_navn": "FØRSTEDIGITALISERINGSDATO"
+        }
+      },
+      {
+        "name": "kvalitet",
+        "type": "Posisjonskvalitet",
+        "description": "beskrivelse av kvaliteten på stedfestingen",
+        "cardinality": "0..1",
+        "attributes": [
+          {
+            "name": "målemetode",
+            "type": "Målemetode",
+            "description": "metode for måling i grunnriss (x,y), og høyde (z) når metoden er den samme som ved måling i grunnriss",
+            "cardinality": "1",
+            "valueDomain": {
+              "kind": "codelist",
+              "definition": "metode som ligger til grunn for registrering av posisjon\n\n\n-- Definition - -\nmethod on which registration of position is based",
+              "asDictionary": "true",
+              "codeList": "http://skjema.geonorge.no/SOSI/generelleKonsepter/generelleTyper/5.1/Målemetode"
+            },
+            "taggedValues": {
+              "SOSI_navn": "MÅLEMETODE"
+            }
+          },
+          {
+            "name": "nøyaktighet",
+            "type": "Integer",
+            "description": "punktstandardavviket i grunnriss for punkter samt tverravvik for linjer\n\nMerknad:\nOppgitt i cm",
+            "cardinality": "0..1",
+            "taggedValues": {
+              "SOSI_navn": "NØYAKTIGHET"
+            }
+          },
+          {
+            "name": "synbarhet",
+            "type": "Synbarhet",
+            "description": "hvor godt den kartlagte detalj var synbar ved kartleggingen",
+            "cardinality": "0..1",
+            "valueDomain": {
+              "kind": "codelist",
+              "listedValues": [
+                {
+                  "value": "fulltSynligOgGjenfinnbarITerrenget",
+                  "label": "Fullt ut synlig/gjenfinnbar i terrenget\nDefault"
+                },
+                {
+                  "value": "dårligGjenfinnbarITerrenget",
+                  "label": "Dårlig gjenfinnbar i terreng.\nForøvrig grei å innmåle. (Benyttes bl.a. for innmåling av ledninger på lukket grøft)"
+                },
+                {
+                  "value": "middelsSynligIFlybilde",
+                  "label": "Middels synlig i flybilde/modell"
+                },
+                {
+                  "value": "dårligSynligIFlybilde",
+                  "label": "Dårlig/ikke synlig i flybilde/modell"
+                }
+              ],
+              "definition": "hvor godt den kartlagte detalj var synbar ved kartleggingen"
+            },
+            "taggedValues": {
+              "SOSI_navn": "SYNBARHET"
+            }
+          },
+          {
+            "name": "målemetodeHøyde",
+            "type": "MålemetodeHøyde",
+            "description": "metode for å måle høyden",
+            "cardinality": "0..1",
+            "valueDomain": {
+              "kind": "codelist",
+              "definition": "metode for å måle objekttypens høydeverdi",
+              "asDictionary": "true",
+              "codeList": "http://skjema.geonorge.no/SOSI/generelleKonsepter/generelleTyper/5.1/MålemetodeHøyde"
+            },
+            "taggedValues": {
+              "SOSI_navn": "H-MÅLEMETODE"
+            }
+          },
+          {
+            "name": "nøyaktighetHøyde",
+            "type": "Integer",
+            "description": "nøyaktighet for høyden i cm",
+            "cardinality": "0..1",
+            "taggedValues": {
+              "SOSI_navn": "H-NØYAKTIGHET"
+            }
+          },
+          {
+            "name": "maksimaltAvvik",
+            "type": "Integer",
+            "description": "absolutt toleranse for geometriske avvik",
+            "cardinality": "0..1",
+            "taggedValues": {
+              "SOSI_navn": "MAX-AVVIK"
+            }
+          }
+        ]
+      },
+      {
+        "name": "opphav",
+        "type": "CharacterString",
+        "description": "referanse til opphavsmaterialet, kildematerialet, organisasjons/publiseringskilde\n\nMerknad:\nKan også beskrive navn på person og årsak til oppdatering",
+        "cardinality": "0..1",
+        "taggedValues": {
+          "SOSI_navn": "OPPHAV"
+        }
+      },
+      {
+        "name": "informasjon",
+        "type": "CharacterString",
+        "description": "generell opplysning\n\nMerknad:\nmulighet til å legge inn utfyllende informasjon om objektet",
+        "cardinality": "0..*",
+        "taggedValues": {
+          "SOSI_navn": "INFORMASJON"
+        }
+      }
+    ],
+    "abstract": true,
+    "relationships": {
+      "inheritance": [
+        "SOSI_Fellesegenskaper"
+      ],
+      "associations": []
+    },
+    "package": "Stemmekretser_Kommuner_Fylker-20230701"
+  },
+  {
+    "name": "Grense",
+    "description": "Generell avgrensingslinje",
+    "attributes": [
+      {
+        "name": "grense",
+        "type": "GM_Curve",
+        "description": "Geometri for avgrensingslinjer",
+        "cardinality": "1"
+      },
+      {
+        "name": "avgrensningstype",
+        "type": "TypeAvgrensning",
+        "description": "angir type avgreisningslinje. Ulike objekter avgrenses av ulike typer grenser.",
+        "cardinality": "1",
+        "valueDomain": {
+          "kind": "codelist",
+          "listedValues": [
+            {
+              "value": "Riksgrense",
+              "label": "avgrensningen av nasjonen Norge på land mot andre nasjoner"
+            },
+            {
+              "value": "Territorialgrense",
+              "label": "avgrensning i havet av statens suverenitetsområde, beregnet 12 nm (22 224 m) utenfor og parallelt med grunnlinjen"
+            },
+            {
+              "value": "AvtaltAvgrensningslinje",
+              "label": "avtalt avgrensningslinje til havs basert på folkerettslig bindende avtaler\n\nMerknad:\nAvtalt avgrensningslinje vil normalt gjelde alle aktuelle former for kyststatsjurisdiksjon. Detaljene vil framgå av den aktuelle avgrensningsavtale.\n\nMerknad 2:\nBenyttes også som avgrensning av kontinentalsokkel i internasjonalt farvann, der flere stater kan framlegge dokumentasjon om rettigheter til sokkelen, men der statene har kommet til enighet om en avgrensningslinje."
+            },
+            {
+              "value": "Kommunegrense",
+              "label": "avgrensing av kommune"
+            },
+            {
+              "value": "Fylkesgrense",
+              "label": "avgrensning av fylke"
+            },
+            {
+              "value": "Grunnkretsgrense",
+              "label": "avgrensning av grunnkrets"
+            },
+            {
+              "value": "Delområdegrense",
+              "label": "avgrensning av delområde"
+            },
+            {
+              "value": "Stemmekretsgrense",
+              "label": "avgrensing av Stemmekrets"
+            }
+          ],
+          "definition": "oversikt over ulike typer avgrensingslinjer."
+        }
+      }
+    ],
+    "abstract": false,
+    "relationships": {
+      "inheritance": [
+        "SOSI_Objekt"
+      ],
+      "associations": []
+    },
+    "package": "Stemmekretser_Kommuner_Fylker-20230701"
+  },
+  {
+    "name": "Fylke",
+    "description": "administrativ inndeling av nasjonen på regionalt nivå\n\nMerknad: Tilsvarer NUTS 3 på internasjonalt statistisk nivå",
+    "attributes": [
+      {
+        "name": "samiskForvaltningsområde",
+        "type": "Boolean",
+        "description": "angir om fylket er en del ac samisk forvaltningaområde",
+        "cardinality": "0..1"
+      },
+      {
+        "name": "fylkesnummer",
+        "type": "Fylkesnummer",
+        "description": "nummerering av fylker i henhold til Statistisk sentralbyrå sin offisielle liste\n\nMerknad:\nDet presiseres at fylkesnummer alltid skal ha 2 sifre, dvs. eventuelt med ledende null. Fylkesnummer benyttes for kopling mot en rekke andre registre som også benytter 2 sifre.",
+        "cardinality": "1",
+        "valueDomain": {
+          "kind": "codelist",
+          "definition": "nummerering av fylker <font color=\"#333333\"> </font>\n<font color=\"#333333\">\n</font><font color=\"#333333\">Merknad: Inneholder fremtidige, gyldige og utgåtte nummer. Fylket skal alltid ha 2 sifre, dvs. eventuelt med ledende null.</font>\n<i>URI til ekstern kodeliste:</i> https://register.geonorge.no/sosi-kodelister/inndelinger/inndelingsbase/fylkesnummer",
+          "codeList": "https://register.geonorge.no/sosi-kodelister/inndelinger/inndelingsbase/fylkesnummer?"
+        }
+      }
+    ],
+    "abstract": false,
+    "relationships": {
+      "inheritance": [
+        "AdministrativEnhet"
+      ],
+      "associations": []
+    },
+    "package": "Stemmekretser_Kommuner_Fylker-20230701"
+  },
+  {
+    "name": "AdministrativEnhet",
+    "description": "område hvor det utøves offentlig forvaltning på lokalt, regionalt eller nasjonalt nivå",
+    "attributes": [
+      {
+        "name": "område",
+        "type": "GM_MultiSurface",
+        "description": "objektets utstrekning",
+        "cardinality": "0..1"
+      },
+      {
+        "name": "posisjon",
+        "type": "GM_Point",
+        "description": "sted som objektet eksisterer på",
+        "cardinality": "0..1"
+      },
+      {
+        "name": "land",
+        "type": "Landkode",
+        "description": "stat som den administrative enheten hører til\n\nMerknad: Alfanumerisk kode (ISO 3166-1 alpha-2) for land som definert i ISO 3166",
+        "cardinality": "0..1",
+        "valueDomain": {
+          "kind": "codelist",
+          "listedValues": [
+            {
+              "value": "BouvetIsland",
+              "label": "Landkode for Boyvetøya"
+            },
+            {
+              "value": "Denmark",
+              "label": "Landkode for Danmark"
+            },
+            {
+              "value": "FaroeIslands",
+              "label": "Landkode for Færøyene"
+            },
+            {
+              "value": "Finland",
+              "label": "Landkode for Finland"
+            },
+            {
+              "value": "Greenland",
+              "label": "Landkode for Grønland"
+            },
+            {
+              "value": "Iceland",
+              "label": "Landkode for Island"
+            },
+            {
+              "value": "Norway",
+              "label": "Landkode for Norge"
+            },
+            {
+              "value": "RussianFederation",
+              "label": "Landkode for Russland"
+            },
+            {
+              "value": "SvalbardAndJanMayen",
+              "label": "Landkode for Svalbard og Jan Mayen"
+            },
+            {
+              "value": "Sweden",
+              "label": "Landkode for Sverige"
+            },
+            {
+              "value": "UnitedKingdom",
+              "label": "Landkode for Storbritania"
+            }
+          ],
+          "definition": "alfanumerisk kode (ISO 3166-1 alpha-2) for land som definert i ISO 3166 Codes for the representation of names of countries and their subdivisions"
+        }
+      },
+      {
+        "name": "administrativKode",
+        "type": "CharacterString",
+        "description": "tematisk identifikator som tilsvarer kode for den nasjonale administrative inndelingen\n\nMerknad: I Norge skal alltid fire sifre benyttes. For eksempel Ringerike kommune: 3007; Viken fylke: 3000; Norge: 0000",
+        "cardinality": "0..1"
+      }
+    ],
+    "abstract": false,
+    "relationships": {
+      "inheritance": [],
+      "associations": []
+    },
+    "package": "Stemmekretser_Kommuner_Fylker-20230701"
+  },
+  {
+    "name": "Stemmekrets",
+    "description": "stemmekretsene har som formål å være en hensiktsmessig inndeling av kommuner ved valg, bl.a. for at velgerne ikke skal få for stor avstand til valglokalet\n\nMerknad: Inndelingen skal ivareta administrative formål, men har også i en viss grad blitt nyttet til å samle inn statistikk for planleggingsformål.",
+    "attributes": [
+      {
+        "name": "område",
+        "type": "GM_MultiSurface",
+        "description": "den geografiske avgrensingen av stemmekretsen.",
+        "cardinality": "1"
+      },
+      {
+        "name": "stremmekretsid",
+        "type": "StemmekretsId",
+        "description": "<font color=\"#1f497d\">navn og nummer for stemmekrets og eventuelt tilhørighet til tellekrets, valgdistrikt og fylke.</font>",
+        "cardinality": "1",
+        "taggedValues": {
+          "SOSI_navn": "STEMMEKRETSID"
+        },
+        "attributes": [
+          {
+            "name": "stemmekretsnummer",
+            "type": "CharacterString",
+            "description": "løpenummer innenfor stemmekretsens kommune",
+            "cardinality": "1",
+            "taggedValues": {
+              "SOSI_navn": "STEMMEKRETSNUMMER"
+            }
+          },
+          {
+            "name": "stemmekretsnavn",
+            "type": "CharacterString",
+            "description": "navn til stemmekrets",
+            "cardinality": "1",
+            "taggedValues": {
+              "SOSI_navn": "STEMMEKRETSNAVN"
+            }
+          },
+          {
+            "name": "tellekretsnummer",
+            "type": "CharacterString",
+            "description": "entydig nummer innen kommune for tellekretser.En tellekrets kan telle stemmer for flere stemmekretser.",
+            "cardinality": "0..1",
+            "taggedValues": {
+              "SOSI_navn": "TELLEKRETSNUMMER"
+            }
+          },
+          {
+            "name": "tellekretsnavn",
+            "type": "CharacterString",
+            "description": "<font color=\"#1f497d\">navn på tellekrets innenfor en kommune. En tellekrets består av flere stemmekretser, og benyttes til opptelling av stemmer. </font>",
+            "cardinality": "0..1",
+            "taggedValues": {
+              "SOSI_navn": "TELLEKRETSNAVN"
+            }
+          },
+          {
+            "name": "valgdistriktsnummer",
+            "type": "CharacterString",
+            "description": "<font color=\"#1f497d\">nummerering av valgdistrikter ved stortingsvalg</font>",
+            "cardinality": "0..1",
+            "taggedValues": {
+              "SOSI_navn": "VALGDISTRIKTSNUMMER"
+            }
+          }
+        ]
+      },
+      {
+        "name": "kommunenummer",
+        "type": "Kommunenummer",
+        "description": "nummerering av kommunen i henhold til Statistisk sentralbyrå sin offisielle liste\n\nMerknad: Det presiseres at kommune alltid skal ha 4 siffer, dvs. eventuelt med ledende null. Kommune benyttes for kopling mot en rekke andre registre som også benytter 4 siffer.",
+        "cardinality": "1",
+        "valueDomain": {
+          "kind": "codelist",
+          "definition": "<font color=\"#333333\">nummerering av kommuner i henhold til SSB sin offisielle liste</font>\nMerknad: <font color=\"#333333\">Inneholder fremtidige, gyldige og utgåtte kommunenummer. </font>Det presiseres at kommune alltid skal ha 4 sifre, dvs. eventuelt med ledende null. Kommune benyttes for kopling mot en rekke andre registre som også benytter 4 sifre.\n\n<i>URI til ekstern kodeliste:</i> https://register.geonorge.no/sosi-kodelister/kommunenummer?page=2",
+          "codeList": "https://register.geonorge.no/sosi-kodelister/inndelinger/inndelingsbase/kommunenummer"
+        }
+      }
+    ],
+    "abstract": false,
+    "relationships": {
+      "inheritance": [
+        "SOSI_Objekt"
+      ],
+      "associations": [
+        {
+          "target": "Grense",
+          "role": "stemmekretsgrense",
+          "cardinality": "1..*"
+        },
+        {
+          "target": "Fylke",
+          "role": "fylke",
+          "cardinality": "1"
+        },
+        {
+          "target": "Kommune",
+          "role": "kommune",
+          "cardinality": "1"
+        }
+      ]
+    },
+    "package": "Stemmekretser_Kommuner_Fylker-20230701"
+  },
+  {
+    "name": "Kommune",
+    "description": "inndeling i administrative og politiske enheter innenfor fylket\n\nMerknad: Tilsvarer NUTS 5 og LAU 2 på internasjonalt statistisk nivå",
+    "attributes": [
+      {
+        "name": "samiskForvaltningsområde",
+        "type": "Boolean",
+        "description": "angir om kommunen er en del ac samisk forvaltningaområde",
+        "cardinality": "0..1"
+      }
+    ],
+    "abstract": false,
+    "relationships": {
+      "inheritance": [
+        "AdministrativEnhet"
+      ],
+      "associations": []
+    },
+    "package": "Stemmekretser_Kommuner_Fylker-20230701"
+  },
+  {
+    "name": "SOSI_Fellesegenskaper",
+    "description": "abstrakt objekttype som bærer sentrale egenskaper som er anbefalt for bruk i produktspesifikasjoner.\n\nMerknad: Disse egenskapene skal derfor ikke modelleres inn i fagområdemodeller.",
+    "attributes": [
+      {
+        "name": "identifikasjon",
+        "type": "Identifikasjon",
+        "description": "unik identifikasjon av et objekt",
+        "cardinality": "1",
+        "taggedValues": {
+          "SOSI_navn": "IDENT"
+        },
+        "attributes": [
+          {
+            "name": "lokalId",
+            "type": "CharacterString",
+            "description": "lokal identifikator av et objekt\n\nMerknad: Det er dataleverandørens ansvar å sørge for at den lokale identifikatoren er unik innenfor navnerommet.",
+            "cardinality": "1",
+            "taggedValues": {
+              "SOSI_navn": "LOKALID"
+            }
+          },
+          {
+            "name": "navnerom",
+            "type": "CharacterString",
+            "description": "navnerom som unikt identifiserer datakilden til et objekt, anbefales å være en http-URI\n\nEksempel: http://data.geonorge.no/SentraltStedsnavnsregister/1.0\n\nMerknad : Verdien for navnerom vil eies av den dataprodusent som har ansvar for de unike identifikatorene og må være registrert i data.geonorge.no eller data.norge.no",
+            "cardinality": "1",
+            "taggedValues": {
+              "SOSI_navn": "NAVNEROM"
+            }
+          },
+          {
+            "name": "versjonId",
+            "type": "CharacterString",
+            "description": "identifikasjon av en spesiell versjon av et geografisk objekt (instans)",
+            "cardinality": "0..1",
+            "taggedValues": {
+              "SOSI_navn": "VERSJONID"
+            }
+          }
+        ]
+      },
+      {
+        "name": "oppdateringsdato",
+        "type": "DateTime",
+        "description": "tidspunkt for siste endring på objektet\n\nMerknad:\nOppdateringsdato kan være forskjellig fra datafangsdato ved at data som er registrert kan bufres en kortere eller lengre periode før disse legges inn i datasystemet (databasen).",
+        "cardinality": "1",
+        "taggedValues": {
+          "SOSI_navn": "OPPDATERINGSDATO"
+        }
+      },
+      {
+        "name": "gyldigFra",
+        "type": "DateTime",
+        "description": "Tidspunktet når objektet oppstod i den virkelige verden",
+        "cardinality": "0..1",
+        "taggedValues": {
+          "SOSI_navn": "GYLDIGFRA"
+        }
+      },
+      {
+        "name": "gyldigTil",
+        "type": "DateTime",
+        "description": "Tidspunktet når objektet opphørte å eksistere i den virkelige verden",
+        "cardinality": "0..1",
+        "taggedValues": {
+          "SOSI_navn": "GYLDIGTIL"
+        }
+      }
+    ],
+    "abstract": true,
+    "relationships": {
+      "inheritance": [],
+      "associations": []
+    },
+    "package": "Stemmekretser_Kommuner_Fylker-20230701"
+  }
+]
