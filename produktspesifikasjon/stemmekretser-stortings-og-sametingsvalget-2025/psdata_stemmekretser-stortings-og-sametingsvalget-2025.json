@@ -1,0 +1,370 @@
+{
+  "overview": "Denne produktspesifikasjonen er autogenerert fra metadata i Geonorge og datamodell fra SOSI modellregister og/eller OGC API Features. Noe ekstra informasjon kan ha blitt lagt til gjennom manuell prosess. Produktspesifikasjonen er i henhold til standarden: 'Geografisk informasjon - Dataproduktspesifikasjoner' (ISO19131:2022)",
+  "title": "Stemmekretser - stortings- og sametingsvalget 2025",
+  "format": "text/html",
+  "date": {
+    "creation": "2025-06-30",
+    "revision": "2025-07-04"
+  },
+  "language": "nor",
+  "contact": {
+    "individualName": "Liv Mari Nesje",
+    "organizationName": "Kartverket",
+    "logo": "https://register.geonorge.no/data/organizations/971040238_Kartverket_liten.png",
+    "electronicMailAddress": "post@kartverket.no",
+    "role": "owner"
+  },
+  "identificationSection": {
+    "title": "Stemmekretser - stortings- og sametingsvalget 2025",
+    "abstract": "Stemmekretsfila viser kommunenes inndeling i stemmekretser i forbindelse med stortings- og sametingsvalget i 2025. \n\nDatasettet inneholder  stemmekretser for kobling mot valgresultatene. På grunn av endringer i valgloven, inneholder datasettet ikke tekniske tellekretser som ved tidligere valg, der stemmekretser med mindre enn 100 manntalsførte ble slått sammen med andre kretser i tellinga.",
+    "purpose": {
+      "summary": "Vise kommunenes geografiske inndeling i stemmekretser.",
+      "useCase": {
+        "name": "Bruksområde",
+        "summary": "Kobling mot valgresultater for å vise stemmefordeling i kommunene, fylkene eller landet. Beregning av statistikk."
+      }
+    },
+    "topicCategory": [
+      "Administrative grenser"
+    ],
+    "spatialRepresentationType": "Vektor",
+    "supplementalInformation": "Trenger du hjelp til å laste ned og ta i bruk Kartverkets data og tjenester? På kartverket.no finner du tips og veiledning.",
+    "uniqueId": "67d89aa2-ee97-43b2-bcf0-b044ac3b5844",
+    "keyword": [
+      "Norge",
+      "Stemmekrets",
+      "StemmekretsId",
+      "kommunenummer",
+      "fylkesnummer",
+      "stemmekretsnummer",
+      "stemmekretsnavn",
+      "valgdistriktsnummer"
+    ],
+    "restriction": {
+      "legalConstraints": {
+        "accessConstraints": "Åpne data",
+        "useConstraints": "Lisens",
+        "license": "Creative Commons BY 4.0 (CC BY 4.0)",
+        "licenseUrl": "https://creativecommons.org/licenses/by/4.0/"
+      },
+      "securityConstraints": {
+        "classification": "Ugradert"
+      }
+    },
+    "contact": [
+      {
+        "individualName": "Liv Mari Nesje",
+        "organizationName": "Kartverket",
+        "electronicMailAddress": "post@kartverket.no",
+        "role": "owner"
+      },
+      {
+        "individualName": "Liv Mari Nesje",
+        "organizationName": "Kartverket",
+        "electronicMailAddress": "post@kartverket.no",
+        "role": "pointOfContact"
+      },
+      {
+        "organizationName": "Kartverket",
+        "electronicMailAddress": "post@kartverket.no",
+        "role": "publisher"
+      }
+    ],
+    "maintenance": "Etter behov",
+    "extent": {
+      "geographicElement": {
+        "westBoundLongitude": "2.0",
+        "eastBoundLongitude": "33.0",
+        "southBoundLatitude": "57.0",
+        "northBoundLatitude": "72.0"
+      },
+      "temporalElement": {
+        "timePeriod": {
+          "beginPosition": "2025-06-30",
+          "endPosition": "2025-07-04"
+        }
+      }
+    },
+    "date": {
+      "creation": "2025-06-30",
+      "publication": "2025-06-30",
+      "revision": "2025-07-04"
+    },
+    "language": "nor"
+  },
+  "scopeSection": [
+    {
+      "specificationScope": {
+        "scopeIdentification": "Hele datasettet",
+        "level": "dataset",
+        "levelDescription": "Gjelder hele datasettet. Hvis omfang ikke er oppgitt under en overskrift, gjelder teksten for hele datasettet og alle leveranser"
+      }
+    },
+    {
+      "specificationScope": {
+        "scopeIdentification": "UML",
+        "level": "dataset",
+        "levelDescription": "Stemmekrefter"
+      }
+    }
+  ],
+  "referenceSystemSection": {
+    "spatialReferenceSystem": [
+      {
+        "code": "EPSG:25832",
+        "name": "EUREF89 UTM sone 32, 2d"
+      },
+      {
+        "code": "EPSG:25833",
+        "name": "EUREF89 UTM sone 33, 2d"
+      },
+      {
+        "code": "EPSG:25835",
+        "name": "EUREF89 UTM sone 35, 2d"
+      },
+      {
+        "code": "EPSG:4258",
+        "name": "EUREF 89 Geografisk (ETRS 89) 2d"
+      },
+      {
+        "code": "EPSG:25832",
+        "name": "EUREF89 UTM sone 32, 2d"
+      }
+    ]
+  },
+  "dataQualitySection": {
+    "scope": {
+      "level": "dataset"
+    },
+    "report": [
+      {
+        "nameOfMeasure": "SOSI produktspesifikasjon: Stemmekretser",
+        "measureDescription": "Dataene er ikke vurdert iht produktspesifikasjonen",
+        "descriptiveResult": "Dataene er ikke vurdert iht produktspesifikasjonen"
+      },
+      {
+        "nameOfMeasure": "Sosi applikasjonsskjema",
+        "measureDescription": "SOSI-filer er ikke vurdert i henhold til applikasjonsskjema",
+        "descriptiveResult": "SOSI-filer er ikke vurdert i henhold til applikasjonsskjema"
+      },
+      {
+        "nameOfMeasure": "Sosi applikasjonsskjema",
+        "measureDescription": "GML-filer er ikke vurdert i henhold til applikasjonsskjema",
+        "descriptiveResult": "GML-filer er ikke vurdert i henhold til applikasjonsskjema"
+      }
+    ]
+  },
+  "maintenanceSection": {
+    "maintenanceAndUpdateFrequency": "Etter behov"
+  },
+  "deliverySection": [
+    {
+      "delivery": {
+        "deliveryMedium": {
+          "unitsOfDelivery": "fylkesvis, kommunevis, landsfiler",
+          "deliveryMediumName": "Geonorge nedlastning",
+          "deliveryService": {
+            "serviceEndpoint": "https://nedlasting.geonorge.no/api/capabilities/",
+            "serviceProperty": {
+              "type": "Geonorge nedlastning",
+              "value": "GEONORGE:DOWNLOAD"
+            }
+          }
+        },
+        "deliveryFormat": [
+          {
+            "formatName": "FGDB"
+          },
+          {
+            "formatName": "GeoJSON"
+          },
+          {
+            "formatName": "GML"
+          },
+          {
+            "formatName": "PostGIS"
+          },
+          {
+            "formatName": "SOSI"
+          }
+        ]
+      }
+    },
+    {
+      "delivery": {
+        "deliveryMedium": {
+          "unitsOfDelivery": "fylkesvis, kommunevis, landsfiler",
+          "deliveryMediumName": "Atom Feed",
+          "deliveryService": {
+            "serviceEndpoint": "http://nedlasting.geonorge.no/geonorge/ATOM-feeds/Stemmekretser_AtomFeedFGDB.xml",
+            "serviceProperty": {
+              "type": "Atom Feed",
+              "value": "W3C:AtomFeed"
+            }
+          }
+        },
+        "deliveryFormat": [
+          {
+            "formatName": "FGDB"
+          }
+        ]
+      }
+    },
+    {
+      "delivery": {
+        "deliveryMedium": {
+          "unitsOfDelivery": "fylkesvis, kommunevis, landsfiler",
+          "deliveryMediumName": "Atom Feed",
+          "deliveryService": {
+            "serviceEndpoint": "http://nedlasting.geonorge.no/geonorge/ATOM-feeds/Stemmekretser_AtomFeedGML.xml",
+            "serviceProperty": {
+              "type": "Atom Feed",
+              "value": "W3C:AtomFeed"
+            }
+          }
+        },
+        "deliveryFormat": [
+          {
+            "formatName": "GML"
+          }
+        ]
+      }
+    },
+    {
+      "delivery": {
+        "deliveryMedium": {
+          "unitsOfDelivery": "fylkesvis, kommunevis, landsfiler",
+          "deliveryMediumName": "Atom Feed",
+          "deliveryService": {
+            "serviceEndpoint": "http://nedlasting.geonorge.no/geonorge/ATOM-feeds/Stemmekretser_AtomFeedGeoJSON.xml",
+            "serviceProperty": {
+              "type": "Atom Feed",
+              "value": "W3C:AtomFeed"
+            }
+          }
+        },
+        "deliveryFormat": [
+          {
+            "formatName": "GeoJSON"
+          }
+        ]
+      }
+    },
+    {
+      "delivery": {
+        "deliveryMedium": {
+          "unitsOfDelivery": "fylkesvis, kommunevis, landsfiler",
+          "deliveryMediumName": "Atom Feed",
+          "deliveryService": {
+            "serviceEndpoint": "http://nedlasting.geonorge.no/geonorge/ATOM-feeds/Stemmekretser_AtomFeedPostGIS.xml",
+            "serviceProperty": {
+              "type": "Atom Feed",
+              "value": "W3C:AtomFeed"
+            }
+          }
+        },
+        "deliveryFormat": [
+          {
+            "formatName": "PostGIS"
+          }
+        ]
+      }
+    },
+    {
+      "delivery": {
+        "deliveryMedium": {
+          "unitsOfDelivery": "fylkesvis, kommunevis, landsfiler",
+          "deliveryMediumName": "Atom Feed",
+          "deliveryService": {
+            "serviceEndpoint": "http://nedlasting.geonorge.no/geonorge/ATOM-feeds/Stemmekretser_AtomFeedSOSI.xml",
+            "serviceProperty": {
+              "type": "Atom Feed",
+              "value": "W3C:AtomFeed"
+            }
+          }
+        },
+        "deliveryFormat": [
+          {
+            "formatName": "SOSI"
+          }
+        ]
+      }
+    },
+    {
+      "delivery": {
+        "deliveryMedium": {
+          "deliveryMediumName": "GeoPackage: uml",
+          "deliveryService": {
+            "serviceEndpoint": "https://raw.githubusercontent.com/aatjora/produktspesifikasjon_gjennomgang/main/produktspesifikasjon/stemmekretser-stortings-og-sametingsvalget-2025/uml/uml.gpkg",
+            "serviceProperty": {
+              "type": "Fil",
+              "value": "Nedlasting"
+            }
+          }
+        },
+        "deliveryFormat": [
+          {
+            "formatName": "GPKG"
+          }
+        ]
+      }
+    },
+    {
+      "delivery": {
+        "deliveryMedium": {
+          "deliveryMediumName": "GML/XSD-skjema: uml",
+          "deliveryService": {
+            "serviceEndpoint": "https://raw.githubusercontent.com/aatjora/produktspesifikasjon_gjennomgang/main/produktspesifikasjon/stemmekretser-stortings-og-sametingsvalget-2025/uml/schema/xsd/INPUT/uml.xsd",
+            "serviceProperty": {
+              "type": "Fil",
+              "value": "Nedlasting"
+            }
+          }
+        },
+        "deliveryFormat": [
+          {
+            "formatName": "XSD"
+          }
+        ]
+      }
+    },
+    {
+      "delivery": {
+        "deliveryMedium": {
+          "deliveryMediumName": "JSON Schema: uml",
+          "deliveryService": {
+            "serviceEndpoint": "https://raw.githubusercontent.com/aatjora/produktspesifikasjon_gjennomgang/main/produktspesifikasjon/stemmekretser-stortings-og-sametingsvalget-2025/uml/schema/jsonschema/INPUT/uml/uml.json",
+            "serviceProperty": {
+              "type": "Fil",
+              "value": "Nedlasting"
+            }
+          }
+        },
+        "deliveryFormat": [
+          {
+            "formatName": "JSON Schema"
+          }
+        ]
+      }
+    }
+  ],
+  "metadataSection": {
+    "metadataStandard": "ISO19115",
+    "metadataStandardVersion": "2003",
+    "metadataDate": "2026-09-02",
+    "language": "nor",
+    "contact": {
+      "organizationName": "Kartverket",
+      "individualName": "Liv Mari Nesje",
+      "logo": "https://register.geonorge.no/data/organizations/971040238_Kartverket_liten.png",
+      "electronicMailAddress": "post@kartverket.no",
+      "role": "pointOfContact"
+    },
+    "metadataIdentifier": {
+      "authority": "Geonorge",
+      "code": "67d89aa2-ee97-43b2-bcf0-b044ac3b5844",
+      "codeSpace": "https://kartkatalog.geonorge.no/metadata/",
+      "metadataLinkage": "https://kartkatalog.geonorge.no/metadata/67d89aa2-ee97-43b2-bcf0-b044ac3b5844"
+    }
+  }
+}

@@ -1,0 +1,698 @@
+<?xml version="1.0" encoding="UTF-8"?><schema xmlns="http://www.w3.org/2001/XMLSchema" xmlns:gml="http://www.opengis.net/gml/3.2" xmlns:sc="http://www.interactive-instruments.de/ShapeChange/AppInfo" xmlns:uml="https://skjema.geonorge.no/SOSI/produktspesifikasjon/stemmekretser-stortings-og-sametingsvalget-2025/uml/1.0" elementFormDefault="qualified" targetNamespace="https://skjema.geonorge.no/SOSI/produktspesifikasjon/stemmekretser-stortings-og-sametingsvalget-2025/uml/1.0" version="1.0">
+  <import namespace="http://www.interactive-instruments.de/ShapeChange/AppInfo" schemaLocation="https://shapechange.net/resources/schema/ShapeChangeAppinfo.xsd"/>
+  <import namespace="http://www.opengis.net/gml/3.2" schemaLocation="http://schemas.opengis.net/gml/3.2.1/gml.xsd"/>
+  <!--XML Schema document created by ShapeChange - http://shapechange.net/-->
+  <element name="AdministrativEnhet" substitutionGroup="gml:AbstractFeature" type="uml:AdministrativEnhetType">
+    <annotation>
+      <documentation>område hvor det utøves offentlig forvaltning på lokalt, regionalt eller nasjonalt nivå</documentation>
+    </annotation>
+  </element>
+  <complexType name="AdministrativEnhetType">
+    <complexContent>
+      <extension base="gml:AbstractFeatureType">
+        <sequence>
+          <element minOccurs="0" name="område" type="gml:MultiSurfacePropertyType">
+            <annotation>
+              <documentation>objektets utstrekning</documentation>
+            </annotation>
+          </element>
+          <element minOccurs="0" name="posisjon" type="gml:PointPropertyType">
+            <annotation>
+              <documentation>sted som objektet eksisterer på</documentation>
+            </annotation>
+          </element>
+          <element minOccurs="0" name="land" type="uml:LandkodeType">
+            <annotation>
+              <documentation>stat som den administrative enheten hører til
+
+Merknad: Alfanumerisk kode (ISO 3166-1 alpha-2) for land som definert i ISO 3166</documentation>
+            </annotation>
+          </element>
+          <element minOccurs="0" name="administrativKode" type="string">
+            <annotation>
+              <documentation>tematisk identifikator som tilsvarer kode for den nasjonale administrative inndelingen
+
+Merknad: I Norge skal alltid fire sifre benyttes. For eksempel Ringerike kommune: 3007; Viken fylke: 3000; Norge: 0000</documentation>
+            </annotation>
+          </element>
+        </sequence>
+      </extension>
+    </complexContent>
+  </complexType>
+  <complexType name="AdministrativEnhetPropertyType">
+    <sequence minOccurs="0">
+      <element ref="uml:AdministrativEnhet"/>
+    </sequence>
+    <attributeGroup ref="gml:AssociationAttributeGroup"/>
+    <attributeGroup ref="gml:OwnershipAttributeGroup"/>
+  </complexType>
+  <element name="Fylke" substitutionGroup="uml:AdministrativEnhet" type="uml:FylkeType">
+    <annotation>
+      <documentation>administrativ inndeling av nasjonen på regionalt nivå
+
+Merknad: Tilsvarer NUTS 3 på internasjonalt statistisk nivå</documentation>
+    </annotation>
+  </element>
+  <complexType name="FylkeType">
+    <complexContent>
+      <extension base="uml:AdministrativEnhetType">
+        <sequence>
+          <element minOccurs="0" name="samiskForvaltningsområde" type="boolean">
+            <annotation>
+              <documentation>angir om fylket er en del ac samisk forvaltningaområde</documentation>
+            </annotation>
+          </element>
+          <element name="fylkesnummer" type="uml:FylkesnummerType">
+            <annotation>
+              <documentation>nummerering av fylker i henhold til Statistisk sentralbyrå sin offisielle liste
+
+Merknad:
+Det presiseres at fylkesnummer alltid skal ha 2 sifre, dvs. eventuelt med ledende null. Fylkesnummer benyttes for kopling mot en rekke andre registre som også benytter 2 sifre.</documentation>
+              <appinfo>
+                <sc:targetCodeListURI>https://register.geonorge.no/sosi-kodelister/inndelinger/inndelingsbase/fylkesnummer?</sc:targetCodeListURI>
+              </appinfo>
+            </annotation>
+          </element>
+        </sequence>
+      </extension>
+    </complexContent>
+  </complexType>
+  <complexType name="FylkePropertyType">
+    <sequence minOccurs="0">
+      <element ref="uml:Fylke"/>
+    </sequence>
+    <attributeGroup ref="gml:AssociationAttributeGroup"/>
+    <attributeGroup ref="gml:OwnershipAttributeGroup"/>
+  </complexType>
+  <simpleType name="FylkesnummerType">
+    <annotation>
+      <documentation>nummerering av fylker &lt;font color="#333333"&gt; &lt;/font&gt;
+&lt;font color="#333333"&gt;
+&lt;/font&gt;&lt;font color="#333333"&gt;Merknad: Inneholder fremtidige, gyldige og utgåtte nummer. Fylket skal alltid ha 2 sifre, dvs. eventuelt med ledende null.&lt;/font&gt;
+&lt;i&gt;URI til ekstern kodeliste:&lt;/i&gt; https://register.geonorge.no/sosi-kodelister/inndelinger/inndelingsbase/fylkesnummer</documentation>
+    </annotation>
+    <union memberTypes="uml:FylkesnummerEnumerationType uml:FylkesnummerOtherType"/>
+  </simpleType>
+  <simpleType name="FylkesnummerEnumerationType">
+    <annotation>
+      <documentation>nummerering av fylker &lt;font color="#333333"&gt; &lt;/font&gt;
+&lt;font color="#333333"&gt;
+&lt;/font&gt;&lt;font color="#333333"&gt;Merknad: Inneholder fremtidige, gyldige og utgåtte nummer. Fylket skal alltid ha 2 sifre, dvs. eventuelt med ledende null.&lt;/font&gt;
+&lt;i&gt;URI til ekstern kodeliste:&lt;/i&gt; https://register.geonorge.no/sosi-kodelister/inndelinger/inndelingsbase/fylkesnummer</documentation>
+    </annotation>
+    <restriction base="string"/>
+  </simpleType>
+  <simpleType name="FylkesnummerOtherType">
+    <restriction base="string">
+      <pattern value="other: \w{2,}"/>
+    </restriction>
+  </simpleType>
+  <element name="Grense" substitutionGroup="uml:SOSI_Objekt" type="uml:GrenseType">
+    <annotation>
+      <documentation>Generell avgrensingslinje</documentation>
+    </annotation>
+  </element>
+  <complexType name="GrenseType">
+    <complexContent>
+      <extension base="uml:SOSI_ObjektType">
+        <sequence>
+          <element name="grense" type="gml:CurvePropertyType">
+            <annotation>
+              <documentation>Geometri for avgrensingslinjer</documentation>
+            </annotation>
+          </element>
+          <element name="avgrensningstype" type="uml:TypeAvgrensningType">
+            <annotation>
+              <documentation>angir type avgreisningslinje. Ulike objekter avgrenses av ulike typer grenser.</documentation>
+            </annotation>
+          </element>
+        </sequence>
+      </extension>
+    </complexContent>
+  </complexType>
+  <complexType name="GrensePropertyType">
+    <sequence minOccurs="0">
+      <element ref="uml:Grense"/>
+    </sequence>
+    <attributeGroup ref="gml:AssociationAttributeGroup"/>
+    <attributeGroup ref="gml:OwnershipAttributeGroup"/>
+  </complexType>
+  <element name="Identifikasjon" substitutionGroup="gml:AbstractObject" type="uml:IdentifikasjonType"/>
+  <complexType name="IdentifikasjonType">
+    <sequence>
+      <element name="lokalId" type="string">
+        <annotation>
+          <documentation>lokal identifikator av et objekt
+
+Merknad: Det er dataleverandørens ansvar å sørge for at den lokale identifikatoren er unik innenfor navnerommet.</documentation>
+          <appinfo>
+            <sc:taggedValue tag="SOSI_navn">LOKALID</sc:taggedValue>
+          </appinfo>
+        </annotation>
+      </element>
+      <element name="navnerom" type="string">
+        <annotation>
+          <documentation>navnerom som unikt identifiserer datakilden til et objekt, anbefales å være en http-URI
+
+Eksempel: http://data.geonorge.no/SentraltStedsnavnsregister/1.0
+
+Merknad : Verdien for navnerom vil eies av den dataprodusent som har ansvar for de unike identifikatorene og må være registrert i data.geonorge.no eller data.norge.no</documentation>
+          <appinfo>
+            <sc:taggedValue tag="SOSI_navn">NAVNEROM</sc:taggedValue>
+          </appinfo>
+        </annotation>
+      </element>
+      <element minOccurs="0" name="versjonId" type="string">
+        <annotation>
+          <documentation>identifikasjon av en spesiell versjon av et geografisk objekt (instans)</documentation>
+          <appinfo>
+            <sc:taggedValue tag="SOSI_navn">VERSJONID</sc:taggedValue>
+          </appinfo>
+        </annotation>
+      </element>
+    </sequence>
+  </complexType>
+  <complexType name="IdentifikasjonPropertyType">
+    <sequence>
+      <element ref="uml:Identifikasjon"/>
+    </sequence>
+  </complexType>
+  <element name="Kommune" substitutionGroup="uml:AdministrativEnhet" type="uml:KommuneType">
+    <annotation>
+      <documentation>inndeling i administrative og politiske enheter innenfor fylket
+
+Merknad: Tilsvarer NUTS 5 og LAU 2 på internasjonalt statistisk nivå</documentation>
+    </annotation>
+  </element>
+  <complexType name="KommuneType">
+    <complexContent>
+      <extension base="uml:AdministrativEnhetType">
+        <sequence>
+          <element minOccurs="0" name="samiskForvaltningsområde" type="boolean">
+            <annotation>
+              <documentation>angir om kommunen er en del ac samisk forvaltningaområde</documentation>
+            </annotation>
+          </element>
+        </sequence>
+      </extension>
+    </complexContent>
+  </complexType>
+  <complexType name="KommunePropertyType">
+    <sequence minOccurs="0">
+      <element ref="uml:Kommune"/>
+    </sequence>
+    <attributeGroup ref="gml:AssociationAttributeGroup"/>
+    <attributeGroup ref="gml:OwnershipAttributeGroup"/>
+  </complexType>
+  <simpleType name="KommunenummerType">
+    <annotation>
+      <documentation>&lt;font color="#333333"&gt;nummerering av kommuner i henhold til SSB sin offisielle liste&lt;/font&gt;
+Merknad: &lt;font color="#333333"&gt;Inneholder fremtidige, gyldige og utgåtte kommunenummer. &lt;/font&gt;Det presiseres at kommune alltid skal ha 4 sifre, dvs. eventuelt med ledende null. Kommune benyttes for kopling mot en rekke andre registre som også benytter 4 sifre.
+
+&lt;i&gt;URI til ekstern kodeliste:&lt;/i&gt; https://register.geonorge.no/sosi-kodelister/kommunenummer?page=2</documentation>
+    </annotation>
+    <union memberTypes="uml:KommunenummerEnumerationType uml:KommunenummerOtherType"/>
+  </simpleType>
+  <simpleType name="KommunenummerEnumerationType">
+    <annotation>
+      <documentation>&lt;font color="#333333"&gt;nummerering av kommuner i henhold til SSB sin offisielle liste&lt;/font&gt;
+Merknad: &lt;font color="#333333"&gt;Inneholder fremtidige, gyldige og utgåtte kommunenummer. &lt;/font&gt;Det presiseres at kommune alltid skal ha 4 sifre, dvs. eventuelt med ledende null. Kommune benyttes for kopling mot en rekke andre registre som også benytter 4 sifre.
+
+&lt;i&gt;URI til ekstern kodeliste:&lt;/i&gt; https://register.geonorge.no/sosi-kodelister/kommunenummer?page=2</documentation>
+    </annotation>
+    <restriction base="string"/>
+  </simpleType>
+  <simpleType name="KommunenummerOtherType">
+    <restriction base="string">
+      <pattern value="other: \w{2,}"/>
+    </restriction>
+  </simpleType>
+  <simpleType name="LandkodeType">
+    <annotation>
+      <documentation>alfanumerisk kode (ISO 3166-1 alpha-2) for land som definert i ISO 3166 Codes for the representation of names of countries and their subdivisions</documentation>
+    </annotation>
+    <union memberTypes="uml:LandkodeEnumerationType uml:LandkodeOtherType"/>
+  </simpleType>
+  <simpleType name="LandkodeEnumerationType">
+    <annotation>
+      <documentation>alfanumerisk kode (ISO 3166-1 alpha-2) for land som definert i ISO 3166 Codes for the representation of names of countries and their subdivisions</documentation>
+    </annotation>
+    <restriction base="string">
+      <enumeration value="BouvetIsland">
+        <annotation>
+          <documentation>Landkode for Boyvetøya</documentation>
+        </annotation>
+      </enumeration>
+      <enumeration value="Denmark">
+        <annotation>
+          <documentation>Landkode for Danmark</documentation>
+        </annotation>
+      </enumeration>
+      <enumeration value="FaroeIslands">
+        <annotation>
+          <documentation>Landkode for Færøyene</documentation>
+        </annotation>
+      </enumeration>
+      <enumeration value="Finland">
+        <annotation>
+          <documentation>Landkode for Finland</documentation>
+        </annotation>
+      </enumeration>
+      <enumeration value="Greenland">
+        <annotation>
+          <documentation>Landkode for Grønland</documentation>
+        </annotation>
+      </enumeration>
+      <enumeration value="Iceland">
+        <annotation>
+          <documentation>Landkode for Island</documentation>
+        </annotation>
+      </enumeration>
+      <enumeration value="Norway">
+        <annotation>
+          <documentation>Landkode for Norge</documentation>
+        </annotation>
+      </enumeration>
+      <enumeration value="RussianFederation">
+        <annotation>
+          <documentation>Landkode for Russland</documentation>
+        </annotation>
+      </enumeration>
+      <enumeration value="SvalbardAndJanMayen">
+        <annotation>
+          <documentation>Landkode for Svalbard og Jan Mayen</documentation>
+        </annotation>
+      </enumeration>
+      <enumeration value="Sweden">
+        <annotation>
+          <documentation>Landkode for Sverige</documentation>
+        </annotation>
+      </enumeration>
+      <enumeration value="UnitedKingdom">
+        <annotation>
+          <documentation>Landkode for Storbritania</documentation>
+        </annotation>
+      </enumeration>
+    </restriction>
+  </simpleType>
+  <simpleType name="LandkodeOtherType">
+    <restriction base="string">
+      <pattern value="other: \w{2,}"/>
+    </restriction>
+  </simpleType>
+  <element name="Posisjonskvalitet" substitutionGroup="gml:AbstractObject" type="uml:PosisjonskvalitetType"/>
+  <complexType name="PosisjonskvalitetType">
+    <sequence>
+      <element name="målemetode" type="gml:CodeType">
+        <annotation>
+          <documentation>metode for måling i grunnriss (x,y), og høyde (z) når metoden er den samme som ved måling i grunnriss</documentation>
+          <appinfo>
+            <sc:targetCodeListURI>http://skjema.geonorge.no/SOSI/generelleKonsepter/generelleTyper/5.1/Målemetode</sc:targetCodeListURI>
+            <sc:taggedValue tag="SOSI_navn">MÅLEMETODE</sc:taggedValue>
+          </appinfo>
+        </annotation>
+      </element>
+      <element minOccurs="0" name="nøyaktighet" type="integer">
+        <annotation>
+          <documentation>punktstandardavviket i grunnriss for punkter samt tverravvik for linjer
+
+Merknad:
+Oppgitt i cm</documentation>
+          <appinfo>
+            <sc:taggedValue tag="SOSI_navn">NØYAKTIGHET</sc:taggedValue>
+          </appinfo>
+        </annotation>
+      </element>
+      <element minOccurs="0" name="synbarhet" type="uml:SynbarhetType">
+        <annotation>
+          <documentation>hvor godt den kartlagte detalj var synbar ved kartleggingen</documentation>
+          <appinfo>
+            <sc:taggedValue tag="SOSI_navn">SYNBARHET</sc:taggedValue>
+          </appinfo>
+        </annotation>
+      </element>
+      <element minOccurs="0" name="målemetodeHøyde" type="gml:CodeType">
+        <annotation>
+          <documentation>metode for å måle høyden</documentation>
+          <appinfo>
+            <sc:targetCodeListURI>http://skjema.geonorge.no/SOSI/generelleKonsepter/generelleTyper/5.1/MålemetodeHøyde</sc:targetCodeListURI>
+            <sc:taggedValue tag="SOSI_navn">H-MÅLEMETODE</sc:taggedValue>
+          </appinfo>
+        </annotation>
+      </element>
+      <element minOccurs="0" name="nøyaktighetHøyde" type="integer">
+        <annotation>
+          <documentation>nøyaktighet for høyden i cm</documentation>
+          <appinfo>
+            <sc:taggedValue tag="SOSI_navn">H-NØYAKTIGHET</sc:taggedValue>
+          </appinfo>
+        </annotation>
+      </element>
+      <element minOccurs="0" name="maksimaltAvvik" type="integer">
+        <annotation>
+          <documentation>absolutt toleranse for geometriske avvik</documentation>
+          <appinfo>
+            <sc:taggedValue tag="SOSI_navn">MAX-AVVIK</sc:taggedValue>
+          </appinfo>
+        </annotation>
+      </element>
+    </sequence>
+  </complexType>
+  <complexType name="PosisjonskvalitetPropertyType">
+    <sequence>
+      <element ref="uml:Posisjonskvalitet"/>
+    </sequence>
+  </complexType>
+  <element abstract="true" name="SOSI_Fellesegenskaper" substitutionGroup="gml:AbstractFeature" type="uml:SOSI_FellesegenskaperType">
+    <annotation>
+      <documentation>abstrakt objekttype som bærer sentrale egenskaper som er anbefalt for bruk i produktspesifikasjoner.
+
+Merknad: Disse egenskapene skal derfor ikke modelleres inn i fagområdemodeller.</documentation>
+    </annotation>
+  </element>
+  <complexType abstract="true" name="SOSI_FellesegenskaperType">
+    <complexContent>
+      <extension base="gml:AbstractFeatureType">
+        <sequence>
+          <element name="identifikasjon" type="uml:IdentifikasjonPropertyType">
+            <annotation>
+              <documentation>unik identifikasjon av et objekt</documentation>
+              <appinfo>
+                <sc:taggedValue tag="SOSI_navn">IDENT</sc:taggedValue>
+              </appinfo>
+            </annotation>
+          </element>
+          <element name="oppdateringsdato" type="date">
+            <annotation>
+              <documentation>tidspunkt for siste endring på objektet
+
+Merknad:
+Oppdateringsdato kan være forskjellig fra datafangsdato ved at data som er registrert kan bufres en kortere eller lengre periode før disse legges inn i datasystemet (databasen).</documentation>
+              <appinfo>
+                <sc:taggedValue tag="SOSI_navn">OPPDATERINGSDATO</sc:taggedValue>
+              </appinfo>
+            </annotation>
+          </element>
+          <element minOccurs="0" name="gyldigFra" type="date">
+            <annotation>
+              <documentation>Tidspunktet når objektet oppstod i den virkelige verden</documentation>
+              <appinfo>
+                <sc:taggedValue tag="SOSI_navn">GYLDIGFRA</sc:taggedValue>
+              </appinfo>
+            </annotation>
+          </element>
+          <element minOccurs="0" name="gyldigTil" type="date">
+            <annotation>
+              <documentation>Tidspunktet når objektet opphørte å eksistere i den virkelige verden</documentation>
+              <appinfo>
+                <sc:taggedValue tag="SOSI_navn">GYLDIGTIL</sc:taggedValue>
+              </appinfo>
+            </annotation>
+          </element>
+        </sequence>
+      </extension>
+    </complexContent>
+  </complexType>
+  <complexType name="SOSI_FellesegenskaperPropertyType">
+    <sequence minOccurs="0">
+      <element ref="uml:SOSI_Fellesegenskaper"/>
+    </sequence>
+    <attributeGroup ref="gml:AssociationAttributeGroup"/>
+    <attributeGroup ref="gml:OwnershipAttributeGroup"/>
+  </complexType>
+  <element abstract="true" name="SOSI_Objekt" substitutionGroup="uml:SOSI_Fellesegenskaper" type="uml:SOSI_ObjektType">
+    <annotation>
+      <documentation>abstrakt objekttype som bærer en rekke egenskaper som er fagområde-uavhengige og kan benyttes for alle objekttyper
+
+Merknad:
+Spesielt i produktspesifikasjonsarbeid vil en velge egenskaper og avgrensningslinjer fra denne klassen.</documentation>
+    </annotation>
+  </element>
+  <complexType abstract="true" name="SOSI_ObjektType">
+    <complexContent>
+      <extension base="uml:SOSI_FellesegenskaperType">
+        <sequence>
+          <element minOccurs="0" name="datafangstdato" type="date">
+            <annotation>
+              <documentation>dato når objektet siste gang ble registrert/observert/målt i terrenget
+
+Merknad: I mange tilfeller er denne forskjellig fra oppdateringsdato, da registrerte endringer kan bufres i en kortere eller lengre periode før disse legges inn i databasen.
+Ved førstegangsregistrering settes Datafangstdato lik førsteDatafangstdato.</documentation>
+              <appinfo>
+                <sc:taggedValue tag="SOSI_navn">DATAFANGSTDATO</sc:taggedValue>
+              </appinfo>
+            </annotation>
+          </element>
+          <element name="førsteDigitaliseringsdato" type="date">
+            <annotation>
+              <documentation>dato når en representasjon av objektet i digital form første gang ble etablert
+
+Merknad:
+førsteDigitaliseringsdato kan skille seg fra førsteDatafangstdato ved at den første datafangsten skjedde analogt og gjort om til digital form senere i en produksjonsprosess.
+Eventuelt at innlegging i databasen skjedde på et senere tidspunkt enn registreringen /observasjonen / målingen av objektet.</documentation>
+              <appinfo>
+                <sc:taggedValue tag="SOSI_navn">FØRSTEDIGITALISERINGSDATO</sc:taggedValue>
+              </appinfo>
+            </annotation>
+          </element>
+          <element minOccurs="0" name="kvalitet" type="uml:PosisjonskvalitetPropertyType">
+            <annotation>
+              <documentation>beskrivelse av kvaliteten på stedfestingen</documentation>
+            </annotation>
+          </element>
+          <element minOccurs="0" name="opphav" type="string">
+            <annotation>
+              <documentation>referanse til opphavsmaterialet, kildematerialet, organisasjons/publiseringskilde
+
+Merknad:
+Kan også beskrive navn på person og årsak til oppdatering</documentation>
+              <appinfo>
+                <sc:taggedValue tag="SOSI_navn">OPPHAV</sc:taggedValue>
+              </appinfo>
+            </annotation>
+          </element>
+          <element maxOccurs="unbounded" minOccurs="0" name="informasjon" type="string">
+            <annotation>
+              <documentation>generell opplysning
+
+Merknad:
+mulighet til å legge inn utfyllende informasjon om objektet</documentation>
+              <appinfo>
+                <sc:taggedValue tag="SOSI_navn">INFORMASJON</sc:taggedValue>
+              </appinfo>
+            </annotation>
+          </element>
+        </sequence>
+      </extension>
+    </complexContent>
+  </complexType>
+  <complexType name="SOSI_ObjektPropertyType">
+    <sequence minOccurs="0">
+      <element ref="uml:SOSI_Objekt"/>
+    </sequence>
+    <attributeGroup ref="gml:AssociationAttributeGroup"/>
+    <attributeGroup ref="gml:OwnershipAttributeGroup"/>
+  </complexType>
+  <element name="Stemmekrets" substitutionGroup="uml:SOSI_Objekt" type="uml:StemmekretsType">
+    <annotation>
+      <documentation>stemmekretsene har som formål å være en hensiktsmessig inndeling av kommuner ved valg, bl.a. for at velgerne ikke skal få for stor avstand til valglokalet
+
+Merknad: Inndelingen skal ivareta administrative formål, men har også i en viss grad blitt nyttet til å samle inn statistikk for planleggingsformål.</documentation>
+    </annotation>
+  </element>
+  <complexType name="StemmekretsType">
+    <complexContent>
+      <extension base="uml:SOSI_ObjektType">
+        <sequence>
+          <element name="område" type="gml:MultiSurfacePropertyType">
+            <annotation>
+              <documentation>den geografiske avgrensingen av stemmekretsen.</documentation>
+            </annotation>
+          </element>
+          <element name="stremmekretsid" type="uml:StemmekretsIdPropertyType">
+            <annotation>
+              <documentation>&lt;font color="#1f497d"&gt;navn og nummer for stemmekrets og eventuelt tilhørighet til tellekrets, valgdistrikt og fylke.&lt;/font&gt;</documentation>
+              <appinfo>
+                <sc:taggedValue tag="SOSI_navn">STEMMEKRETSID</sc:taggedValue>
+              </appinfo>
+            </annotation>
+          </element>
+          <element name="kommunenummer" type="uml:KommunenummerType">
+            <annotation>
+              <documentation>nummerering av kommunen i henhold til Statistisk sentralbyrå sin offisielle liste
+
+Merknad: Det presiseres at kommune alltid skal ha 4 siffer, dvs. eventuelt med ledende null. Kommune benyttes for kopling mot en rekke andre registre som også benytter 4 siffer.</documentation>
+              <appinfo>
+                <sc:targetCodeListURI>https://register.geonorge.no/sosi-kodelister/inndelinger/inndelingsbase/kommunenummer</sc:targetCodeListURI>
+              </appinfo>
+            </annotation>
+          </element>
+          <element maxOccurs="unbounded" name="stemmekretsgrense" type="uml:GrensePropertyType"/>
+          <element name="fylke" type="uml:FylkePropertyType"/>
+          <element name="kommune" type="uml:KommunePropertyType"/>
+        </sequence>
+      </extension>
+    </complexContent>
+  </complexType>
+  <complexType name="StemmekretsPropertyType">
+    <sequence minOccurs="0">
+      <element ref="uml:Stemmekrets"/>
+    </sequence>
+    <attributeGroup ref="gml:AssociationAttributeGroup"/>
+    <attributeGroup ref="gml:OwnershipAttributeGroup"/>
+  </complexType>
+  <element name="StemmekretsId" substitutionGroup="gml:AbstractObject" type="uml:StemmekretsIdType"/>
+  <complexType name="StemmekretsIdType">
+    <sequence>
+      <element name="stemmekretsnummer" type="string">
+        <annotation>
+          <documentation>løpenummer innenfor stemmekretsens kommune</documentation>
+          <appinfo>
+            <sc:taggedValue tag="SOSI_navn">STEMMEKRETSNUMMER</sc:taggedValue>
+          </appinfo>
+        </annotation>
+      </element>
+      <element name="stemmekretsnavn" type="string">
+        <annotation>
+          <documentation>navn til stemmekrets</documentation>
+          <appinfo>
+            <sc:taggedValue tag="SOSI_navn">STEMMEKRETSNAVN</sc:taggedValue>
+          </appinfo>
+        </annotation>
+      </element>
+      <element minOccurs="0" name="tellekretsnummer" type="string">
+        <annotation>
+          <documentation>entydig nummer innen kommune for tellekretser.En tellekrets kan telle stemmer for flere stemmekretser.</documentation>
+          <appinfo>
+            <sc:taggedValue tag="SOSI_navn">TELLEKRETSNUMMER</sc:taggedValue>
+          </appinfo>
+        </annotation>
+      </element>
+      <element minOccurs="0" name="tellekretsnavn" type="string">
+        <annotation>
+          <documentation>&lt;font color="#1f497d"&gt;navn på tellekrets innenfor en kommune. En tellekrets består av flere stemmekretser, og benyttes til opptelling av stemmer. &lt;/font&gt;</documentation>
+          <appinfo>
+            <sc:taggedValue tag="SOSI_navn">TELLEKRETSNAVN</sc:taggedValue>
+          </appinfo>
+        </annotation>
+      </element>
+      <element minOccurs="0" name="valgdistriktsnummer" type="string">
+        <annotation>
+          <documentation>&lt;font color="#1f497d"&gt;nummerering av valgdistrikter ved stortingsvalg&lt;/font&gt;</documentation>
+          <appinfo>
+            <sc:taggedValue tag="SOSI_navn">VALGDISTRIKTSNUMMER</sc:taggedValue>
+          </appinfo>
+        </annotation>
+      </element>
+    </sequence>
+  </complexType>
+  <complexType name="StemmekretsIdPropertyType">
+    <sequence>
+      <element ref="uml:StemmekretsId"/>
+    </sequence>
+  </complexType>
+  <simpleType name="SynbarhetType">
+    <annotation>
+      <documentation>hvor godt den kartlagte detalj var synbar ved kartleggingen</documentation>
+    </annotation>
+    <union memberTypes="uml:SynbarhetEnumerationType uml:SynbarhetOtherType"/>
+  </simpleType>
+  <simpleType name="SynbarhetEnumerationType">
+    <annotation>
+      <documentation>hvor godt den kartlagte detalj var synbar ved kartleggingen</documentation>
+    </annotation>
+    <restriction base="string">
+      <enumeration value="fulltSynligOgGjenfinnbarITerrenget">
+        <annotation>
+          <documentation>Fullt ut synlig/gjenfinnbar i terrenget
+Default</documentation>
+        </annotation>
+      </enumeration>
+      <enumeration value="dårligGjenfinnbarITerrenget">
+        <annotation>
+          <documentation>Dårlig gjenfinnbar i terreng.
+Forøvrig grei å innmåle. (Benyttes bl.a. for innmåling av ledninger på lukket grøft)</documentation>
+        </annotation>
+      </enumeration>
+      <enumeration value="middelsSynligIFlybilde">
+        <annotation>
+          <documentation>Middels synlig i flybilde/modell</documentation>
+        </annotation>
+      </enumeration>
+      <enumeration value="dårligSynligIFlybilde">
+        <annotation>
+          <documentation>Dårlig/ikke synlig i flybilde/modell</documentation>
+        </annotation>
+      </enumeration>
+    </restriction>
+  </simpleType>
+  <simpleType name="SynbarhetOtherType">
+    <restriction base="string">
+      <pattern value="other: \w{2,}"/>
+    </restriction>
+  </simpleType>
+  <simpleType name="TypeAvgrensningType">
+    <annotation>
+      <documentation>oversikt over ulike typer avgrensingslinjer.</documentation>
+    </annotation>
+    <union memberTypes="uml:TypeAvgrensningEnumerationType uml:TypeAvgrensningOtherType"/>
+  </simpleType>
+  <simpleType name="TypeAvgrensningEnumerationType">
+    <annotation>
+      <documentation>oversikt over ulike typer avgrensingslinjer.</documentation>
+    </annotation>
+    <restriction base="string">
+      <enumeration value="Riksgrense">
+        <annotation>
+          <documentation>avgrensningen av nasjonen Norge på land mot andre nasjoner</documentation>
+        </annotation>
+      </enumeration>
+      <enumeration value="Territorialgrense">
+        <annotation>
+          <documentation>avgrensning i havet av statens suverenitetsområde, beregnet 12 nm (22 224 m) utenfor og parallelt med grunnlinjen</documentation>
+        </annotation>
+      </enumeration>
+      <enumeration value="AvtaltAvgrensningslinje">
+        <annotation>
+          <documentation>avtalt avgrensningslinje til havs basert på folkerettslig bindende avtaler
+
+Merknad:
+Avtalt avgrensningslinje vil normalt gjelde alle aktuelle former for kyststatsjurisdiksjon. Detaljene vil framgå av den aktuelle avgrensningsavtale.
+
+Merknad 2:
+Benyttes også som avgrensning av kontinentalsokkel i internasjonalt farvann, der flere stater kan framlegge dokumentasjon om rettigheter til sokkelen, men der statene har kommet til enighet om en avgrensningslinje.</documentation>
+        </annotation>
+      </enumeration>
+      <enumeration value="Kommunegrense">
+        <annotation>
+          <documentation>avgrensing av kommune</documentation>
+        </annotation>
+      </enumeration>
+      <enumeration value="Fylkesgrense">
+        <annotation>
+          <documentation>avgrensning av fylke</documentation>
+        </annotation>
+      </enumeration>
+      <enumeration value="Grunnkretsgrense">
+        <annotation>
+          <documentation>avgrensning av grunnkrets</documentation>
+        </annotation>
+      </enumeration>
+      <enumeration value="Delområdegrense">
+        <annotation>
+          <documentation>avgrensning av delområde</documentation>
+        </annotation>
+      </enumeration>
+      <enumeration value="Stemmekretsgrense">
+        <annotation>
+          <documentation>avgrensing av Stemmekrets</documentation>
+        </annotation>
+      </enumeration>
+    </restriction>
+  </simpleType>
+  <simpleType name="TypeAvgrensningOtherType">
+    <restriction base="string">
+      <pattern value="other: \w{2,}"/>
+    </restriction>
+  </simpleType>
+</schema>

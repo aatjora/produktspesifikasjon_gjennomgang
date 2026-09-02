@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?><ShapeChangeResult xmlns="http://www.interactive-instruments.de/ShapeChange/Result" xmlns:r="http://www.interactive-instruments.de/ShapeChange/Result" config="/home/runner/work/produktspesifikasjon_gjennomgang/produktspesifikasjon_gjennomgang/produktspesifikasjon/stemmekretser-stortings-og-sametingsvalget-2025/uml/schema/shapechange-config.xml" end="Wed Sep 02 09:44:43 UTC 2026" resultCode="0" start="Wed Sep 02 09:44:32 UTC 2026" version="4.0.0">
+  <Messages>
+    <ProcessFlowInfo message="---------- Semantic validation of ShapeChange configuration: START ----------"/>
+    <Info message="Validating input parameters."/>
+    <Info message="Validation of input parameters completed."/>
+    <Info message="Validating log parameters."/>
+    <Info message="Validation of log parameters completed."/>
+    <ProcessFlowInfo message="--- Validating transformer with @id 'LDPROXY_FLAT' ..."/>
+    <ProcessFlowInfo message="--- Validating target with @class 'de.interactive_instruments.shapechange.core.target.xmlschema.XmlSchema' and @inputs 'INPUT' ..."/>
+    <ProcessFlowInfo message="--- Validating target with @class 'de.interactive_instruments.shapechange.core.target.json.JsonSchemaTarget' and @inputs 'INPUT' ..."/>
+    <ProcessFlowInfo message="--- Validating target with @class 'de.interactive_instruments.shapechange.core.target.ldproxy2.Ldproxy2Target' and @inputs 'LDPROXY_FLAT' ..."/>
+    <ProcessFlowInfo message="---------- Semantic validation of ShapeChange configuration: COMPLETE ----------"/>
+    <ProcessFlowInfo message="Application schema found, package name: 'uml', target namespace: 'https://skjema.geonorge.no/SOSI/produktspesifikasjon/stemmekretser-stortings-og-sametingsvalget-2025/uml/1.0'"/>
+    <ProcessFlowInfo message="Now processing target 'XML Schema' for input 'INPUT'."/>
+    <ProcessFlowInfo message="Executed target class 'de.interactive_instruments.shapechange.core.target.xmlschema.XmlSchema' for input ID: 'INPUT'.&#10;-------------------------------------------------"/>
+    <ProcessFlowInfo message="Application schema found, package name: 'uml', target namespace: 'https://skjema.geonorge.no/SOSI/produktspesifikasjon/stemmekretser-stortings-og-sametingsvalget-2025/uml/1.0'"/>
+    <ProcessFlowInfo message="Now processing target 'JSON Schema' for input 'INPUT'."/>
+    <ProcessFlowInfo message="Executed target class 'de.interactive_instruments.shapechange.core.target.json.JsonSchemaTarget' for input ID: 'INPUT'.&#10;-------------------------------------------------"/>
+    <ProcessFlowInfo message="Now processing transformation 'LDPROXY_FLAT' for input ID: 'INPUT'."/>
+    <ProcessFlowInfo message="========== processing phase =========="/>
+    <ProcessFlowInfo message="---------- now processing: rule-trf-prop-flatten-types ----------"/>
+    <ProcessFlowInfo message="========== postprocessing phase =========="/>
+    <ProcessFlowInfo message="---------- TransformationManager postprocessing: validating constraints ----------"/>
+    <ProcessFlowInfo message="Performed transformation for transformer ID 'LDPROXY_FLAT' for input ID: 'INPUT'.&#10;-------------------------------------------------"/>
+    <ProcessFlowInfo message="Application schema found, package name: 'uml', target namespace: 'https://skjema.geonorge.no/SOSI/produktspesifikasjon/stemmekretser-stortings-og-sametingsvalget-2025/uml/1.0'"/>
+    <ProcessFlowInfo message="Now processing target 'Ldproxy (v2)' for input 'LDPROXY_FLAT'."/>
+    <Info message="The target configuration does not contain advanced process configuration infos."/>
+    <Error message="Type 'Fylke' has one or more supertypes. Conversion of inheritance relationships is only supported by this target if parameter 'enableFragments' is set to 'true'. The relationship will be ignored.">
+      <Detail message="Context: class 'uml::Stemmekretser_Kommuner_Fylker-20230701::Fylke'"/>
+    </Error>
+    <Error message="Type 'Grense' has one or more supertypes. Conversion of inheritance relationships is only supported by this target if parameter 'enableFragments' is set to 'true'. The relationship will be ignored.">
+      <Detail message="Context: class 'uml::Stemmekretser_Kommuner_Fylker-20230701::Grense'"/>
+    </Error>
+    <Error message="Type 'Kommune' has one or more supertypes. Conversion of inheritance relationships is only supported by this target if parameter 'enableFragments' is set to 'true'. The relationship will be ignored.">
+      <Detail message="Context: class 'uml::Stemmekretser_Kommuner_Fylker-20230701::Kommune'"/>
+    </Error>
+    <Warning message="Type 'SOSI_Fellesegenskaper' is abstract. Conversion of abstract types is only supported by this target if parameter 'enableFragments' is set to 'true'. The type will be ignored.">
+      <Detail message="Context: class 'uml::Stemmekretser_Kommuner_Fylker-20230701::SOSI_Fellesegenskaper'"/>
+    </Warning>
+    <Warning message="Type 'SOSI_Objekt' is abstract. Conversion of abstract types is only supported by this target if parameter 'enableFragments' is set to 'true'. The type will be ignored.">
+      <Detail message="Context: class 'uml::Stemmekretser_Kommuner_Fylker-20230701::SOSI_Objekt'"/>
+    </Warning>
+    <Error message="Type 'Stemmekrets' has one or more supertypes. Conversion of inheritance relationships is only supported by this target if parameter 'enableFragments' is set to 'true'. The relationship will be ignored.">
+      <Detail message="Context: class 'uml::Stemmekretser_Kommuner_Fylker-20230701::Stemmekrets'"/>
+    </Error>
+    <Info message="Could not compute a label for codelist/enumeration 'Målemetode'. A label is required for the ldproxy encoding as a codelist. Check the label template in the target configuration as well as the codelist/enumeration model, to ensure that a label can be created. Using the type name as label.">
+      <Detail message="Context: property 'uml::Målemetode'"/>
+    </Info>
+    <Info message="Could not compute a label for codelist/enumeration 'Synbarhet'. A label is required for the ldproxy encoding as a codelist. Check the label template in the target configuration as well as the codelist/enumeration model, to ensure that a label can be created. Using the type name as label.">
+      <Detail message="Context: property 'uml::Synbarhet'"/>
+    </Info>
+    <Info message="Could not compute a label for codelist/enumeration 'MålemetodeHøyde'. A label is required for the ldproxy encoding as a codelist. Check the label template in the target configuration as well as the codelist/enumeration model, to ensure that a label can be created. Using the type name as label.">
+      <Detail message="Context: property 'uml::MålemetodeHøyde'"/>
+    </Info>
+    <Info message="Could not compute a label for codelist/enumeration 'TypeAvgrensning'. A label is required for the ldproxy encoding as a codelist. Check the label template in the target configuration as well as the codelist/enumeration model, to ensure that a label can be created. Using the type name as label.">
+      <Detail message="Context: property 'uml::TypeAvgrensning'"/>
+    </Info>
+    <Info message="Could not compute a label for codelist/enumeration 'Fylkesnummer'. A label is required for the ldproxy encoding as a codelist. Check the label template in the target configuration as well as the codelist/enumeration model, to ensure that a label can be created. Using the type name as label.">
+      <Detail message="Context: property 'uml::Fylkesnummer'"/>
+    </Info>
+    <Info message="Could not compute a label for codelist/enumeration 'Landkode'. A label is required for the ldproxy encoding as a codelist. Check the label template in the target configuration as well as the codelist/enumeration model, to ensure that a label can be created. Using the type name as label.">
+      <Detail message="Context: property 'uml::Landkode'"/>
+    </Info>
+    <Info message="Could not compute a label for codelist/enumeration 'Kommunenummer'. A label is required for the ldproxy encoding as a codelist. Check the label template in the target configuration as well as the codelist/enumeration model, to ensure that a label can be created. Using the type name as label.">
+      <Detail message="Context: property 'uml::Kommunenummer'"/>
+    </Info>
+    <ProcessFlowInfo message="Executed target class 'de.interactive_instruments.shapechange.core.target.ldproxy2.Ldproxy2Target' for input ID: 'LDPROXY_FLAT'.&#10;-------------------------------------------------"/>
+  </Messages>
+  <Results>
+    <Result href="file:/home/runner/work/produktspesifikasjon_gjennomgang/produktspesifikasjon_gjennomgang/produktspesifikasjon/stemmekretser-stortings-og-sametingsvalget-2025/uml/schema/xsd/INPUT/uml.xsd" scope="https://skjema.geonorge.no/SOSI/produktspesifikasjon/stemmekretser-stortings-og-sametingsvalget-2025/uml/1.0" target="XML Schema">uml.xsd</Result>
+    <Result href="file:/home/runner/work/produktspesifikasjon_gjennomgang/produktspesifikasjon_gjennomgang/produktspesifikasjon/stemmekretser-stortings-og-sametingsvalget-2025/uml/schema/jsonschema/INPUT/uml/uml.json" target="JSON Schema">uml.json</Result>
+  </Results>
+</ShapeChangeResult>

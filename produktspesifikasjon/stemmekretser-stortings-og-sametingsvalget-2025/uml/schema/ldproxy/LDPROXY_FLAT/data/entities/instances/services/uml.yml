@@ -1,0 +1,27 @@
+---
+id: uml
+label: FIXME
+description: FIXME
+enabled: true
+serviceType: OGC_API
+collections:
+  administrativenhet:
+    id: administrativenhet
+    label: administrativenhet
+    enabled: true
+  fylke:
+    id: fylke
+    label: fylke
+    enabled: true
+  grense:
+    id: grense
+    label: grense
+    enabled: true
+  kommune:
+    id: kommune
+    label: kommune
+    enabled: true
+  stemmekrets:
+    id: stemmekrets
+    label: stemmekrets
+    enabled: true
