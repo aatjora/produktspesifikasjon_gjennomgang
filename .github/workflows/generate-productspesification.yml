@@ -529,6 +529,9 @@ jobs:
           xmi-feature-catalogue-uml: ${{ steps.prepare.outputs.xmi-feature-catalogue-uml }}
           xmi-feature-catalogue-png: ${{ steps.xmi-feature-png.outputs.path }}
           updated: ${{ steps.config.outputs.updated }}
+          # Raw-lenker til de genererte output-filene (GeoPackage/skjema) i Leveranse-tabellen.
+          # Peker på default-branchen, der filene ligger etter at PR-en er merget.
+          repo-raw-base: https://raw.githubusercontent.com/${{ github.repository }}/${{ github.event.repository.default_branch }}
       - name: Inspect generated files
         run: |
           echo "Markdown: ${{ steps.prepare.outputs.spec-markdown }}"
