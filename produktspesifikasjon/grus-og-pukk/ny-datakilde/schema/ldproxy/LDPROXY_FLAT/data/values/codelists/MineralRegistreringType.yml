@@ -1,0 +1,12 @@
+---
+label: MineralRegistreringType
+entries:
+  distrikt: distrikt
+  felt: felt
+  forekomst: forekomst
+  malmsone: malmsone
+  prosjekt: prosjekt
+  prospekt: prospekt
+  provins: provins
+  registrering: registrering
+sourceType: TEMPLATES

@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8"?><ShapeChangeResult xmlns="http://www.interactive-instruments.de/ShapeChange/Result" xmlns:r="http://www.interactive-instruments.de/ShapeChange/Result" config="/home/runner/work/produktspesifikasjon_gjennomgang/produktspesifikasjon_gjennomgang/produktspesifikasjon/grus-og-pukk/ny-datakilde/schema/shapechange-config.xml" end="Wed Sep 02 08:22:33 UTC 2026" resultCode="0" start="Wed Sep 02 08:22:23 UTC 2026" version="4.0.0">
+  <Messages>
+    <ProcessFlowInfo message="---------- Semantic validation of ShapeChange configuration: START ----------"/>
+    <Info message="Validating input parameters."/>
+    <Info message="Validation of input parameters completed."/>
+    <Info message="Validating log parameters."/>
+    <Info message="Validation of log parameters completed."/>
+    <ProcessFlowInfo message="--- Validating transformer with @id 'LDPROXY_FLAT' ..."/>
+    <ProcessFlowInfo message="--- Validating target with @class 'de.interactive_instruments.shapechange.core.target.xmlschema.XmlSchema' and @inputs 'INPUT' ..."/>
+    <ProcessFlowInfo message="--- Validating target with @class 'de.interactive_instruments.shapechange.core.target.json.JsonSchemaTarget' and @inputs 'INPUT' ..."/>
+    <ProcessFlowInfo message="--- Validating target with @class 'de.interactive_instruments.shapechange.core.target.ldproxy2.Ldproxy2Target' and @inputs 'LDPROXY_FLAT' ..."/>
+    <ProcessFlowInfo message="---------- Semantic validation of ShapeChange configuration: COMPLETE ----------"/>
+    <ProcessFlowInfo message="Application schema found, package name: 'ny-datakilde', target namespace: 'https://skjema.geonorge.no/SOSI/produktspesifikasjon/grus-og-pukk/ny-datakilde/1.0'"/>
+    <ProcessFlowInfo message="Now processing target 'XML Schema' for input 'INPUT'."/>
+    <ProcessFlowInfo message="Executed target class 'de.interactive_instruments.shapechange.core.target.xmlschema.XmlSchema' for input ID: 'INPUT'.&#10;-------------------------------------------------"/>
+    <ProcessFlowInfo message="Application schema found, package name: 'ny-datakilde', target namespace: 'https://skjema.geonorge.no/SOSI/produktspesifikasjon/grus-og-pukk/ny-datakilde/1.0'"/>
+    <ProcessFlowInfo message="Now processing target 'JSON Schema' for input 'INPUT'."/>
+    <ProcessFlowInfo message="Executed target class 'de.interactive_instruments.shapechange.core.target.json.JsonSchemaTarget' for input ID: 'INPUT'.&#10;-------------------------------------------------"/>
+    <ProcessFlowInfo message="Now processing transformation 'LDPROXY_FLAT' for input ID: 'INPUT'."/>
+    <ProcessFlowInfo message="========== processing phase =========="/>
+    <ProcessFlowInfo message="---------- now processing: rule-trf-prop-flatten-types ----------"/>
+    <ProcessFlowInfo message="========== postprocessing phase =========="/>
+    <ProcessFlowInfo message="---------- TransformationManager postprocessing: validating constraints ----------"/>
+    <ProcessFlowInfo message="Performed transformation for transformer ID 'LDPROXY_FLAT' for input ID: 'INPUT'.&#10;-------------------------------------------------"/>
+    <ProcessFlowInfo message="Application schema found, package name: 'ny-datakilde', target namespace: 'https://skjema.geonorge.no/SOSI/produktspesifikasjon/grus-og-pukk/ny-datakilde/1.0'"/>
+    <ProcessFlowInfo message="Now processing target 'Ldproxy (v2)' for input 'LDPROXY_FLAT'."/>
+    <Info message="The target configuration does not contain advanced process configuration infos."/>
+    <Warning message="Type 'FelleskomponenterGrusPukk' is abstract. Conversion of abstract types is only supported by this target if parameter 'enableFragments' is set to 'true'. The type will be ignored.">
+      <Detail message="Context: class 'ny-datakilde::GrusPukk 3.0::FelleskomponenterGrusPukk'"/>
+    </Warning>
+    <Error message="Type 'PukkObservasjon' has one or more supertypes. Conversion of inheritance relationships is only supported by this target if parameter 'enableFragments' is set to 'true'. The relationship will be ignored.">
+      <Detail message="Context: class 'ny-datakilde::GrusPukkObservasjonOgUttak::PukkObservasjon'"/>
+    </Error>
+    <Error message="Type 'PukkOmr' has one or more supertypes. Conversion of inheritance relationships is only supported by this target if parameter 'enableFragments' is set to 'true'. The relationship will be ignored.">
+      <Detail message="Context: class 'ny-datakilde::GrusPukkOmråder::PukkOmr'"/>
+    </Error>
+    <Error message="Type 'PukkRegistrering' has one or more supertypes. Conversion of inheritance relationships is only supported by this target if parameter 'enableFragments' is set to 'true'. The relationship will be ignored.">
+      <Detail message="Context: class 'ny-datakilde::GrusPukkRegistreringer::PukkRegistrering'"/>
+    </Error>
+    <Error message="Type 'PukkUttak' has one or more supertypes. Conversion of inheritance relationships is only supported by this target if parameter 'enableFragments' is set to 'true'. The relationship will be ignored.">
+      <Detail message="Context: class 'ny-datakilde::GrusPukkObservasjonOgUttak::PukkUttak'"/>
+    </Error>
+    <Error message="Type 'RastoffProvePkt' has one or more supertypes. Conversion of inheritance relationships is only supported by this target if parameter 'enableFragments' is set to 'true'. The relationship will be ignored.">
+      <Detail message="Context: class 'ny-datakilde::Spesielle::RastoffProvePkt'"/>
+    </Error>
+    <Error message="Type 'SandGrusObservasjon' has one or more supertypes. Conversion of inheritance relationships is only supported by this target if parameter 'enableFragments' is set to 'true'. The relationship will be ignored.">
+      <Detail message="Context: class 'ny-datakilde::GrusPukkObservasjonOgUttak::SandGrusObservasjon'"/>
+    </Error>
+    <Error message="Type 'SandGrusOmr' has one or more supertypes. Conversion of inheritance relationships is only supported by this target if parameter 'enableFragments' is set to 'true'. The relationship will be ignored.">
+      <Detail message="Context: class 'ny-datakilde::GrusPukkOmråder::SandGrusOmr'"/>
+    </Error>
+    <Error message="Type 'SandGrusRegistrering' has one or more supertypes. Conversion of inheritance relationships is only supported by this target if parameter 'enableFragments' is set to 'true'. The relationship will be ignored.">
+      <Detail message="Context: class 'ny-datakilde::GrusPukkRegistreringer::SandGrusRegistrering'"/>
+    </Error>
+    <Error message="Type 'SandGrusUttak' has one or more supertypes. Conversion of inheritance relationships is only supported by this target if parameter 'enableFragments' is set to 'true'. The relationship will be ignored.">
+      <Detail message="Context: class 'ny-datakilde::GrusPukkObservasjonOgUttak::SandGrusUttak'"/>
+    </Error>
+    <Info message="Could not compute a label for codelist/enumeration 'Målemetode'. A label is required for the ldproxy encoding as a codelist. Check the label template in the target configuration as well as the codelist/enumeration model, to ensure that a label can be created. Using the type name as label.">
+      <Detail message="Context: property 'ny-datakilde::Målemetode'"/>
+    </Info>
+    <Info message="Could not compute a label for codelist/enumeration 'MaterialType'. A label is required for the ldproxy encoding as a codelist. Check the label template in the target configuration as well as the codelist/enumeration model, to ensure that a label can be created. Using the type name as label.">
+      <Detail message="Context: property 'ny-datakilde::MaterialType'"/>
+    </Info>
+    <Info message="Could not compute a label for codelist/enumeration 'RastoffBetydning'. A label is required for the ldproxy encoding as a codelist. Check the label template in the target configuration as well as the codelist/enumeration model, to ensure that a label can be created. Using the type name as label.">
+      <Detail message="Context: property 'ny-datakilde::RastoffBetydning'"/>
+    </Info>
+    <Info message="Could not compute a label for codelist/enumeration 'MineralRegistreringType'. A label is required for the ldproxy encoding as a codelist. Check the label template in the target configuration as well as the codelist/enumeration model, to ensure that a label can be created. Using the type name as label.">
+      <Detail message="Context: property 'ny-datakilde::MineralRegistreringType'"/>
+    </Info>
+    <Info message="Could not compute a label for codelist/enumeration 'DriftForhold'. A label is required for the ldproxy encoding as a codelist. Check the label template in the target configuration as well as the codelist/enumeration model, to ensure that a label can be created. Using the type name as label.">
+      <Detail message="Context: property 'ny-datakilde::DriftForhold'"/>
+    </Info>
+    <Info message="Could not compute a label for codelist/enumeration 'TypeRastoffVirksomhet'. A label is required for the ldproxy encoding as a codelist. Check the label template in the target configuration as well as the codelist/enumeration model, to ensure that a label can be created. Using the type name as label.">
+      <Detail message="Context: property 'ny-datakilde::TypeRastoffVirksomhet'"/>
+    </Info>
+    <Info message="Could not compute a label for codelist/enumeration 'Losmassetype'. A label is required for the ldproxy encoding as a codelist. Check the label template in the target configuration as well as the codelist/enumeration model, to ensure that a label can be created. Using the type name as label.">
+      <Detail message="Context: property 'ny-datakilde::Losmassetype'"/>
+    </Info>
+    <ProcessFlowInfo message="Executed target class 'de.interactive_instruments.shapechange.core.target.ldproxy2.Ldproxy2Target' for input ID: 'LDPROXY_FLAT'.&#10;-------------------------------------------------"/>
+  </Messages>
+  <Results>
+    <Result href="file:/home/runner/work/produktspesifikasjon_gjennomgang/produktspesifikasjon_gjennomgang/produktspesifikasjon/grus-og-pukk/ny-datakilde/schema/xsd/INPUT/ny-datakilde.xsd" scope="https://skjema.geonorge.no/SOSI/produktspesifikasjon/grus-og-pukk/ny-datakilde/1.0" target="XML Schema">ny-datakilde.xsd</Result>
+    <Result href="file:/home/runner/work/produktspesifikasjon_gjennomgang/produktspesifikasjon_gjennomgang/produktspesifikasjon/grus-og-pukk/ny-datakilde/schema/jsonschema/INPUT/nydatakilde/ny-datakilde.json" target="JSON Schema">ny-datakilde.json</Result>
+  </Results>
+</ShapeChangeResult>

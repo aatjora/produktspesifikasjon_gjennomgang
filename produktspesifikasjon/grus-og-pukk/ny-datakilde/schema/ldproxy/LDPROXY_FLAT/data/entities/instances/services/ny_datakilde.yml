@@ -1,0 +1,51 @@
+---
+id: ny_datakilde
+label: FIXME
+description: FIXME
+enabled: true
+serviceType: OGC_API
+collections:
+  esker:
+    id: esker
+    label: esker
+    enabled: true
+  geolavgrlinje:
+    id: geolavgrlinje
+    label: geolavgrlinje
+    enabled: true
+  pukkobservasjon:
+    id: pukkobservasjon
+    label: pukkobservasjon
+    enabled: true
+  pukkomr:
+    id: pukkomr
+    label: pukkomr
+    enabled: true
+  pukkregistrering:
+    id: pukkregistrering
+    label: pukkregistrering
+    enabled: true
+  pukkuttak:
+    id: pukkuttak
+    label: pukkuttak
+    enabled: true
+  rastoffprovepkt:
+    id: rastoffprovepkt
+    label: rastoffprovepkt
+    enabled: true
+  sandgrusobservasjon:
+    id: sandgrusobservasjon
+    label: sandgrusobservasjon
+    enabled: true
+  sandgrusomr:
+    id: sandgrusomr
+    label: sandgrusomr
+    enabled: true
+  sandgrusregistrering:
+    id: sandgrusregistrering
+    label: sandgrusregistrering
+    enabled: true
+  sandgrusuttak:
+    id: sandgrusuttak
+    label: sandgrusuttak
+    enabled: true

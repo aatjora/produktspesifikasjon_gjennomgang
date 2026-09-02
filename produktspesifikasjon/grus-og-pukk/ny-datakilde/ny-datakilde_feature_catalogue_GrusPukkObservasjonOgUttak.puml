@@ -1,0 +1,117 @@
+@startuml
+' For wide diagrams, render with: plantuml -DPLANTUML_LIMIT_SIZE=16384 ...
+' The 'scale max' directive below caps the rendered output to prevent the
+' default PlantUML 4096px size limit from cropping the diagram.
+scale max 4000*4000
+
+title Grus og pukk - Ny datakilde - GrusPukkObservasjonOgUttak
+
+skinparam backgroundColor #F5F5F5
+skinparam shadowing false
+skinparam RoundCorner 6
+skinparam ArrowColor #6C8198
+skinparam wrapWidth 200
+skinparam class {
+  BackgroundColor #FBF2E8
+  BorderColor #9C8578
+  FontColor #2D201A
+  HeaderBackgroundColor #EFE1D6
+  HeaderFontColor #2D201A
+  AttributeIconSize 0
+}
+skinparam note {
+  BackgroundColor #FFFFFF
+  BorderColor #6C8198
+  FontColor #2D201A
+}
+skinparam stereotypeCBackgroundColor #EAD9CE
+skinparam stereotypeCBorderColor #9C8578
+skinparam stereotypeCFontColor #2D201A
+
+package "GrusPukkObservasjonOgUttak" {
+
+  class PukkUttak <<featureType>> {
+    + identRastoffobj [1] : Integer
+    + forekomstNummer [1] : Integer
+    + materialType [1] : MaterialType
+    + rastoffBetydning [1] : RastoffBetydning
+    + mineralRegistreringType [0..1] : MineralRegistreringType
+    + materialUndertype [0..1] : CharacterString
+    + navnRastoffobj [0..1] : CharacterString
+    + lokalNummer [0..1] : Integer
+    + driftForhold [0..1] : DriftForhold
+    + stedfestingVerifisert [0..1] : Boolean
+    + geolBeskrivelse [0..1] : CharacterString
+    + geolBeskrivelseURL [0..1] : CharacterString
+    + antallAnalyser [0..1] : Integer
+    + typeRastoffVirksomhet [0..1] : TypeRastoffVirksomhet
+    + posisjon [1] : Punkt
+  }
+
+  class SandGrusUttak <<featureType>> {
+    + identRastoffobj [1] : Integer
+    + forekomstNummer [1] : Integer
+    + materialType [1] : MaterialType
+    + rastoffBetydning [1] : RastoffBetydning
+    + mineralRegistreringType [0..1] : MineralRegistreringType
+    + materialUndertype [0..1] : CharacterString
+    + navnRastoffobj [0..1] : CharacterString
+    + lokalNummer [0..1] : Integer
+    + losmassetype [0..1] : Losmassetype
+    + driftForhold [0..1] : DriftForhold
+    + stedfestingVerifisert [0..1] : Boolean
+    + geolBeskrivelse [0..1] : CharacterString
+    + geolBeskrivelseURL [0..1] : CharacterString
+    + antallAnalyser [0..1] : Integer
+    + typeRastoffVirksomhet [0..1] : TypeRastoffVirksomhet
+    + posisjon [1] : Punkt
+  }
+
+  class SandGrusObservasjon <<featureType>> {
+    + posisjon [1] : Punkt
+    + identRastoffobj [1] : Integer
+    + forekomstNummer [1] : Integer
+    + materialType [1] : MaterialType
+    + materialUndertype [0..1] : CharacterString
+    + navnRastoffobj [0..1] : CharacterString
+    + geolBeskrivelse [0..1] : CharacterString
+    + geolBeskrivelseURL [0..1] : CharacterString
+    + antallAnalyser [0..1] : Integer
+  }
+
+  class PukkObservasjon <<featureType>> {
+    + posisjon [1] : Punkt
+    + identRastoffobj [1] : Integer
+    + forekomstNummer [1] : Integer
+    + materialType [1] : MaterialType
+    + navnRastoffobj [0..1] : CharacterString
+    + stedfestingVerifisert [0..1] : Boolean
+    + geolBeskrivelse [0..1] : CharacterString
+    + geolBeskrivelseURL [0..1] : CharacterString
+    + antallAnalyser [0..1] : Integer
+  }
+}
+
+package "Eksterne referanser" <<Frame>> {
+  class FelleskomponenterGrusPukk <<GrusPukk 3.0>> {
+  }
+  class GeolAvgrLinje <<GrusPukk 3.0>> {
+  }
+  class PukkOmr <<GrusPukkOmråder>> {
+  }
+  class SandGrusOmr <<GrusPukkOmråder>> {
+  }
+}
+
+FelleskomponenterGrusPukk <|-- PukkUttak
+PukkUttak --> GeolAvgrLinje : grusPukkObservasjonOgUttakAvgrensning [1..*]
+PukkUttak --> PukkOmr : tilhører [0..1]
+FelleskomponenterGrusPukk <|-- SandGrusUttak
+SandGrusUttak --> GeolAvgrLinje : grusPukkObservasjonOgUttakAvgrensning [1..*]
+SandGrusUttak --> SandGrusOmr : tilhører [0..1]
+FelleskomponenterGrusPukk <|-- SandGrusObservasjon
+SandGrusObservasjon --> SandGrusOmr : tilhører [0..1]
+FelleskomponenterGrusPukk <|-- PukkObservasjon
+PukkObservasjon --> PukkOmr : tilhører [0..1]
+
+@enduml

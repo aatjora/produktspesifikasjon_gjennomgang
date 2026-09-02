@@ -1,0 +1,103 @@
+@startuml
+' For wide diagrams, render with: plantuml -DPLANTUML_LIMIT_SIZE=16384 ...
+' The 'scale max' directive below caps the rendered output to prevent the
+' default PlantUML 4096px size limit from cropping the diagram.
+scale max 4000*4000
+
+title Grus og pukk - Ny datakilde - Oversikt
+
+skinparam backgroundColor #F5F5F5
+skinparam shadowing false
+skinparam RoundCorner 6
+skinparam ArrowColor #6C8198
+skinparam wrapWidth 200
+skinparam class {
+  BackgroundColor #FBF2E8
+  BorderColor #9C8578
+  FontColor #2D201A
+  HeaderBackgroundColor #EFE1D6
+  HeaderFontColor #2D201A
+  AttributeIconSize 0
+}
+skinparam note {
+  BackgroundColor #FFFFFF
+  BorderColor #6C8198
+  FontColor #2D201A
+}
+skinparam stereotypeCBackgroundColor #EAD9CE
+skinparam stereotypeCBorderColor #9C8578
+skinparam stereotypeCFontColor #2D201A
+
+package "GrusPukk 3.0" {
+  class GeolAvgrLinje <<featureType>> {
+  }
+  abstract class FelleskomponenterGrusPukk <<featureType>> {
+  }
+}
+
+package "GrusPukkObservasjonOgUttak" {
+  class PukkUttak <<featureType>> {
+  }
+  class SandGrusUttak <<featureType>> {
+  }
+  class SandGrusObservasjon <<featureType>> {
+  }
+  class PukkObservasjon <<featureType>> {
+  }
+}
+
+package "GrusPukkOmråder" {
+  class SandGrusOmr <<featureType>> {
+  }
+  class PukkOmr <<featureType>> {
+  }
+}
+
+package "GrusPukkRegistreringer" {
+  class SandGrusRegistrering <<featureType>> {
+  }
+  class PukkRegistrering <<featureType>> {
+  }
+}
+
+package "Spesielle" {
+  class RastoffProvePkt <<featureType>> {
+  }
+  class Esker <<featureType>> {
+  }
+}
+
+
+FelleskomponenterGrusPukk <|-- PukkUttak
+PukkUttak --> GeolAvgrLinje : grusPukkObservasjonOgUttakAvgrensning [1..*]
+PukkUttak --> PukkOmr : tilhører [0..1]
+FelleskomponenterGrusPukk <|-- SandGrusUttak
+SandGrusUttak --> GeolAvgrLinje : grusPukkObservasjonOgUttakAvgrensning [1..*]
+SandGrusUttak --> SandGrusOmr : tilhører [0..1]
+FelleskomponenterGrusPukk <|-- SandGrusObservasjon
+SandGrusObservasjon --> SandGrusOmr : tilhører [0..1]
+FelleskomponenterGrusPukk <|-- PukkObservasjon
+PukkObservasjon --> PukkOmr : tilhører [0..1]
+FelleskomponenterGrusPukk <|-- SandGrusOmr
+SandGrusOmr --> GeolAvgrLinje : grusPukkOmråderAvgrensning [1..*]
+SandGrusOmr --> SandGrusUttak : inneholder [0..*]
+SandGrusOmr --> SandGrusObservasjon : inneholder [0..*]
+SandGrusOmr --> SandGrusRegistrering : inneholder [0..*]
+SandGrusOmr --> RastoffProvePkt : inneholder [0..*]
+FelleskomponenterGrusPukk <|-- PukkOmr
+PukkOmr --> GeolAvgrLinje : grusPukkOmråderAvgrensning [1..*]
+PukkOmr --> PukkUttak : inneholder [0..*]
+PukkOmr --> PukkObservasjon : inneholder [0..*]
+PukkOmr --> RastoffProvePkt : inneholder [0..*]
+PukkOmr --> PukkRegistrering : inneholder [0..*]
+FelleskomponenterGrusPukk <|-- SandGrusRegistrering
+SandGrusRegistrering --> GeolAvgrLinje : grusPukkRegistreringerAvgrensning [1..*]
+SandGrusRegistrering --> SandGrusOmr : tilhører [0..1]
+FelleskomponenterGrusPukk <|-- PukkRegistrering
+PukkRegistrering --> GeolAvgrLinje : grusPukkRegistreringerAvgrensning [1..*]
+PukkRegistrering --> PukkOmr : tilhører [0..1]
+FelleskomponenterGrusPukk <|-- RastoffProvePkt
+RastoffProvePkt --> SandGrusOmr : tilknyttet [0..1]
+RastoffProvePkt --> PukkOmr : tilknyttet [0..1]
+
+@enduml
