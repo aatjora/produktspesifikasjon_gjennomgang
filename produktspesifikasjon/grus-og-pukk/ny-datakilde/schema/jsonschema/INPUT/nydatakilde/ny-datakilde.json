@@ -1,0 +1,685 @@
+{
+  "$comment": "JSON Schema document created by ShapeChange - https://shapechange.net/",
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://skjema.geonorge.no/SOSI/produktspesifikasjon/grus-og-pukk/ny-datakilde/nydatakilde/ny-datakilde.json",
+  "definitions": {
+    "DriftForhold": {
+      "type": "string",
+      "format": "uri"
+    },
+    "Esker": {
+      "type": "object",
+      "properties": {
+        "geometry": {
+          "$ref": "https://geojson.org/schema/LineString.json"
+        },
+        "@type": {
+          "type": "string"
+        },
+        "id": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "@type"
+      ]
+    },
+    "FelleskomponenterGrusPukk": {
+      "type": "object",
+      "properties": {
+        "@type": {
+          "type": "string"
+        },
+        "id": {
+          "type": "string"
+        },
+        "datauttaksdato": {
+          "type": "string",
+          "format": "date"
+        },
+        "kvalitet": {
+          "$ref": "#/definitions/Posisjonskvalitet"
+        }
+      },
+      "required": [
+        "@type"
+      ]
+    },
+    "GeolAvgrLinje": {
+      "type": "object",
+      "properties": {
+        "geometry": {
+          "$ref": "https://geojson.org/schema/LineString.json"
+        },
+        "@type": {
+          "type": "string"
+        },
+        "id": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "@type"
+      ]
+    },
+    "Losmassetype": {
+      "type": "string",
+      "format": "uri"
+    },
+    "MaterialType": {
+      "type": "string",
+      "format": "uri"
+    },
+    "MineralRegistreringType": {
+      "type": "string",
+      "format": "uri"
+    },
+    "Målemetode": {
+      "type": "string",
+      "format": "uri"
+    },
+    "Posisjonskvalitet": {
+      "type": "object",
+      "properties": {
+        "målemetode": {
+          "$ref": "#/definitions/Målemetode"
+        },
+        "nøyaktighet": {
+          "type": "integer"
+        }
+      },
+      "required": [
+        "målemetode"
+      ]
+    },
+    "PukkObservasjon": {
+      "allOf": [
+        {
+          "$ref": "#/definitions/FelleskomponenterGrusPukk"
+        },
+        {
+          "type": "object",
+          "properties": {
+            "geometry": {
+              "$ref": "https://geojson.org/schema/Point.json"
+            },
+            "identRastoffobj": {
+              "type": "integer"
+            },
+            "forekomstNummer": {
+              "type": "integer"
+            },
+            "materialType": {
+              "$ref": "#/definitions/MaterialType"
+            },
+            "navnRastoffobj": {
+              "type": "string"
+            },
+            "stedfestingVerifisert": {
+              "type": "boolean"
+            },
+            "geolBeskrivelse": {
+              "type": "string"
+            },
+            "geolBeskrivelseURL": {
+              "type": "string"
+            },
+            "antallAnalyser": {
+              "type": "integer"
+            },
+            "tilhører": {
+              "type": "string",
+              "format": "uri"
+            }
+          },
+          "required": [
+            "forekomstNummer",
+            "identRastoffobj",
+            "materialType"
+          ]
+        }
+      ]
+    },
+    "PukkOmr": {
+      "allOf": [
+        {
+          "$ref": "#/definitions/FelleskomponenterGrusPukk"
+        },
+        {
+          "type": "object",
+          "properties": {
+            "geometry": {
+              "$ref": "https://geojson.org/schema/Polygon.json"
+            },
+            "identRastoffobj": {
+              "type": "integer"
+            },
+            "forekomstNummer": {
+              "type": "integer"
+            },
+            "materialType": {
+              "$ref": "#/definitions/MaterialType"
+            },
+            "rastoffBetydning": {
+              "$ref": "#/definitions/RastoffBetydning"
+            },
+            "mineralRegistreringType": {
+              "$ref": "#/definitions/MineralRegistreringType"
+            },
+            "navnRastoffobj": {
+              "type": "string"
+            },
+            "typeRastoffVirksomhet": {
+              "$ref": "#/definitions/TypeRastoffVirksomhet"
+            },
+            "geolBeskrivelse": {
+              "type": "string"
+            },
+            "geolBeskrivelseURL": {
+              "type": "string"
+            },
+            "antallAnalyser": {
+              "type": "integer"
+            },
+            "sisteBefaringdato": {
+              "type": "integer"
+            },
+            "grusPukkOmråderAvgrensning": {
+              "type": "array",
+              "minItems": 1,
+              "items": {
+                "type": "string",
+                "format": "uri"
+              },
+              "uniqueItems": true
+            },
+            "inneholder": {
+              "type": "array",
+              "items": {
+                "type": "string",
+                "format": "uri"
+              },
+              "uniqueItems": true
+            }
+          },
+          "required": [
+            "forekomstNummer",
+            "grusPukkOmråderAvgrensning",
+            "identRastoffobj",
+            "materialType",
+            "rastoffBetydning"
+          ]
+        }
+      ]
+    },
+    "PukkRegistrering": {
+      "allOf": [
+        {
+          "$ref": "#/definitions/FelleskomponenterGrusPukk"
+        },
+        {
+          "type": "object",
+          "properties": {
+            "geometry": {
+              "$ref": "https://geojson.org/schema/Polygon.json"
+            },
+            "identRastoffobj": {
+              "type": "integer"
+            },
+            "forekomstNummer": {
+              "type": "integer"
+            },
+            "materialType": {
+              "$ref": "#/definitions/MaterialType"
+            },
+            "rastoffBetydning": {
+              "$ref": "#/definitions/RastoffBetydning"
+            },
+            "mineralRegistreringType": {
+              "$ref": "#/definitions/MineralRegistreringType"
+            },
+            "navnRastoffobj": {
+              "type": "string"
+            },
+            "geolBeskrivelse": {
+              "type": "string"
+            },
+            "geolBeskrivelseURL": {
+              "type": "string"
+            },
+            "grusPukkRegistreringerAvgrensning": {
+              "type": "array",
+              "minItems": 1,
+              "items": {
+                "type": "string",
+                "format": "uri"
+              },
+              "uniqueItems": true
+            },
+            "tilhører": {
+              "type": "string",
+              "format": "uri"
+            }
+          },
+          "required": [
+            "forekomstNummer",
+            "grusPukkRegistreringerAvgrensning",
+            "identRastoffobj",
+            "materialType",
+            "rastoffBetydning"
+          ]
+        }
+      ]
+    },
+    "PukkUttak": {
+      "allOf": [
+        {
+          "$ref": "#/definitions/FelleskomponenterGrusPukk"
+        },
+        {
+          "type": "object",
+          "properties": {
+            "geometry": {
+              "$ref": "https://geojson.org/schema/Point.json"
+            },
+            "identRastoffobj": {
+              "type": "integer"
+            },
+            "forekomstNummer": {
+              "type": "integer"
+            },
+            "materialType": {
+              "$ref": "#/definitions/MaterialType"
+            },
+            "rastoffBetydning": {
+              "$ref": "#/definitions/RastoffBetydning"
+            },
+            "mineralRegistreringType": {
+              "$ref": "#/definitions/MineralRegistreringType"
+            },
+            "materialUndertype": {
+              "type": "string"
+            },
+            "navnRastoffobj": {
+              "type": "string"
+            },
+            "lokalNummer": {
+              "type": "integer"
+            },
+            "driftForhold": {
+              "$ref": "#/definitions/DriftForhold"
+            },
+            "stedfestingVerifisert": {
+              "type": "boolean"
+            },
+            "geolBeskrivelse": {
+              "type": "string"
+            },
+            "geolBeskrivelseURL": {
+              "type": "string"
+            },
+            "antallAnalyser": {
+              "type": "integer"
+            },
+            "typeRastoffVirksomhet": {
+              "$ref": "#/definitions/TypeRastoffVirksomhet"
+            },
+            "grusPukkObservasjonOgUttakAvgrensning": {
+              "type": "array",
+              "minItems": 1,
+              "items": {
+                "type": "string",
+                "format": "uri"
+              },
+              "uniqueItems": true
+            },
+            "tilhører": {
+              "type": "string",
+              "format": "uri"
+            }
+          },
+          "required": [
+            "forekomstNummer",
+            "grusPukkObservasjonOgUttakAvgrensning",
+            "identRastoffobj",
+            "materialType",
+            "rastoffBetydning"
+          ]
+        }
+      ]
+    },
+    "RastoffBetydning": {
+      "type": "string",
+      "format": "uri"
+    },
+    "RastoffProvePkt": {
+      "allOf": [
+        {
+          "$ref": "#/definitions/FelleskomponenterGrusPukk"
+        },
+        {
+          "type": "object",
+          "properties": {
+            "geometry": {
+              "$ref": "https://geojson.org/schema/Point.json"
+            },
+            "materialType": {
+              "$ref": "#/definitions/MaterialType"
+            },
+            "identRastoffobj": {
+              "type": "integer"
+            },
+            "materialUndertype": {
+              "type": "string"
+            },
+            "forekomstNummer": {
+              "type": "integer"
+            },
+            "navnRastoffobj": {
+              "type": "string"
+            },
+            "proveNummer": {
+              "type": "integer"
+            },
+            "geolBeskrivelse": {
+              "type": "string"
+            },
+            "geolBeskrivelseURL": {
+              "type": "string"
+            },
+            "antallAnalyser": {
+              "type": "integer"
+            },
+            "tilknyttet": {
+              "type": "string",
+              "format": "uri"
+            }
+          },
+          "required": [
+            "forekomstNummer",
+            "identRastoffobj",
+            "materialType"
+          ]
+        }
+      ]
+    },
+    "SandGrusObservasjon": {
+      "allOf": [
+        {
+          "$ref": "#/definitions/FelleskomponenterGrusPukk"
+        },
+        {
+          "type": "object",
+          "properties": {
+            "geometry": {
+              "$ref": "https://geojson.org/schema/Point.json"
+            },
+            "identRastoffobj": {
+              "type": "integer"
+            },
+            "forekomstNummer": {
+              "type": "integer"
+            },
+            "materialType": {
+              "$ref": "#/definitions/MaterialType"
+            },
+            "materialUndertype": {
+              "type": "string"
+            },
+            "navnRastoffobj": {
+              "type": "string"
+            },
+            "geolBeskrivelse": {
+              "type": "string"
+            },
+            "geolBeskrivelseURL": {
+              "type": "string"
+            },
+            "antallAnalyser": {
+              "type": "integer"
+            },
+            "tilhører": {
+              "type": "string",
+              "format": "uri"
+            }
+          },
+          "required": [
+            "forekomstNummer",
+            "identRastoffobj",
+            "materialType"
+          ]
+        }
+      ]
+    },
+    "SandGrusOmr": {
+      "allOf": [
+        {
+          "$ref": "#/definitions/FelleskomponenterGrusPukk"
+        },
+        {
+          "type": "object",
+          "properties": {
+            "geometry": {
+              "$ref": "https://geojson.org/schema/Polygon.json"
+            },
+            "identRastoffobj": {
+              "type": "integer"
+            },
+            "forekomstNummer": {
+              "type": "integer"
+            },
+            "materialType": {
+              "$ref": "#/definitions/MaterialType"
+            },
+            "rastoffBetydning": {
+              "$ref": "#/definitions/RastoffBetydning"
+            },
+            "mineralRegistreringType": {
+              "$ref": "#/definitions/MineralRegistreringType"
+            },
+            "navnRastoffobj": {
+              "type": "string"
+            },
+            "typeRastoffVirksomhet": {
+              "$ref": "#/definitions/TypeRastoffVirksomhet"
+            },
+            "geolBeskrivelse": {
+              "type": "string"
+            },
+            "geolBeskrivelseURL": {
+              "type": "string"
+            },
+            "antallAnalyser": {
+              "type": "integer"
+            },
+            "avfallType": {
+              "type": "integer"
+            },
+            "rastoffVolum": {
+              "type": "integer"
+            },
+            "sisteBefaringdato": {
+              "type": "integer"
+            },
+            "grusPukkOmråderAvgrensning": {
+              "type": "array",
+              "minItems": 1,
+              "items": {
+                "type": "string",
+                "format": "uri"
+              },
+              "uniqueItems": true
+            },
+            "inneholder": {
+              "type": "array",
+              "items": {
+                "type": "string",
+                "format": "uri"
+              },
+              "uniqueItems": true
+            }
+          },
+          "required": [
+            "forekomstNummer",
+            "grusPukkOmråderAvgrensning",
+            "identRastoffobj",
+            "materialType",
+            "rastoffBetydning"
+          ]
+        }
+      ]
+    },
+    "SandGrusRegistrering": {
+      "allOf": [
+        {
+          "$ref": "#/definitions/FelleskomponenterGrusPukk"
+        },
+        {
+          "type": "object",
+          "properties": {
+            "geometry": {
+              "$ref": "https://geojson.org/schema/Polygon.json"
+            },
+            "identRastoffobj": {
+              "type": "integer"
+            },
+            "forekomstNummer": {
+              "type": "integer"
+            },
+            "materialType": {
+              "$ref": "#/definitions/MaterialType"
+            },
+            "rastoffBetydning": {
+              "$ref": "#/definitions/RastoffBetydning"
+            },
+            "mineralRegistreringType": {
+              "$ref": "#/definitions/MineralRegistreringType"
+            },
+            "materialUndertype": {
+              "type": "string"
+            },
+            "navnRastoffobj": {
+              "type": "string"
+            },
+            "rastoffVolum": {
+              "type": "integer"
+            },
+            "mektighetFemtiProsent": {
+              "type": "number"
+            },
+            "geolBeskrivelse": {
+              "type": "string"
+            },
+            "geolBeskrivelseURL": {
+              "type": "string"
+            },
+            "grusPukkRegistreringerAvgrensning": {
+              "type": "array",
+              "minItems": 1,
+              "items": {
+                "type": "string",
+                "format": "uri"
+              },
+              "uniqueItems": true
+            },
+            "tilhører": {
+              "type": "string",
+              "format": "uri"
+            }
+          },
+          "required": [
+            "forekomstNummer",
+            "grusPukkRegistreringerAvgrensning",
+            "identRastoffobj",
+            "materialType",
+            "rastoffBetydning"
+          ]
+        }
+      ]
+    },
+    "SandGrusUttak": {
+      "allOf": [
+        {
+          "$ref": "#/definitions/FelleskomponenterGrusPukk"
+        },
+        {
+          "type": "object",
+          "properties": {
+            "geometry": {
+              "$ref": "https://geojson.org/schema/Point.json"
+            },
+            "identRastoffobj": {
+              "type": "integer"
+            },
+            "forekomstNummer": {
+              "type": "integer"
+            },
+            "materialType": {
+              "$ref": "#/definitions/MaterialType"
+            },
+            "rastoffBetydning": {
+              "$ref": "#/definitions/RastoffBetydning"
+            },
+            "mineralRegistreringType": {
+              "$ref": "#/definitions/MineralRegistreringType"
+            },
+            "materialUndertype": {
+              "type": "string"
+            },
+            "navnRastoffobj": {
+              "type": "string"
+            },
+            "lokalNummer": {
+              "type": "integer"
+            },
+            "losmassetype": {
+              "$ref": "#/definitions/Losmassetype"
+            },
+            "driftForhold": {
+              "$ref": "#/definitions/DriftForhold"
+            },
+            "stedfestingVerifisert": {
+              "type": "boolean"
+            },
+            "geolBeskrivelse": {
+              "type": "string"
+            },
+            "geolBeskrivelseURL": {
+              "type": "string"
+            },
+            "antallAnalyser": {
+              "type": "integer"
+            },
+            "typeRastoffVirksomhet": {
+              "$ref": "#/definitions/TypeRastoffVirksomhet"
+            },
+            "grusPukkObservasjonOgUttakAvgrensning": {
+              "type": "array",
+              "minItems": 1,
+              "items": {
+                "type": "string",
+                "format": "uri"
+              },
+              "uniqueItems": true
+            },
+            "tilhører": {
+              "type": "string",
+              "format": "uri"
+            }
+          },
+          "required": [
+            "forekomstNummer",
+            "grusPukkObservasjonOgUttakAvgrensning",
+            "identRastoffobj",
+            "materialType",
+            "rastoffBetydning"
+          ]
+        }
+      ]
+    },
+    "TypeRastoffVirksomhet": {
+      "type": "string",
+      "format": "uri"
+    }
+  }
+}

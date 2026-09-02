@@ -1,0 +1,834 @@
+---
+id: ny_datakilde
+enabled: true
+providerType: FEATURE
+providerSubType: SQL
+nativeCrs:
+  code: 25833
+  forceAxisOrder: NONE
+nativeTimeZone: Europe/Oslo
+connectionInfo:
+  database: FIXME
+  host: FIXME
+  user: FIXME
+  password: FIXME-base64-encoded
+  schemas:
+  - public
+sourcePathDefaults:
+  primaryKey: objid
+  sortKey: objid
+types:
+  esker:
+    sourcePath: /esker
+    type: OBJECT
+    objectType: Esker
+    properties:
+      oid:
+        sourcePath: objid
+        type: INTEGER
+        role: ID
+      senterlinje:
+        sourcePath: senterlinje
+        type: GEOMETRY
+        role: PRIMARY_GEOMETRY
+        geometryType: LINE_STRING
+        constraints:
+          required: true
+  geolavgrlinje:
+    sourcePath: /geolavgrlinje
+    type: OBJECT
+    objectType: GeolAvgrLinje
+    properties:
+      oid:
+        sourcePath: objid
+        type: INTEGER
+        role: ID
+      grense:
+        sourcePath: grense
+        type: GEOMETRY
+        role: PRIMARY_GEOMETRY
+        geometryType: LINE_STRING
+        constraints:
+          required: true
+  pukkobservasjon:
+    sourcePath: /pukkobservasjon
+    type: OBJECT
+    objectType: PukkObservasjon
+    properties:
+      oid:
+        sourcePath: objid
+        type: INTEGER
+        role: ID
+      posisjon:
+        sourcePath: posisjon
+        type: GEOMETRY
+        role: PRIMARY_GEOMETRY
+        geometryType: POINT
+        constraints:
+          required: true
+      identRastoffobj:
+        sourcePath: identrastoffobj
+        type: INTEGER
+        constraints:
+          required: true
+      forekomstNummer:
+        sourcePath: forekomstnummer
+        type: INTEGER
+        constraints:
+          required: true
+      materialType:
+        sourcePath: materialtype
+        type: STRING
+        constraints:
+          codelist: MaterialType
+          required: true
+      navnRastoffobj:
+        sourcePath: navnrastoffobj
+        type: STRING
+      stedfestingVerifisert:
+        sourcePath: stedfestingverifisert
+        type: BOOLEAN
+      geolBeskrivelse:
+        sourcePath: geolbeskrivelse
+        type: STRING
+      geolBeskrivelseURL:
+        sourcePath: geolbeskrivelseurl
+        type: STRING
+      antallAnalyser:
+        sourcePath: antallanalyser
+        type: INTEGER
+      tilhører:
+        type: OBJECT
+        objectType: Link
+        properties:
+          title:
+            sourcePath: tilhører
+            type: STRING
+            label: PukkOmr-title
+          href:
+            sourcePath: tilhører
+            type: STRING
+            label: PukkOmr-ID
+            transformations:
+            - stringFormat: "{{serviceUrl}}/collections/pukkomr/items/{{value}}"
+  pukkomr:
+    sourcePath: /pukkomr
+    type: OBJECT
+    objectType: PukkOmr
+    properties:
+      oid:
+        sourcePath: objid
+        type: INTEGER
+        role: ID
+      område:
+        sourcePath: område
+        type: GEOMETRY
+        role: PRIMARY_GEOMETRY
+        geometryType: POLYGON
+        constraints:
+          required: true
+      identRastoffobj:
+        sourcePath: identrastoffobj
+        type: INTEGER
+        constraints:
+          required: true
+      forekomstNummer:
+        sourcePath: forekomstnummer
+        type: INTEGER
+        constraints:
+          required: true
+      materialType:
+        sourcePath: materialtype
+        type: STRING
+        constraints:
+          codelist: MaterialType
+          required: true
+      rastoffBetydning:
+        sourcePath: rastoffbetydning
+        type: STRING
+        constraints:
+          codelist: RastoffBetydning
+          required: true
+      mineralRegistreringType:
+        sourcePath: mineralregistreringtype
+        type: STRING
+        constraints:
+          codelist: MineralRegistreringType
+      navnRastoffobj:
+        sourcePath: navnrastoffobj
+        type: STRING
+      typeRastoffVirksomhet:
+        sourcePath: typerastoffvirksomhet
+        type: STRING
+        constraints:
+          codelist: TypeRastoffVirksomhet
+      geolBeskrivelse:
+        sourcePath: geolbeskrivelse
+        type: STRING
+      geolBeskrivelseURL:
+        sourcePath: geolbeskrivelseurl
+        type: STRING
+      antallAnalyser:
+        sourcePath: antallanalyser
+        type: INTEGER
+      sisteBefaringdato:
+        sourcePath: sistebefaringdato
+        type: INTEGER
+      grusPukkOmråderAvgrensning:
+        sourcePath: "[objid=pukkomrobjid]PukkOmr_grusPukkOmråderAvgrensning/[geolavgrlinjeobjid=objid]geolavgrlinje"
+        type: OBJECT_ARRAY
+        objectType: Link
+        constraints:
+          required: true
+          minOccurrence: 1
+        properties:
+          title:
+            sourcePath: objid
+            type: STRING
+            label: GeolAvgrLinje-title
+          href:
+            sourcePath: objid
+            type: STRING
+            label: GeolAvgrLinje-ID
+            transformations:
+            - stringFormat: "{{serviceUrl}}/collections/geolavgrlinje/items/{{value}}"
+      inneholder:
+        sourcePath: "[objid=pukkomrobjid]PukkOmr_inneholder/[pukkregistreringobjid=objid]pukkregistrering"
+        type: OBJECT_ARRAY
+        objectType: Link
+        constraints:
+          minOccurrence: 0
+        properties:
+          title:
+            sourcePath: objid
+            type: STRING
+            label: PukkRegistrering-title
+          href:
+            sourcePath: objid
+            type: STRING
+            label: PukkRegistrering-ID
+            transformations:
+            - stringFormat: "{{serviceUrl}}/collections/pukkregistrering/items/{{value}}"
+  pukkregistrering:
+    sourcePath: /pukkregistrering
+    type: OBJECT
+    objectType: PukkRegistrering
+    properties:
+      oid:
+        sourcePath: objid
+        type: INTEGER
+        role: ID
+      område:
+        sourcePath: område
+        type: GEOMETRY
+        role: PRIMARY_GEOMETRY
+        geometryType: POLYGON
+        constraints:
+          required: true
+      identRastoffobj:
+        sourcePath: identrastoffobj
+        type: INTEGER
+        constraints:
+          required: true
+      forekomstNummer:
+        sourcePath: forekomstnummer
+        type: INTEGER
+        constraints:
+          required: true
+      materialType:
+        sourcePath: materialtype
+        type: STRING
+        constraints:
+          codelist: MaterialType
+          required: true
+      rastoffBetydning:
+        sourcePath: rastoffbetydning
+        type: STRING
+        constraints:
+          codelist: RastoffBetydning
+          required: true
+      mineralRegistreringType:
+        sourcePath: mineralregistreringtype
+        type: STRING
+        constraints:
+          codelist: MineralRegistreringType
+      navnRastoffobj:
+        sourcePath: navnrastoffobj
+        type: STRING
+      geolBeskrivelse:
+        sourcePath: geolbeskrivelse
+        type: STRING
+      geolBeskrivelseURL:
+        sourcePath: geolbeskrivelseurl
+        type: STRING
+      grusPukkRegistreringerAvgrensning:
+        sourcePath: "[objid=pukkregistreringobjid]PukkRegistrering_grusPukkRegistreringerAvgrensning/[geolavgrlinjeobjid=objid]geolavgrlinje"
+        type: OBJECT_ARRAY
+        objectType: Link
+        constraints:
+          required: true
+          minOccurrence: 1
+        properties:
+          title:
+            sourcePath: objid
+            type: STRING
+            label: GeolAvgrLinje-title
+          href:
+            sourcePath: objid
+            type: STRING
+            label: GeolAvgrLinje-ID
+            transformations:
+            - stringFormat: "{{serviceUrl}}/collections/geolavgrlinje/items/{{value}}"
+      tilhører:
+        type: OBJECT
+        objectType: Link
+        properties:
+          title:
+            sourcePath: tilhører
+            type: STRING
+            label: PukkOmr-title
+          href:
+            sourcePath: tilhører
+            type: STRING
+            label: PukkOmr-ID
+            transformations:
+            - stringFormat: "{{serviceUrl}}/collections/pukkomr/items/{{value}}"
+  pukkuttak:
+    sourcePath: /pukkuttak
+    type: OBJECT
+    objectType: PukkUttak
+    properties:
+      oid:
+        sourcePath: objid
+        type: INTEGER
+        role: ID
+      identRastoffobj:
+        sourcePath: identrastoffobj
+        type: INTEGER
+        constraints:
+          required: true
+      forekomstNummer:
+        sourcePath: forekomstnummer
+        type: INTEGER
+        constraints:
+          required: true
+      materialType:
+        sourcePath: materialtype
+        type: STRING
+        constraints:
+          codelist: MaterialType
+          required: true
+      rastoffBetydning:
+        sourcePath: rastoffbetydning
+        type: STRING
+        constraints:
+          codelist: RastoffBetydning
+          required: true
+      mineralRegistreringType:
+        sourcePath: mineralregistreringtype
+        type: STRING
+        constraints:
+          codelist: MineralRegistreringType
+      materialUndertype:
+        sourcePath: materialundertype
+        type: STRING
+      navnRastoffobj:
+        sourcePath: navnrastoffobj
+        type: STRING
+      lokalNummer:
+        sourcePath: lokalnummer
+        type: INTEGER
+      driftForhold:
+        sourcePath: driftforhold
+        type: STRING
+        constraints:
+          codelist: DriftForhold
+      stedfestingVerifisert:
+        sourcePath: stedfestingverifisert
+        type: BOOLEAN
+      geolBeskrivelse:
+        sourcePath: geolbeskrivelse
+        type: STRING
+      geolBeskrivelseURL:
+        sourcePath: geolbeskrivelseurl
+        type: STRING
+      antallAnalyser:
+        sourcePath: antallanalyser
+        type: INTEGER
+      typeRastoffVirksomhet:
+        sourcePath: typerastoffvirksomhet
+        type: STRING
+        constraints:
+          codelist: TypeRastoffVirksomhet
+      posisjon:
+        sourcePath: posisjon
+        type: GEOMETRY
+        role: PRIMARY_GEOMETRY
+        geometryType: POINT
+        constraints:
+          required: true
+      grusPukkObservasjonOgUttakAvgrensning:
+        sourcePath: "[objid=pukkuttakobjid]PukkUttak_grusPukkObservasjonOgUttakAvgrensning/[geolavgrlinjeobjid=objid]geolavgrlinje"
+        type: OBJECT_ARRAY
+        objectType: Link
+        constraints:
+          required: true
+          minOccurrence: 1
+        properties:
+          title:
+            sourcePath: objid
+            type: STRING
+            label: GeolAvgrLinje-title
+          href:
+            sourcePath: objid
+            type: STRING
+            label: GeolAvgrLinje-ID
+            transformations:
+            - stringFormat: "{{serviceUrl}}/collections/geolavgrlinje/items/{{value}}"
+      tilhører:
+        type: OBJECT
+        objectType: Link
+        properties:
+          title:
+            sourcePath: tilhører
+            type: STRING
+            label: PukkOmr-title
+          href:
+            sourcePath: tilhører
+            type: STRING
+            label: PukkOmr-ID
+            transformations:
+            - stringFormat: "{{serviceUrl}}/collections/pukkomr/items/{{value}}"
+  rastoffprovepkt:
+    sourcePath: /rastoffprovepkt
+    type: OBJECT
+    objectType: RastoffProvePkt
+    properties:
+      oid:
+        sourcePath: objid
+        type: INTEGER
+        role: ID
+      posisjon:
+        sourcePath: posisjon
+        type: GEOMETRY
+        role: PRIMARY_GEOMETRY
+        geometryType: POINT
+        constraints:
+          required: true
+      materialType:
+        sourcePath: materialtype
+        type: STRING
+        constraints:
+          codelist: MaterialType
+          required: true
+      identRastoffobj:
+        sourcePath: identrastoffobj
+        type: INTEGER
+        constraints:
+          required: true
+      materialUndertype:
+        sourcePath: materialundertype
+        type: STRING
+      forekomstNummer:
+        sourcePath: forekomstnummer
+        type: INTEGER
+        constraints:
+          required: true
+      navnRastoffobj:
+        sourcePath: navnrastoffobj
+        type: STRING
+      proveNummer:
+        sourcePath: provenummer
+        type: INTEGER
+      geolBeskrivelse:
+        sourcePath: geolbeskrivelse
+        type: STRING
+      geolBeskrivelseURL:
+        sourcePath: geolbeskrivelseurl
+        type: STRING
+      antallAnalyser:
+        sourcePath: antallanalyser
+        type: INTEGER
+      tilknyttet:
+        type: OBJECT
+        objectType: Link
+        properties:
+          title:
+            sourcePath: tilknyttet
+            type: STRING
+            label: PukkOmr-title
+          href:
+            sourcePath: tilknyttet
+            type: STRING
+            label: PukkOmr-ID
+            transformations:
+            - stringFormat: "{{serviceUrl}}/collections/pukkomr/items/{{value}}"
+  sandgrusobservasjon:
+    sourcePath: /sandgrusobservasjon
+    type: OBJECT
+    objectType: SandGrusObservasjon
+    properties:
+      oid:
+        sourcePath: objid
+        type: INTEGER
+        role: ID
+      posisjon:
+        sourcePath: posisjon
+        type: GEOMETRY
+        role: PRIMARY_GEOMETRY
+        geometryType: POINT
+        constraints:
+          required: true
+      identRastoffobj:
+        sourcePath: identrastoffobj
+        type: INTEGER
+        constraints:
+          required: true
+      forekomstNummer:
+        sourcePath: forekomstnummer
+        type: INTEGER
+        constraints:
+          required: true
+      materialType:
+        sourcePath: materialtype
+        type: STRING
+        constraints:
+          codelist: MaterialType
+          required: true
+      materialUndertype:
+        sourcePath: materialundertype
+        type: STRING
+      navnRastoffobj:
+        sourcePath: navnrastoffobj
+        type: STRING
+      geolBeskrivelse:
+        sourcePath: geolbeskrivelse
+        type: STRING
+      geolBeskrivelseURL:
+        sourcePath: geolbeskrivelseurl
+        type: STRING
+      antallAnalyser:
+        sourcePath: antallanalyser
+        type: INTEGER
+      tilhører:
+        type: OBJECT
+        objectType: Link
+        properties:
+          title:
+            sourcePath: tilhører
+            type: STRING
+            label: SandGrusOmr-title
+          href:
+            sourcePath: tilhører
+            type: STRING
+            label: SandGrusOmr-ID
+            transformations:
+            - stringFormat: "{{serviceUrl}}/collections/sandgrusomr/items/{{value}}"
+  sandgrusomr:
+    sourcePath: /sandgrusomr
+    type: OBJECT
+    objectType: SandGrusOmr
+    properties:
+      oid:
+        sourcePath: objid
+        type: INTEGER
+        role: ID
+      område:
+        sourcePath: område
+        type: GEOMETRY
+        role: PRIMARY_GEOMETRY
+        geometryType: POLYGON
+        constraints:
+          required: true
+      identRastoffobj:
+        sourcePath: identrastoffobj
+        type: INTEGER
+        constraints:
+          required: true
+      forekomstNummer:
+        sourcePath: forekomstnummer
+        type: INTEGER
+        constraints:
+          required: true
+      materialType:
+        sourcePath: materialtype
+        type: STRING
+        constraints:
+          codelist: MaterialType
+          required: true
+      rastoffBetydning:
+        sourcePath: rastoffbetydning
+        type: STRING
+        constraints:
+          codelist: RastoffBetydning
+          required: true
+      mineralRegistreringType:
+        sourcePath: mineralregistreringtype
+        type: STRING
+        constraints:
+          codelist: MineralRegistreringType
+      navnRastoffobj:
+        sourcePath: navnrastoffobj
+        type: STRING
+      typeRastoffVirksomhet:
+        sourcePath: typerastoffvirksomhet
+        type: STRING
+        constraints:
+          codelist: TypeRastoffVirksomhet
+      geolBeskrivelse:
+        sourcePath: geolbeskrivelse
+        type: STRING
+      geolBeskrivelseURL:
+        sourcePath: geolbeskrivelseurl
+        type: STRING
+      antallAnalyser:
+        sourcePath: antallanalyser
+        type: INTEGER
+      avfallType:
+        sourcePath: avfalltype
+        type: INTEGER
+      rastoffVolum:
+        sourcePath: rastoffvolum
+        type: INTEGER
+      sisteBefaringdato:
+        sourcePath: sistebefaringdato
+        type: INTEGER
+      grusPukkOmråderAvgrensning:
+        sourcePath: "[objid=sandgrusomrobjid]SandGrusOmr_grusPukkOmråderAvgrensning/[geolavgrlinjeobjid=objid]geolavgrlinje"
+        type: OBJECT_ARRAY
+        objectType: Link
+        constraints:
+          required: true
+          minOccurrence: 1
+        properties:
+          title:
+            sourcePath: objid
+            type: STRING
+            label: GeolAvgrLinje-title
+          href:
+            sourcePath: objid
+            type: STRING
+            label: GeolAvgrLinje-ID
+            transformations:
+            - stringFormat: "{{serviceUrl}}/collections/geolavgrlinje/items/{{value}}"
+      inneholder:
+        sourcePath: "[objid=sandgrusomrobjid]SandGrusOmr_inneholder/[rastoffprovepktobjid=objid]rastoffprovepkt"
+        type: OBJECT_ARRAY
+        objectType: Link
+        constraints:
+          minOccurrence: 0
+        properties:
+          title:
+            sourcePath: objid
+            type: STRING
+            label: RastoffProvePkt-title
+          href:
+            sourcePath: objid
+            type: STRING
+            label: RastoffProvePkt-ID
+            transformations:
+            - stringFormat: "{{serviceUrl}}/collections/rastoffprovepkt/items/{{value}}"
+  sandgrusregistrering:
+    sourcePath: /sandgrusregistrering
+    type: OBJECT
+    objectType: SandGrusRegistrering
+    properties:
+      oid:
+        sourcePath: objid
+        type: INTEGER
+        role: ID
+      område:
+        sourcePath: område
+        type: GEOMETRY
+        role: PRIMARY_GEOMETRY
+        geometryType: POLYGON
+        constraints:
+          required: true
+      identRastoffobj:
+        sourcePath: identrastoffobj
+        type: INTEGER
+        constraints:
+          required: true
+      forekomstNummer:
+        sourcePath: forekomstnummer
+        type: INTEGER
+        constraints:
+          required: true
+      materialType:
+        sourcePath: materialtype
+        type: STRING
+        constraints:
+          codelist: MaterialType
+          required: true
+      rastoffBetydning:
+        sourcePath: rastoffbetydning
+        type: STRING
+        constraints:
+          codelist: RastoffBetydning
+          required: true
+      mineralRegistreringType:
+        sourcePath: mineralregistreringtype
+        type: STRING
+        constraints:
+          codelist: MineralRegistreringType
+      materialUndertype:
+        sourcePath: materialundertype
+        type: STRING
+      navnRastoffobj:
+        sourcePath: navnrastoffobj
+        type: STRING
+      rastoffVolum:
+        sourcePath: rastoffvolum
+        type: INTEGER
+      mektighetFemtiProsent:
+        sourcePath: mektighetfemtiprosent
+        type: FLOAT
+      geolBeskrivelse:
+        sourcePath: geolbeskrivelse
+        type: STRING
+      geolBeskrivelseURL:
+        sourcePath: geolbeskrivelseurl
+        type: STRING
+      grusPukkRegistreringerAvgrensning:
+        sourcePath: "[objid=sandgrusregistreringobjid]SandGrusRegistrering_grusPukkRegistreringerAvgrensning/[geolavgrlinjeobjid=objid]geolavgrlinje"
+        type: OBJECT_ARRAY
+        objectType: Link
+        constraints:
+          required: true
+          minOccurrence: 1
+        properties:
+          title:
+            sourcePath: objid
+            type: STRING
+            label: GeolAvgrLinje-title
+          href:
+            sourcePath: objid
+            type: STRING
+            label: GeolAvgrLinje-ID
+            transformations:
+            - stringFormat: "{{serviceUrl}}/collections/geolavgrlinje/items/{{value}}"
+      tilhører:
+        type: OBJECT
+        objectType: Link
+        properties:
+          title:
+            sourcePath: tilhører
+            type: STRING
+            label: SandGrusOmr-title
+          href:
+            sourcePath: tilhører
+            type: STRING
+            label: SandGrusOmr-ID
+            transformations:
+            - stringFormat: "{{serviceUrl}}/collections/sandgrusomr/items/{{value}}"
+  sandgrusuttak:
+    sourcePath: /sandgrusuttak
+    type: OBJECT
+    objectType: SandGrusUttak
+    properties:
+      oid:
+        sourcePath: objid
+        type: INTEGER
+        role: ID
+      identRastoffobj:
+        sourcePath: identrastoffobj
+        type: INTEGER
+        constraints:
+          required: true
+      forekomstNummer:
+        sourcePath: forekomstnummer
+        type: INTEGER
+        constraints:
+          required: true
+      materialType:
+        sourcePath: materialtype
+        type: STRING
+        constraints:
+          codelist: MaterialType
+          required: true
+      rastoffBetydning:
+        sourcePath: rastoffbetydning
+        type: STRING
+        constraints:
+          codelist: RastoffBetydning
+          required: true
+      mineralRegistreringType:
+        sourcePath: mineralregistreringtype
+        type: STRING
+        constraints:
+          codelist: MineralRegistreringType
+      materialUndertype:
+        sourcePath: materialundertype
+        type: STRING
+      navnRastoffobj:
+        sourcePath: navnrastoffobj
+        type: STRING
+      lokalNummer:
+        sourcePath: lokalnummer
+        type: INTEGER
+      losmassetype:
+        sourcePath: losmassetype
+        type: STRING
+        constraints:
+          codelist: Losmassetype
+      driftForhold:
+        sourcePath: driftforhold
+        type: STRING
+        constraints:
+          codelist: DriftForhold
+      stedfestingVerifisert:
+        sourcePath: stedfestingverifisert
+        type: BOOLEAN
+      geolBeskrivelse:
+        sourcePath: geolbeskrivelse
+        type: STRING
+      geolBeskrivelseURL:
+        sourcePath: geolbeskrivelseurl
+        type: STRING
+      antallAnalyser:
+        sourcePath: antallanalyser
+        type: INTEGER
+      typeRastoffVirksomhet:
+        sourcePath: typerastoffvirksomhet
+        type: STRING
+        constraints:
+          codelist: TypeRastoffVirksomhet
+      posisjon:
+        sourcePath: posisjon
+        type: GEOMETRY
+        role: PRIMARY_GEOMETRY
+        geometryType: POINT
+        constraints:
+          required: true
+      grusPukkObservasjonOgUttakAvgrensning:
+        sourcePath: "[objid=sandgrusuttakobjid]SandGrusUttak_grusPukkObservasjonOgUttakAvgrensning/[geolavgrlinjeobjid=objid]geolavgrlinje"
+        type: OBJECT_ARRAY
+        objectType: Link
+        constraints:
+          required: true
+          minOccurrence: 1
+        properties:
+          title:
+            sourcePath: objid
+            type: STRING
+            label: GeolAvgrLinje-title
+          href:
+            sourcePath: objid
+            type: STRING
+            label: GeolAvgrLinje-ID
+            transformations:
+            - stringFormat: "{{serviceUrl}}/collections/geolavgrlinje/items/{{value}}"
+      tilhører:
+        type: OBJECT
+        objectType: Link
+        properties:
+          title:
+            sourcePath: tilhører
+            type: STRING
+            label: SandGrusOmr-title
+          href:
+            sourcePath: tilhører
+            type: STRING
+            label: SandGrusOmr-ID
+            transformations:
+            - stringFormat: "{{serviceUrl}}/collections/sandgrusomr/items/{{value}}"

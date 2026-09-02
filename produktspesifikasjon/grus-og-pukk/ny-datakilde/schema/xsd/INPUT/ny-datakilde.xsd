@@ -1,0 +1,1831 @@
+<?xml version="1.0" encoding="UTF-8"?><schema xmlns="http://www.w3.org/2001/XMLSchema" xmlns:gml="http://www.opengis.net/gml/3.2" xmlns:nydatakilde="https://skjema.geonorge.no/SOSI/produktspesifikasjon/grus-og-pukk/ny-datakilde/1.0" xmlns:sc="http://www.interactive-instruments.de/ShapeChange/AppInfo" elementFormDefault="qualified" targetNamespace="https://skjema.geonorge.no/SOSI/produktspesifikasjon/grus-og-pukk/ny-datakilde/1.0" version="1.0">
+  <import namespace="http://www.interactive-instruments.de/ShapeChange/AppInfo" schemaLocation="https://shapechange.net/resources/schema/ShapeChangeAppinfo.xsd"/>
+  <import namespace="http://www.opengis.net/gml/3.2" schemaLocation="http://schemas.opengis.net/gml/3.2.1/gml.xsd"/>
+  <!--XML Schema document created by ShapeChange - http://shapechange.net/-->
+  <simpleType name="DriftForholdType">
+    <annotation>
+      <documentation>angir driftsforholdene
+
+Merknad: À jour pr. siste oppdatering</documentation>
+    </annotation>
+    <union memberTypes="nydatakilde:DriftForholdEnumerationType nydatakilde:DriftForholdOtherType"/>
+  </simpleType>
+  <simpleType name="DriftForholdEnumerationType">
+    <annotation>
+      <documentation>angir driftsforholdene
+
+Merknad: À jour pr. siste oppdatering</documentation>
+    </annotation>
+    <restriction base="string">
+      <enumeration value="Ikke satt i drift (mulig fremtidig drift)"/>
+      <enumeration value="I drift"/>
+      <enumeration value="Sporadisk drift"/>
+      <enumeration value="Nedlagt"/>
+    </restriction>
+  </simpleType>
+  <simpleType name="DriftForholdOtherType">
+    <restriction base="string">
+      <pattern value="other: \w{2,}"/>
+    </restriction>
+  </simpleType>
+  <element name="Esker" substitutionGroup="gml:AbstractFeature" type="nydatakilde:EskerType">
+    <annotation>
+      <documentation>langstrakt, smal og ofte slynget rygg eller ås av lagdelt og sortert sand, grus eller rullestein, dannet ved avsetning fra smeltevannelver i en tunnel under eller inne i en isbre</documentation>
+    </annotation>
+  </element>
+  <complexType name="EskerType">
+    <complexContent>
+      <extension base="gml:AbstractFeatureType">
+        <sequence>
+          <element name="senterlinje" type="gml:CurvePropertyType">
+            <annotation>
+              <documentation>forløp som følger objektets sentrale del</documentation>
+              <appinfo>
+                <sc:taggedValue tag="SOSI_navn">KURVE</sc:taggedValue>
+              </appinfo>
+            </annotation>
+          </element>
+        </sequence>
+      </extension>
+    </complexContent>
+  </complexType>
+  <complexType name="EskerPropertyType">
+    <sequence minOccurs="0">
+      <element ref="nydatakilde:Esker"/>
+    </sequence>
+    <attributeGroup ref="gml:AssociationAttributeGroup"/>
+    <attributeGroup ref="gml:OwnershipAttributeGroup"/>
+  </complexType>
+  <element abstract="true" name="FelleskomponenterGrusPukk" substitutionGroup="gml:AbstractFeature" type="nydatakilde:FelleskomponenterGrusPukkType">
+    <annotation>
+      <documentation>abstrakt objekt som bærer en rekke egenskaper som er fagområde-uavhengige og kan benyttes for alle objekttyper
+
+Merknad:
+Spesielt i produktspesifikasjonsarbeid vil en velge egenskaper og av grensningslinjer fra denne klassen.</documentation>
+    </annotation>
+  </element>
+  <complexType abstract="true" name="FelleskomponenterGrusPukkType">
+    <complexContent>
+      <extension base="gml:AbstractFeatureType">
+        <sequence>
+          <element minOccurs="0" name="datauttaksdato" type="date">
+            <annotation>
+              <documentation>dato for uttak fra en database
+
+Merknad:
+Skiller seg fra Kopidato ved at en ikke skiller på om det er uttak fra en originaldatabase eller en kopidatabase.</documentation>
+              <appinfo>
+                <sc:taggedValue tag="SOSI_navn">DATAUTTAKSDATO</sc:taggedValue>
+              </appinfo>
+            </annotation>
+          </element>
+          <element minOccurs="0" name="kvalitet" type="nydatakilde:PosisjonskvalitetPropertyType">
+            <annotation>
+              <documentation>beskrivelse av kvaliteten på stedfestingen
+
+Merknad: Denne er identisk med ..KVALITET i tidligere versjoner av SOSI.</documentation>
+            </annotation>
+          </element>
+        </sequence>
+      </extension>
+    </complexContent>
+  </complexType>
+  <complexType name="FelleskomponenterGrusPukkPropertyType">
+    <sequence minOccurs="0">
+      <element ref="nydatakilde:FelleskomponenterGrusPukk"/>
+    </sequence>
+    <attributeGroup ref="gml:AssociationAttributeGroup"/>
+    <attributeGroup ref="gml:OwnershipAttributeGroup"/>
+  </complexType>
+  <element name="GeolAvgrLinje" substitutionGroup="gml:AbstractFeature" type="nydatakilde:GeolAvgrLinjeType">
+    <annotation>
+      <documentation>generell avgrensning av geologisk objekt
+
+
+-- Definition --
+general delimitation of geological object</documentation>
+      <appinfo>
+        <sc:taggedValue tag="SOSI_navn">KURVE</sc:taggedValue>
+      </appinfo>
+    </annotation>
+  </element>
+  <complexType name="GeolAvgrLinjeType">
+    <complexContent>
+      <extension base="gml:AbstractFeatureType">
+        <sequence>
+          <element name="grense" type="gml:CurvePropertyType">
+            <annotation>
+              <documentation>forløp som følger overgang mellom ulike fenomener
+
+-- Definition --
+course follwing the transition between different real world phenomena</documentation>
+            </annotation>
+          </element>
+        </sequence>
+      </extension>
+    </complexContent>
+  </complexType>
+  <complexType name="GeolAvgrLinjePropertyType">
+    <sequence minOccurs="0">
+      <element ref="nydatakilde:GeolAvgrLinje"/>
+    </sequence>
+    <attributeGroup ref="gml:AssociationAttributeGroup"/>
+    <attributeGroup ref="gml:OwnershipAttributeGroup"/>
+  </complexType>
+  <simpleType name="MaterialTypeType">
+    <annotation>
+      <documentation>hvilken type råstoff som kan være/er gjenstand for utvinning</documentation>
+    </annotation>
+    <union memberTypes="nydatakilde:MaterialTypeEnumerationType nydatakilde:MaterialTypeOtherType"/>
+  </simpleType>
+  <simpleType name="MaterialTypeEnumerationType">
+    <annotation>
+      <documentation>hvilken type råstoff som kan være/er gjenstand for utvinning</documentation>
+    </annotation>
+    <restriction base="string">
+      <enumeration value="Edelmetaller(Au,Ag,PGE)"/>
+      <enumeration value="Jernmetaller (Fe, Mn, Ti)"/>
+      <enumeration value="Jernlegeringsmetaller (Cr, Ni, Co, V, Mo, W)"/>
+      <enumeration value="Basemetaller (Cu, Zn, Pbinkl. Fe-sulfider, As, Sb, Bi, Sn)"/>
+      <enumeration value="Energimetaller (U, Th)"/>
+      <enumeration value="Spesialmetaller (Nb, Ta, Be, Li, Sc, REE)"/>
+      <enumeration value="Andre metaller"/>
+      <enumeration value="Karbonatmineraler"/>
+      <enumeration value="Silika"/>
+      <enumeration value="Talk"/>
+      <enumeration value="Feltspat"/>
+      <enumeration value="Olivin"/>
+      <enumeration value="Grafitt"/>
+      <enumeration value="Fossilt brensel"/>
+      <enumeration value="Nefelinsyenitt"/>
+      <enumeration value="Magnesium mineraler"/>
+      <enumeration value="Zirkon"/>
+      <enumeration value="Beryllium mineraler"/>
+      <enumeration value="Andre industrimineraler"/>
+      <enumeration value="Blokkstein"/>
+      <enumeration value="Skifer"/>
+      <enumeration value="Kvernstein"/>
+      <enumeration value="Brynestein"/>
+      <enumeration value="Murestein"/>
+      <enumeration value="Pukk/knust fjell"/>
+      <enumeration value="Sand og grus"/>
+      <enumeration value="Grus og andre løsmasser"/>
+      <enumeration value="Skred og forvitring"/>
+      <enumeration value="Skjellsand"/>
+      <enumeration value="Steintipp"/>
+      <enumeration value="Leire"/>
+      <enumeration value="Torv"/>
+      <enumeration value="Grunnvann i fjell"/>
+      <enumeration value="Grunnvann i fjell og løsmasser"/>
+      <enumeration value="uspesifisert"/>
+    </restriction>
+  </simpleType>
+  <simpleType name="MaterialTypeOtherType">
+    <restriction base="string">
+      <pattern value="other: \w{2,}"/>
+    </restriction>
+  </simpleType>
+  <simpleType name="MineralRegistreringTypeType">
+    <annotation>
+      <documentation>hvilken type mineralforekomst dette er i en økonomisk betraktning
+
+-- Definition --
+The type of mineral occurrence.
+-- Description --
+EXAMPLE: prospect, occurrence, mineral deposit, ore deposit.</documentation>
+    </annotation>
+    <union memberTypes="nydatakilde:MineralRegistreringTypeEnumerationType nydatakilde:MineralRegistreringTypeOtherType"/>
+  </simpleType>
+  <simpleType name="MineralRegistreringTypeEnumerationType">
+    <annotation>
+      <documentation>hvilken type mineralforekomst dette er i en økonomisk betraktning
+
+-- Definition --
+The type of mineral occurrence.
+-- Description --
+EXAMPLE: prospect, occurrence, mineral deposit, ore deposit.</documentation>
+    </annotation>
+    <restriction base="string">
+      <enumeration value="forekomst">
+        <annotation>
+          <documentation>en mineralkonsentrasjon i jordskorpen, en anrikning eller en akkumulasjon. Kan brukes om alle typer mineralforekomster.
+INSPIRE Description:
+A mass of naturally occurring mineral material, e.g. metal ores or non-metallic minerals, usually of economic value, without regard to mode of origin. Accumulations of coal and petroleum may or may not be included.</documentation>
+        </annotation>
+      </enumeration>
+      <enumeration value="registrering">
+        <annotation>
+          <documentation>en økonomisk interessant malm- eller mineralanrikning
+Any ore or economic mineral in any concentration found in bedrock or as float.
+
+INSPIRE Description:</documentation>
+        </annotation>
+      </enumeration>
+      <enumeration value="prospekt">
+        <annotation>
+          <documentation>område hvor det er utsikter til å finne malm og verdifulle mineraler. Representere områder med høy sannsynlighet for funn av lite eller ikke dokumenterte mineralforekomster.
+Er ofte et mulig undersøkelsesområde
+
+INSPIRE Description:
+An  area  that  is  a  potential  site  of  mineral  deposits,  based  on  preliminary exploration, previous exploration. A geologic or geophysical anomaly, especially one recommended for additional exploration.</documentation>
+        </annotation>
+      </enumeration>
+      <enumeration value="provins">
+        <annotation>
+          <documentation>geologisk provins - stort område som er enhetlig med hensyn til opptreden av ulike metaller eller mineraler. Er en områdeavgrensning rundt en eller flere større eller mindre registreringer og/eller observasjoner med potensial for mineralutvinning.
+
+
+
+INSPIRE Description:
+Geologic provinces classified by mineral resources.</documentation>
+        </annotation>
+      </enumeration>
+      <enumeration value="distrikt">
+        <annotation>
+          <documentation>geologisk distrikt, karakteristisk for ulike mineralforekomster
+
+INSPIRE Description:
+Geologic districts classified by mineral resources.</documentation>
+        </annotation>
+      </enumeration>
+      <enumeration value="felt">
+        <annotation>
+          <documentation>region eller område karakteristisk for ulike mineralforekomster. Eks Rørosfeltet
+
+INSPIRE Description:
+A region or area that possesses or is characterized by a particular mineral resource.</documentation>
+        </annotation>
+      </enumeration>
+      <enumeration value="malmsone">
+        <annotation>
+          <documentation>mineralforekomst som har form som årer eller ganger i hovedbergarten
+
+INSPIRE Description:
+A mineral deposit consisting of a zone of veins, veinlets, disseminations, or planar breccias.</documentation>
+        </annotation>
+      </enumeration>
+      <enumeration value="prosjekt"/>
+    </restriction>
+  </simpleType>
+  <simpleType name="MineralRegistreringTypeOtherType">
+    <restriction base="string">
+      <pattern value="other: \w{2,}"/>
+    </restriction>
+  </simpleType>
+  <simpleType name="MålemetodeType">
+    <annotation>
+      <documentation>metode som ligger til grunn for registrering av posisjon
+
+
+-- Definition - -
+method on which registration of position is based</documentation>
+    </annotation>
+    <union memberTypes="nydatakilde:MålemetodeEnumerationType nydatakilde:MålemetodeOtherType"/>
+  </simpleType>
+  <simpleType name="MålemetodeEnumerationType">
+    <annotation>
+      <documentation>metode som ligger til grunn for registrering av posisjon
+
+
+-- Definition - -
+method on which registration of position is based</documentation>
+    </annotation>
+    <restriction base="string">
+      <enumeration value="Terrengmålt: Uspesifisert måleinstrument">
+        <annotation>
+          <documentation>Målt i terrenget , uspesifisert metode/måleinstrument</documentation>
+        </annotation>
+      </enumeration>
+      <enumeration value="Terrengmålt: Totalstasjon">
+        <annotation>
+          <documentation>Målt i terrenget med totalstasjon</documentation>
+        </annotation>
+      </enumeration>
+      <enumeration value="Terrengmålt: Teodolitt og el avstandsmåler">
+        <annotation>
+          <documentation>Målt i terrenget med teodolitt og elektronisk avstandsmåler</documentation>
+        </annotation>
+      </enumeration>
+      <enumeration value="Terrengmålt: Teodolitt og målebånd">
+        <annotation>
+          <documentation>Målt i terrenget med teodolitt og målebånd</documentation>
+        </annotation>
+      </enumeration>
+      <enumeration value="Terrengmålt: Ortogonalmetoden">
+        <annotation>
+          <documentation>Målt i terrenget, ortogonalmetoden</documentation>
+        </annotation>
+      </enumeration>
+      <enumeration value="Utmål">
+        <annotation>
+          <documentation>Punkt beregnet på bakgrunn av måling mot andre punkter, slik som to avstander eller avstand og retning
+
+-- Definition --
+Point calculated on the basis of other items, such as two distances or distance + direction.</documentation>
+        </annotation>
+      </enumeration>
+      <enumeration value="Tatt fra plan">
+        <annotation>
+          <documentation>Tatt fra plan eller godkjent tiltak</documentation>
+        </annotation>
+      </enumeration>
+      <enumeration value="Annet  (denne har ingen mening, bør fjernes?)">
+        <annotation>
+          <documentation>Annet</documentation>
+        </annotation>
+      </enumeration>
+      <enumeration value="Stereoinstrument">
+        <annotation>
+          <documentation>Målt i stereoinstrument, uspesifisert instrument</documentation>
+        </annotation>
+      </enumeration>
+      <enumeration value="Aerotriangulert">
+        <annotation>
+          <documentation>Punkt beregnet ved aerotriangulering
+
+-- Definition --
+Point calculated by aerotriangulation</documentation>
+        </annotation>
+      </enumeration>
+      <enumeration value="Stereoinstrument: Analytisk plotter">
+        <annotation>
+          <documentation>Målt i stereoinstrument, analytisk plotter</documentation>
+        </annotation>
+      </enumeration>
+      <enumeration value="Stereoinstrument: Autograf">
+        <annotation>
+          <documentation>Målt i stereoinstrument, autograf, analogt instrument</documentation>
+        </annotation>
+      </enumeration>
+      <enumeration value="Stereoinstrument: Digitalt">
+        <annotation>
+          <documentation>Målt i stereoinstrument, digitalt instrument</documentation>
+        </annotation>
+      </enumeration>
+      <enumeration value="Scannet fra kart">
+        <annotation>
+          <documentation>Geometri overført fra kart maskinelt ved hjelp av skanner, uspesifisert kartmedium</documentation>
+        </annotation>
+      </enumeration>
+      <enumeration value="Skannet fra kart: Blyantoriginal">
+        <annotation>
+          <documentation>Geometri overført fra kart maskinelt ved hjelp av skanner. Kartmedium er blyantoriginal</documentation>
+        </annotation>
+      </enumeration>
+      <enumeration value="Skannet fra kart: Rissefolie">
+        <annotation>
+          <documentation>Geometri overført fra kart maskinelt ved hjelp av skanner. Kartmedium er rissefolie</documentation>
+        </annotation>
+      </enumeration>
+      <enumeration value="Skannet fra kart: Transparent folie, god kvalitet">
+        <annotation>
+          <documentation>Geometri overført fra kart maskinelt ved hjelp av skanner. Kartmedium er transparent folie av  god kvalitet.</documentation>
+        </annotation>
+      </enumeration>
+      <enumeration value="Skannet fra kart: Transparent folie, mindre god kvalitet">
+        <annotation>
+          <documentation>Geometri overført fra kart maskinelt ved hjelp av skanner. Kartmedium er transparent folie av mindre god kvalitet</documentation>
+        </annotation>
+      </enumeration>
+      <enumeration value="Skannet fra kart: Papirkopi">
+        <annotation>
+          <documentation>Geometri overført fra kart maskinelt ved hjelp av skanner. Kartmedium er papirkopi.</documentation>
+        </annotation>
+      </enumeration>
+      <enumeration value="Flybåren laserscanner">
+        <annotation>
+          <documentation>Målt med laserskanner fra fly</documentation>
+        </annotation>
+      </enumeration>
+      <enumeration value="Bilbåren laser">
+        <annotation>
+          <documentation>Målt med laserskanner plassert i kjøretøy</documentation>
+        </annotation>
+      </enumeration>
+      <enumeration value="Lineær referanse">
+        <annotation>
+          <documentation>brukes for objekter som er stedfestet med lineær referanse, enten disse leveres med stedfesting kun som lineære referanser, eller med koordinatgeometri avledet fra lineære referanser</documentation>
+        </annotation>
+      </enumeration>
+      <enumeration value="Digitaliseringbord: Ortofoto eller flybilde">
+        <annotation>
+          <documentation>Geometri overført fra ortofoto eller flybilde ved hjelp av manuell registrering på et digitaliseringsbord, uspesifisert bildemedium</documentation>
+        </annotation>
+      </enumeration>
+      <enumeration value="Digitaliseringbord: Ortofoto, film">
+        <annotation>
+          <documentation>Geometri overført fra ortofoto ved hjelp av manuell registrering på et digitaliseringsbord. Bildemedium er film</documentation>
+        </annotation>
+      </enumeration>
+      <enumeration value="Digitaliseringbord: Ortofoto, fotokopi">
+        <annotation>
+          <documentation>Geometri overført fra ortofoto ved hjelp av manuell registrering på et digitaliseringsbord. Bildemedium er fotokopi</documentation>
+        </annotation>
+      </enumeration>
+      <enumeration value="Digitaliseringbord: Flybilde, film">
+        <annotation>
+          <documentation>Geometri overført fra flybilde ved hjelp av manuell registrering på et digitaliseringsbord. Bildemedium er film</documentation>
+        </annotation>
+      </enumeration>
+      <enumeration value="Digitaliseringbord: Flybilde, fotokopi">
+        <annotation>
+          <documentation>Geometri overført fra flybilde ved hjelp av manuell registrering på et digitaliseringsbord. Bildemedium er fotokopi</documentation>
+        </annotation>
+      </enumeration>
+      <enumeration value="Digitalisert på skjerm fra ortofoto">
+        <annotation>
+          <documentation>Geometri overført fra ortofoto ved hjelp av manuell registrering på skjerm</documentation>
+        </annotation>
+      </enumeration>
+      <enumeration value="Digitalisert på skjerm fra satellittbilde">
+        <annotation>
+          <documentation>Geometri overført fra satellittbilde ved hjelp av manuell registrering på skjerm</documentation>
+        </annotation>
+      </enumeration>
+      <enumeration value="Digitalisert på skjerm fra andre digitale rasterdata"/>
+      <enumeration value="Digitalisert på skjerm fra tolkning av seismikk"/>
+      <enumeration value="Vektorisering av laserdata">
+        <annotation>
+          <documentation>Vektorisering fra laserdata, brukes også der vektoriseringen støttes av ortofoto</documentation>
+        </annotation>
+      </enumeration>
+      <enumeration value="Digitaliseringsbord: Kart">
+        <annotation>
+          <documentation>Geometri overført fra kart ved hjelp av manuell registrering på et digitaliseringsbord, medium uspesifisert</documentation>
+        </annotation>
+      </enumeration>
+      <enumeration value="Digitaliseringsbord: Kart, blyantoriginal">
+        <annotation>
+          <documentation>Geometri overført fra kart ved hjelp av manuell registrering på et digitaliseringsbord. Kartmedium er blyantoriginal</documentation>
+        </annotation>
+      </enumeration>
+      <enumeration value="Digitaliseringsbord: Kart, rissefoile">
+        <annotation>
+          <documentation>Geometri overført fra kart ved hjelp av manuell registrering på et digitaliseringsbord. Kartmedium er rissefolie</documentation>
+        </annotation>
+      </enumeration>
+      <enumeration value="Digitaliseringsbord: Kart, transparent foile, god kvalitet">
+        <annotation>
+          <documentation>Geometri overført fra kart ved hjelp av manuell registrering på et digitaliseringsbord. Kartmedium er transparent folie av god kvalitet, samkopi</documentation>
+        </annotation>
+      </enumeration>
+      <enumeration value="Digitaliseringsbord: Kart, transparent foile, mindre god kvalitet">
+        <annotation>
+          <documentation>Geometri overført fra kart ved hjelp av manuell registrering på et digitaliseringsbord. Kartmedium er transparent folie av mindre god kvalitet, samkopi</documentation>
+        </annotation>
+      </enumeration>
+      <enumeration value="Digitaliseringsbord: Kart, papirkopi">
+        <annotation>
+          <documentation>Geometri overført fra kart ved hjelp av manuell registrering på et digitaliseringsbord. Kartmedium er papirkopi</documentation>
+        </annotation>
+      </enumeration>
+      <enumeration value="Digitalisert på skjerm fra skannet kart">
+        <annotation>
+          <documentation>Geometri overført fra kart ved hjelp av manuell registrering på skjerm, medium skannet kart (raster), samkopi</documentation>
+        </annotation>
+      </enumeration>
+      <enumeration value="Genererte data (interpolasjon)">
+        <annotation>
+          <documentation>Genererte data, interpolasjonsmetode. Ikke nærmere spesifisert</documentation>
+        </annotation>
+      </enumeration>
+      <enumeration value="Genererte data (interpolasjon): Terrengmodell">
+        <annotation>
+          <documentation>Genererte data, interpolasjonsmetode, fra terrengmodell</documentation>
+        </annotation>
+      </enumeration>
+      <enumeration value="Genererte data (interpolasjon): Vektet middel">
+        <annotation>
+          <documentation>Genererte data, interpolasjonsmetode, vektet middel</documentation>
+        </annotation>
+      </enumeration>
+      <enumeration value="Genererte data: Fra annen geometri">
+        <annotation>
+          <documentation>Genererte data: Sirkelgeometri, korridor eller annen geometri generert ut fra f.eks et punkt eller en linje (f.eks midtlinje veg)</documentation>
+        </annotation>
+      </enumeration>
+      <enumeration value="Genererte data: Generalisering"/>
+      <enumeration value="Genererte data: Sentralpunkt"/>
+      <enumeration value="Genererte data: Sammenknytningspunkt, randpunkt">
+        <annotation>
+          <documentation>Genererte data: Sammenknytningspunkt (f.eks mellom ulike kartlegginger), randpunkt (f.eks mellom ulike kilder til kart)</documentation>
+        </annotation>
+      </enumeration>
+      <enumeration value="Koordinater hentet fra GAB">
+        <annotation>
+          <documentation>Koordinater hentet fra GAB, forløperen til registerdelen av matrikkelen</documentation>
+        </annotation>
+      </enumeration>
+      <enumeration value="Koordinater hentet fra JREG">
+        <annotation>
+          <documentation>Koordinater hentet fra JREG, jordregisteret</documentation>
+        </annotation>
+      </enumeration>
+      <enumeration value="Beregnet">
+        <annotation>
+          <documentation>Beregnet, uspesifisert hvordan</documentation>
+        </annotation>
+      </enumeration>
+      <enumeration value="Spesielle metoder">
+        <annotation>
+          <documentation>Spesielle metoder, uspesifisert</documentation>
+        </annotation>
+      </enumeration>
+      <enumeration value="Spesielle metoder: Målt med stikkstang"/>
+      <enumeration value="Spesielle metoder: Målt med waterstang"/>
+      <enumeration value="Spesielle metoder: Målt med målehjul"/>
+      <enumeration value="Spesielle metoder: Målt med stigningsmåler"/>
+      <enumeration value="Fastsatt punkt">
+        <annotation>
+          <documentation>Punkt fastsatt ut fra et grunnlag (kart, bilde), f.eks ved partenes enighet ved en oppmålingsforretning</documentation>
+        </annotation>
+      </enumeration>
+      <enumeration value="Fastsatt ved dom eller kongelig resolusjon">
+        <annotation>
+          <documentation>Geometri fastsatt ved dom, lov, traktat eller kongelig resolusjon</documentation>
+        </annotation>
+      </enumeration>
+      <enumeration value="Annet (spesifiseres i filhode) ( bør vel fjernes, blir borte ved overføring mellom systemer)">
+        <annotation>
+          <documentation>Annet (spesifiseres i filhode)</documentation>
+        </annotation>
+      </enumeration>
+      <enumeration value="Frihåndstegning">
+        <annotation>
+          <documentation>Digitalisert ut fra frihåndstegning.  Frihåndstegning er basert på svært grovt grunnlag eller ikke noe grunnlag</documentation>
+        </annotation>
+      </enumeration>
+      <enumeration value="Frihåndstegning på kart">
+        <annotation>
+          <documentation>Digitalisert fra krokering på kart, dvs grovt skissert på kart</documentation>
+        </annotation>
+      </enumeration>
+      <enumeration value="Frihåndstegning på skjerm">
+        <annotation>
+          <documentation>Digitalisert ut fra frihåndstegning (direkte på skjerm). Frihåndstegning er basert på svært grovt grunnlag eller ikke noe grunnlag</documentation>
+        </annotation>
+      </enumeration>
+      <enumeration value="Treghetsstedfesting"/>
+      <enumeration value="GNSS: Kodemåling, relative målinger">
+        <annotation>
+          <documentation>Innmålt med satellittbaserte systemer for navigasjon og posisjonering med global dekning (f.eks GPS, GLONASS, GALILEO): Kodemåling, relative målinger.</documentation>
+        </annotation>
+      </enumeration>
+      <enumeration value="GNSS: Kodemåling, enkle målinger">
+        <annotation>
+          <documentation>Innmålt med satellittbaserte systemer for navigasjon og posisjonering med global dekning (f.eks GPS, GLONASS, GALILEO): Kodemåling, enkle målinger.</documentation>
+        </annotation>
+      </enumeration>
+      <enumeration value="GNSS: Fasemåling, statisk måling">
+        <annotation>
+          <documentation>Innmålt med satellittbaserte systemer for navigasjon og posisjonering med global dekning (f.eks GPS, GLONASS, GALILEO): Fasemåling statisk måling.</documentation>
+        </annotation>
+      </enumeration>
+      <enumeration value="GNSS: Fasemåling, andre metoder">
+        <annotation>
+          <documentation>Innmålt med satellittbaserte systemer for navigasjon og posisjonering med global dekning (f.eks GPS, GLONASS, GALILEO): Fasemåling andre metoder.</documentation>
+        </annotation>
+      </enumeration>
+      <enumeration value="Kombinasjon av GNSS/Treghet">
+        <annotation>
+          <documentation>Kombinasjon av GPS/Treghet</documentation>
+        </annotation>
+      </enumeration>
+      <enumeration value="GNSS: Fasemåling RTK">
+        <annotation>
+          <documentation>Innmålt med satellittbaserte systemer for navigasjon og posisjonering med global dekning (f.eks GPS, GLONASS, GALILEO).: Fasemåling RTK (realtids kinematisk måling)</documentation>
+        </annotation>
+      </enumeration>
+      <enumeration value="GNSS: Fasemåling , float-løsning">
+        <annotation>
+          <documentation>Innmålt med satellittbaserte systemer for navigasjon og posisjonering med global dekning (f.eks GPS, GLONASS, GALILEO). Fasemåling float-løsning</documentation>
+        </annotation>
+      </enumeration>
+      <enumeration value="Ukjent målemetode">
+        <annotation>
+          <documentation>Målemetode er ukjent</documentation>
+        </annotation>
+      </enumeration>
+    </restriction>
+  </simpleType>
+  <simpleType name="MålemetodeOtherType">
+    <restriction base="string">
+      <pattern value="other: \w{2,}"/>
+    </restriction>
+  </simpleType>
+  <element name="Posisjonskvalitet" substitutionGroup="gml:AbstractObject" type="nydatakilde:PosisjonskvalitetType"/>
+  <complexType name="PosisjonskvalitetType">
+    <sequence>
+      <element name="målemetode" type="nydatakilde:MålemetodeType">
+        <annotation>
+          <documentation>metode for måling i grunnriss (x,y), og høyde (z) når metoden er den samme som ved måling i grunnriss</documentation>
+        </annotation>
+      </element>
+      <element minOccurs="0" name="nøyaktighet" type="integer">
+        <annotation>
+          <documentation>punktstandardavviket i grunnriss for punkter samt tverravvik for linjer
+
+Merknad:
+Oppgitt i cm</documentation>
+          <appinfo>
+            <sc:taggedValue tag="SOSI_navn">NØYAKTIGHET</sc:taggedValue>
+          </appinfo>
+        </annotation>
+      </element>
+    </sequence>
+  </complexType>
+  <complexType name="PosisjonskvalitetPropertyType">
+    <sequence>
+      <element ref="nydatakilde:Posisjonskvalitet"/>
+    </sequence>
+  </complexType>
+  <element name="PukkObservasjon" substitutionGroup="nydatakilde:FelleskomponenterGrusPukk" type="nydatakilde:PukkObservasjonType">
+    <annotation>
+      <documentation>lokalitet som gir opplysninger om en pukksteinressurs</documentation>
+    </annotation>
+  </element>
+  <complexType name="PukkObservasjonType">
+    <complexContent>
+      <extension base="nydatakilde:FelleskomponenterGrusPukkType">
+        <sequence>
+          <element name="posisjon" type="gml:PointPropertyType">
+            <annotation>
+              <documentation>sted som objektet eksisterer på</documentation>
+              <appinfo>
+                <sc:taggedValue tag="SOSI_navn">PUNKT</sc:taggedValue>
+              </appinfo>
+            </annotation>
+          </element>
+          <element name="identRastoffobj" type="integer">
+            <annotation>
+              <documentation>forekomstobjektets identifikasjonskode
+
+Merknad: Består av kommunenummer (4 siffer), og et løpenummer (7 siffer). Ideelt sett består løpenummeret av et område nummer (3 siffer), lokalitetsnummer (2 siffer) og prøvenummer (2 siffer).
+
+Eksempel: 17290010101</documentation>
+              <appinfo>
+                <sc:taggedValue tag="SOSI_navn">FOREKOM_ID</sc:taggedValue>
+              </appinfo>
+            </annotation>
+          </element>
+          <element name="forekomstNummer" type="integer">
+            <annotation>
+              <documentation>unik nummerering av forekomsten som råstoffobjektet tilhører
+
+Merknad: Benyttes som koplingsnøkkel mellom de ulike objektene i forekomsten. Mange viktige egenskaper finnes kun på områdeobjektet som er hovedobjektet til forekomsten
+
+Eks. 1729001</documentation>
+              <appinfo>
+                <sc:taggedValue tag="SOSI_navn">R_FNR</sc:taggedValue>
+              </appinfo>
+            </annotation>
+          </element>
+          <element name="materialType" type="nydatakilde:MaterialTypeType">
+            <annotation>
+              <documentation>hvilken type råstoff som kan være/er gjenstand for utvinning</documentation>
+              <appinfo>
+                <sc:taggedValue tag="SOSI_navn">MATRTYPE</sc:taggedValue>
+              </appinfo>
+            </annotation>
+          </element>
+          <element minOccurs="0" name="navnRastoffobj" type="string">
+            <annotation>
+              <documentation>navn på forekomsten</documentation>
+              <appinfo>
+                <sc:taggedValue tag="SOSI_navn">FOREKNAVN</sc:taggedValue>
+              </appinfo>
+            </annotation>
+          </element>
+          <element minOccurs="0" name="stedfestingVerifisert" type="boolean">
+            <annotation>
+              <documentation>angir om stedfestingen (koordinatene) er kontrollert og funnet i orden (verifisert)</documentation>
+              <appinfo>
+                <sc:taggedValue tag="SOSI_navn">STED_VERIF</sc:taggedValue>
+              </appinfo>
+            </annotation>
+          </element>
+          <element minOccurs="0" name="geolBeskrivelse" type="string">
+            <annotation>
+              <documentation>tekstlig beskrivelse av objektet</documentation>
+              <appinfo>
+                <sc:taggedValue tag="SOSI_navn">GEOBESK</sc:taggedValue>
+              </appinfo>
+            </annotation>
+          </element>
+          <element minOccurs="0" name="geolBeskrivelseURL" type="string">
+            <annotation>
+              <documentation>lenke (URL) til tekstlig beskrivelse av objektet</documentation>
+              <appinfo>
+                <sc:taggedValue tag="SOSI_navn">GEOBESK_URL</sc:taggedValue>
+              </appinfo>
+            </annotation>
+          </element>
+          <element minOccurs="0" name="antallAnalyser" type="integer">
+            <annotation>
+              <documentation>antallet utførte kjemiske og/eller mekaniske analyser</documentation>
+              <appinfo>
+                <sc:taggedValue tag="SOSI_navn">ANT_ANALYS</sc:taggedValue>
+              </appinfo>
+            </annotation>
+          </element>
+          <element minOccurs="0" name="tilhører" type="nydatakilde:PukkOmrPropertyType"/>
+        </sequence>
+      </extension>
+    </complexContent>
+  </complexType>
+  <complexType name="PukkObservasjonPropertyType">
+    <sequence minOccurs="0">
+      <element ref="nydatakilde:PukkObservasjon"/>
+    </sequence>
+    <attributeGroup ref="gml:AssociationAttributeGroup"/>
+    <attributeGroup ref="gml:OwnershipAttributeGroup"/>
+  </complexType>
+  <element name="PukkOmr" substitutionGroup="nydatakilde:FelleskomponenterGrusPukk" type="nydatakilde:PukkOmrType">
+    <annotation>
+      <documentation>område som antas å inneholde bergarter som har et potensiale til å kunne utnyttes som pukkråstoff (knust fjell)</documentation>
+    </annotation>
+  </element>
+  <complexType name="PukkOmrType">
+    <complexContent>
+      <extension base="nydatakilde:FelleskomponenterGrusPukkType">
+        <sequence>
+          <element name="område" type="gml:SurfacePropertyType">
+            <annotation>
+              <documentation>objektets utstrekning</documentation>
+            </annotation>
+          </element>
+          <element name="identRastoffobj" type="integer">
+            <annotation>
+              <documentation>forekomstobjektets identifikasjonskode
+
+Merknad: Består av kommunenummer (4 siffer), og et løpenummer (7 siffer). Ideelt sett består løpenummeret av et område nummer (3 siffer), lokalitetsnummer (2 siffer) og prøvenummer (2 siffer).
+
+Eksempel: 17290010101</documentation>
+              <appinfo>
+                <sc:taggedValue tag="SOSI_navn">FOREKOM_ID</sc:taggedValue>
+              </appinfo>
+            </annotation>
+          </element>
+          <element name="forekomstNummer" type="integer">
+            <annotation>
+              <documentation>unik nummerering av forekomsten som råstoffobjektet tilhører
+
+Merknad: Benyttes som koplingsnøkkel mellom de ulike objektene i forekomsten. Mange viktige egenskaper finnes kun på områdeobjektet som er hovedobjektet til forekomsten
+
+Eks. 1729001</documentation>
+              <appinfo>
+                <sc:taggedValue tag="SOSI_navn">R_FNR</sc:taggedValue>
+              </appinfo>
+            </annotation>
+          </element>
+          <element name="materialType" type="nydatakilde:MaterialTypeType">
+            <annotation>
+              <documentation>hvilken type råstoff som kan være/er gjenstand for utvinning</documentation>
+              <appinfo>
+                <sc:taggedValue tag="SOSI_navn">MATRTYPE</sc:taggedValue>
+              </appinfo>
+            </annotation>
+          </element>
+          <element name="rastoffBetydning" type="gml:CodeType">
+            <annotation>
+              <documentation>hvorvidt forekomsten er av internasjonal, nasjonal, regional, eller kun av lokal betydning (viktighet)</documentation>
+              <appinfo>
+                <sc:targetCodeListURI>http://skjema.geonorge.no/legg_inn_riktig_url</sc:targetCodeListURI>
+                <sc:taggedValue tag="SOSI_navn">RASTOFFBETYDNING</sc:taggedValue>
+              </appinfo>
+            </annotation>
+          </element>
+          <element minOccurs="0" name="mineralRegistreringType" type="nydatakilde:MineralRegistreringTypeType">
+            <annotation>
+              <documentation>hvilken type mineralforekomst dette er i en økonomisk betraktning
+
+-- Definition --
+The type of mineral occurrence.
+-- Description --
+EXAMPLE: prospect, occurrence, mineral deposit, ore deposit.</documentation>
+            </annotation>
+          </element>
+          <element minOccurs="0" name="navnRastoffobj" type="string">
+            <annotation>
+              <documentation>navn på forekomsten</documentation>
+              <appinfo>
+                <sc:taggedValue tag="SOSI_navn">FOREKNAVN</sc:taggedValue>
+              </appinfo>
+            </annotation>
+          </element>
+          <element minOccurs="0" name="typeRastoffVirksomhet" type="nydatakilde:TypeRastoffVirksomhetType">
+            <annotation>
+              <documentation>angir type/status på eventuell aktivitet</documentation>
+              <appinfo>
+                <sc:taggedValue tag="SOSI_navn">VIRKSOMHET</sc:taggedValue>
+              </appinfo>
+            </annotation>
+          </element>
+          <element minOccurs="0" name="geolBeskrivelse" type="string">
+            <annotation>
+              <documentation>tekstlig beskrivelse av objektet</documentation>
+              <appinfo>
+                <sc:taggedValue tag="SOSI_navn">GEOBESK</sc:taggedValue>
+              </appinfo>
+            </annotation>
+          </element>
+          <element minOccurs="0" name="geolBeskrivelseURL" type="string">
+            <annotation>
+              <documentation>lenke (URL) til tekstlig beskrivelse av objektet</documentation>
+              <appinfo>
+                <sc:taggedValue tag="SOSI_navn">GEOBESK_URL</sc:taggedValue>
+              </appinfo>
+            </annotation>
+          </element>
+          <element minOccurs="0" name="antallAnalyser" type="integer">
+            <annotation>
+              <documentation>antallet utførte kjemiske og/eller mekaniske analyser</documentation>
+              <appinfo>
+                <sc:taggedValue tag="SOSI_navn">ANT_ANALYS</sc:taggedValue>
+              </appinfo>
+            </annotation>
+          </element>
+          <element minOccurs="0" name="sisteBefaringdato" type="integer">
+            <annotation>
+              <documentation>dato for siste feltbefaring av forekomsten</documentation>
+              <appinfo>
+                <sc:taggedValue tag="SOSI_navn">SISTBEFART</sc:taggedValue>
+              </appinfo>
+            </annotation>
+          </element>
+          <element maxOccurs="unbounded" name="grusPukkOmråderAvgrensning" type="nydatakilde:GeolAvgrLinjePropertyType"/>
+          <element maxOccurs="unbounded" minOccurs="0" name="inneholder" type="nydatakilde:PukkUttakPropertyType"/>
+          <element maxOccurs="unbounded" minOccurs="0" name="inneholder" type="nydatakilde:PukkObservasjonPropertyType"/>
+          <element maxOccurs="unbounded" minOccurs="0" name="inneholder" type="nydatakilde:RastoffProvePktPropertyType"/>
+          <element maxOccurs="unbounded" minOccurs="0" name="inneholder" type="nydatakilde:PukkRegistreringPropertyType"/>
+        </sequence>
+      </extension>
+    </complexContent>
+  </complexType>
+  <complexType name="PukkOmrPropertyType">
+    <sequence minOccurs="0">
+      <element ref="nydatakilde:PukkOmr"/>
+    </sequence>
+    <attributeGroup ref="gml:AssociationAttributeGroup"/>
+    <attributeGroup ref="gml:OwnershipAttributeGroup"/>
+  </complexType>
+  <element name="PukkRegistrering" substitutionGroup="nydatakilde:FelleskomponenterGrusPukk" type="nydatakilde:PukkRegistreringType">
+    <annotation>
+      <documentation>avgrensning av areal som inneholder pukksteinressurs</documentation>
+    </annotation>
+  </element>
+  <complexType name="PukkRegistreringType">
+    <complexContent>
+      <extension base="nydatakilde:FelleskomponenterGrusPukkType">
+        <sequence>
+          <element name="område" type="gml:SurfacePropertyType">
+            <annotation>
+              <documentation>objektets utstrekning</documentation>
+              <appinfo>
+                <sc:taggedValue tag="SOSI_navn">Flate</sc:taggedValue>
+              </appinfo>
+            </annotation>
+          </element>
+          <element name="identRastoffobj" type="integer">
+            <annotation>
+              <documentation>forekomstobjektets identifikasjonskode
+
+Merknad: Består av kommunenummer (4 siffer), og et løpenummer (7 siffer). Ideelt sett består løpenummeret av et område nummer (3 siffer), lokalitetsnummer (2 siffer) og prøvenummer (2 siffer).
+
+Eksempel: 17290010101</documentation>
+              <appinfo>
+                <sc:taggedValue tag="SOSI_navn">FOREKOM_ID</sc:taggedValue>
+              </appinfo>
+            </annotation>
+          </element>
+          <element name="forekomstNummer" type="integer">
+            <annotation>
+              <documentation>unik nummerering av forekomsten som råstoffobjektet tilhører
+
+Merknad: Benyttes som koplingsnøkkel mellom de ulike objektene i forekomsten. Mange viktige egenskaper finnes kun på områdeobjektet som er hovedobjektet til forekomsten
+
+Eks. 1729001</documentation>
+              <appinfo>
+                <sc:taggedValue tag="SOSI_navn">R_FNR</sc:taggedValue>
+              </appinfo>
+            </annotation>
+          </element>
+          <element name="materialType" type="nydatakilde:MaterialTypeType">
+            <annotation>
+              <documentation>hvilken type råstoff som kan være/er gjenstand for utvinning</documentation>
+              <appinfo>
+                <sc:taggedValue tag="SOSI_navn">MATRTYPE</sc:taggedValue>
+              </appinfo>
+            </annotation>
+          </element>
+          <element name="rastoffBetydning" type="gml:CodeType">
+            <annotation>
+              <documentation>hvorvidt forekomsten er av internasjonal, nasjonal, regional, eller kun av lokal betydning (viktighet)</documentation>
+              <appinfo>
+                <sc:targetCodeListURI>http://skjema.geonorge.no/legg_inn_riktig_url</sc:targetCodeListURI>
+                <sc:taggedValue tag="SOSI_navn">RASTOFFBETYDNING</sc:taggedValue>
+              </appinfo>
+            </annotation>
+          </element>
+          <element minOccurs="0" name="mineralRegistreringType" type="nydatakilde:MineralRegistreringTypeType">
+            <annotation>
+              <documentation>hvilken type mineralforekomst dette er i en økonomisk betraktning
+
+-- Definition --
+The type of mineral occurrence.
+-- Description --
+EXAMPLE: prospect, occurrence, mineral deposit, ore deposit.</documentation>
+            </annotation>
+          </element>
+          <element minOccurs="0" name="navnRastoffobj" type="string">
+            <annotation>
+              <documentation>navn på forekomsten</documentation>
+              <appinfo>
+                <sc:taggedValue tag="SOSI_navn">FOREKNAVN</sc:taggedValue>
+              </appinfo>
+            </annotation>
+          </element>
+          <element minOccurs="0" name="geolBeskrivelse" type="string">
+            <annotation>
+              <documentation>tekstlig beskrivelse av objektet</documentation>
+              <appinfo>
+                <sc:taggedValue tag="SOSI_navn">GEOBESK</sc:taggedValue>
+              </appinfo>
+            </annotation>
+          </element>
+          <element minOccurs="0" name="geolBeskrivelseURL" type="string">
+            <annotation>
+              <documentation>lenke (URL) til tekstlig beskrivelse av objektet</documentation>
+              <appinfo>
+                <sc:taggedValue tag="SOSI_navn">GEOBESK_URL</sc:taggedValue>
+              </appinfo>
+            </annotation>
+          </element>
+          <element maxOccurs="unbounded" name="grusPukkRegistreringerAvgrensning" type="nydatakilde:GeolAvgrLinjePropertyType"/>
+          <element minOccurs="0" name="tilhører" type="nydatakilde:PukkOmrPropertyType"/>
+        </sequence>
+      </extension>
+    </complexContent>
+  </complexType>
+  <complexType name="PukkRegistreringPropertyType">
+    <sequence minOccurs="0">
+      <element ref="nydatakilde:PukkRegistrering"/>
+    </sequence>
+    <attributeGroup ref="gml:AssociationAttributeGroup"/>
+    <attributeGroup ref="gml:OwnershipAttributeGroup"/>
+  </complexType>
+  <element name="PukkUttak" substitutionGroup="nydatakilde:FelleskomponenterGrusPukk" type="nydatakilde:PukkUttakType">
+    <annotation>
+      <documentation>lokalitet hvor pukk tas ut (steinbrudd)</documentation>
+    </annotation>
+  </element>
+  <complexType name="PukkUttakType">
+    <complexContent>
+      <extension base="nydatakilde:FelleskomponenterGrusPukkType">
+        <sequence>
+          <element name="identRastoffobj" type="integer">
+            <annotation>
+              <documentation>forekomstobjektets identifikasjonskode
+
+Merknad: Består av kommunenummer (4 siffer), og et løpenummer (7 siffer). Ideelt sett består løpenummeret av et område nummer (3 siffer), lokalitetsnummer (2 siffer) og prøvenummer (2 siffer).
+
+Eksempel: 17290010101</documentation>
+              <appinfo>
+                <sc:taggedValue tag="SOSI_navn">FOREKOM_ID</sc:taggedValue>
+              </appinfo>
+            </annotation>
+          </element>
+          <element name="forekomstNummer" type="integer">
+            <annotation>
+              <documentation>unik nummerering av forekomsten som råstoffobjektet tilhører
+
+Merknad: Benyttes som koplingsnøkkel mellom de ulike objektene i forekomsten. Mange viktige egenskaper finnes kun på områdeobjektet som er hovedobjektet til forekomsten
+
+Eks. 1729001</documentation>
+              <appinfo>
+                <sc:taggedValue tag="SOSI_navn">R_FNR</sc:taggedValue>
+              </appinfo>
+            </annotation>
+          </element>
+          <element name="materialType" type="nydatakilde:MaterialTypeType">
+            <annotation>
+              <documentation>hvilken type råstoff som kan være/er gjenstand for utvinning</documentation>
+            </annotation>
+          </element>
+          <element name="rastoffBetydning" type="gml:CodeType">
+            <annotation>
+              <documentation>hvorvidt forekomsten er av internasjonal, nasjonal, regional, eller kun av lokal betydning (viktighet)</documentation>
+              <appinfo>
+                <sc:targetCodeListURI>http://skjema.geonorge.no/legg_inn_riktig_url</sc:targetCodeListURI>
+                <sc:taggedValue tag="SOSI_navn">RASTOFFBETYDNING</sc:taggedValue>
+              </appinfo>
+            </annotation>
+          </element>
+          <element minOccurs="0" name="mineralRegistreringType" type="nydatakilde:MineralRegistreringTypeType">
+            <annotation>
+              <documentation>hvilken type mineralforekomst dette er i en økonomisk betraktning
+
+-- Definition --
+The type of mineral occurrence.
+-- Description --
+EXAMPLE: prospect, occurrence, mineral deposit, ore deposit.</documentation>
+            </annotation>
+          </element>
+          <element minOccurs="0" name="materialUndertype" type="string">
+            <annotation>
+              <documentation>underinndeling av materialtypene som kan være/er gjenstand for utvinning</documentation>
+              <appinfo>
+                <sc:taggedValue tag="SOSI_navn">MATRUNTYPE</sc:taggedValue>
+              </appinfo>
+            </annotation>
+          </element>
+          <element minOccurs="0" name="navnRastoffobj" type="string">
+            <annotation>
+              <documentation>navn på forekomsten</documentation>
+              <appinfo>
+                <sc:taggedValue tag="SOSI_navn">FOREKNAVN</sc:taggedValue>
+              </appinfo>
+            </annotation>
+          </element>
+          <element minOccurs="0" name="lokalNummer" type="integer">
+            <annotation>
+              <documentation>nummerering av lokalitet i forekomsten
+
+Merknad: Er en del av FOREKOM_ID: Eks: 1729001(01)01</documentation>
+              <appinfo>
+                <sc:taggedValue tag="SOSI_navn">R_LNR</sc:taggedValue>
+              </appinfo>
+            </annotation>
+          </element>
+          <element minOccurs="0" name="driftForhold" type="nydatakilde:DriftForholdType">
+            <annotation>
+              <documentation>angir driftsforholdene
+
+Merknad: Ajour pr. siste oppdatering</documentation>
+            </annotation>
+          </element>
+          <element minOccurs="0" name="stedfestingVerifisert" type="boolean">
+            <annotation>
+              <documentation>angir om stedfestingen (koordinatene) er kontrollert og funnet i orden (verifisert)</documentation>
+              <appinfo>
+                <sc:taggedValue tag="SOSI_navn">STED_VERIF</sc:taggedValue>
+              </appinfo>
+            </annotation>
+          </element>
+          <element minOccurs="0" name="geolBeskrivelse" type="string">
+            <annotation>
+              <documentation>tekstlig beskrivelse av objektet</documentation>
+              <appinfo>
+                <sc:taggedValue tag="SOSI_navn">GEOBESK</sc:taggedValue>
+              </appinfo>
+            </annotation>
+          </element>
+          <element minOccurs="0" name="geolBeskrivelseURL" type="string">
+            <annotation>
+              <documentation>lenke (URL) til tekstlig beskrivelse av objektet</documentation>
+              <appinfo>
+                <sc:taggedValue tag="SOSI_navn">GEOBESK_URL</sc:taggedValue>
+              </appinfo>
+            </annotation>
+          </element>
+          <element minOccurs="0" name="antallAnalyser" type="integer">
+            <annotation>
+              <documentation>antallet utførte kjemiske og/eller mekaniske analyser</documentation>
+              <appinfo>
+                <sc:taggedValue tag="SOSI_navn">ANT_ANALYS</sc:taggedValue>
+              </appinfo>
+            </annotation>
+          </element>
+          <element minOccurs="0" name="typeRastoffVirksomhet" type="nydatakilde:TypeRastoffVirksomhetType">
+            <annotation>
+              <documentation>angir type/status på eventuell aktivitet</documentation>
+            </annotation>
+          </element>
+          <element name="posisjon" type="gml:PointPropertyType">
+            <annotation>
+              <documentation>sted som objektet eksisterer på</documentation>
+              <appinfo>
+                <sc:taggedValue tag="SOSI_navn">PUNKT</sc:taggedValue>
+              </appinfo>
+            </annotation>
+          </element>
+          <element maxOccurs="unbounded" name="grusPukkObservasjonOgUttakAvgrensning" type="nydatakilde:GeolAvgrLinjePropertyType"/>
+          <element minOccurs="0" name="tilhører" type="nydatakilde:PukkOmrPropertyType"/>
+        </sequence>
+      </extension>
+    </complexContent>
+  </complexType>
+  <complexType name="PukkUttakPropertyType">
+    <sequence minOccurs="0">
+      <element ref="nydatakilde:PukkUttak"/>
+    </sequence>
+    <attributeGroup ref="gml:AssociationAttributeGroup"/>
+    <attributeGroup ref="gml:OwnershipAttributeGroup"/>
+  </complexType>
+  <element name="RastoffProvePkt" substitutionGroup="nydatakilde:FelleskomponenterGrusPukk" type="nydatakilde:RastoffProvePktType">
+    <annotation>
+      <documentation>lokalitet hvor det er tatt (innsamlet) prøve(r) for videre bearbeidelse/analyse</documentation>
+    </annotation>
+  </element>
+  <complexType name="RastoffProvePktType">
+    <complexContent>
+      <extension base="nydatakilde:FelleskomponenterGrusPukkType">
+        <sequence>
+          <element name="posisjon" type="gml:PointPropertyType">
+            <annotation>
+              <documentation>sted som objektet eksisterer på</documentation>
+              <appinfo>
+                <sc:taggedValue tag="SOSI_navn">Punkt</sc:taggedValue>
+              </appinfo>
+            </annotation>
+          </element>
+          <element name="materialType" type="nydatakilde:MaterialTypeType">
+            <annotation>
+              <documentation>hvilken type råstoff som kan være/er gjenstand for utvinning</documentation>
+              <appinfo>
+                <sc:taggedValue tag="SOSI_navn">MATRTYPE</sc:taggedValue>
+              </appinfo>
+            </annotation>
+          </element>
+          <element name="identRastoffobj" type="integer">
+            <annotation>
+              <documentation>forekomstobjektets identifikasjonskode
+
+Merknad: Består av kommunenummer (4 siffer), og et løpenummer (7 siffer). Ideelt sett består løpenummeret av et område nummer (3 siffer), lokalitetsnummer (2 siffer) og prøvenummer (2 siffer).
+
+Eksempel: 17290010101</documentation>
+              <appinfo>
+                <sc:taggedValue tag="SOSI_navn">FOREKOM_ID</sc:taggedValue>
+              </appinfo>
+            </annotation>
+          </element>
+          <element minOccurs="0" name="materialUndertype" type="string">
+            <annotation>
+              <documentation>underinndeling av materialtypene som kan være/er gjenstand for utvinning</documentation>
+              <appinfo>
+                <sc:taggedValue tag="SOSI_navn">MATRUNTYPE</sc:taggedValue>
+              </appinfo>
+            </annotation>
+          </element>
+          <element name="forekomstNummer" type="integer">
+            <annotation>
+              <documentation>unik nummerering av forekomsten som råstoffobjektet tilhører
+
+Merknad: Benyttes som koplingsnøkkel mellom de ulike objektene i forekomsten. Mange viktige egenskaper finnes kun på områdeobjektet som er hovedobjektet til forekomsten
+
+Eks. 1729001</documentation>
+              <appinfo>
+                <sc:taggedValue tag="SOSI_navn">R_FNR</sc:taggedValue>
+              </appinfo>
+            </annotation>
+          </element>
+          <element minOccurs="0" name="navnRastoffobj" type="string">
+            <annotation>
+              <documentation>navn på råstoffobjekt</documentation>
+              <appinfo>
+                <sc:taggedValue tag="SOSI_navn">FOREKNAVN</sc:taggedValue>
+              </appinfo>
+            </annotation>
+          </element>
+          <element minOccurs="0" name="proveNummer" type="integer">
+            <annotation>
+              <documentation>nummerering av prøvepunkt i forekomsten eller i lokaliteten
+
+Merknad: Er en del av FOREKOM_ID: Eks: 172900101(01)</documentation>
+              <appinfo>
+                <sc:taggedValue tag="SOSI_navn">R_PNR</sc:taggedValue>
+              </appinfo>
+            </annotation>
+          </element>
+          <element minOccurs="0" name="geolBeskrivelse" type="string">
+            <annotation>
+              <documentation>tekstlig beskrivelse av objektet</documentation>
+              <appinfo>
+                <sc:taggedValue tag="SOSI_navn">GEOBESK</sc:taggedValue>
+              </appinfo>
+            </annotation>
+          </element>
+          <element minOccurs="0" name="geolBeskrivelseURL" type="string">
+            <annotation>
+              <documentation>lenke (URL) til tekstlig beskrivelse av objektet</documentation>
+              <appinfo>
+                <sc:taggedValue tag="SOSI_navn">GEOBESK_URL</sc:taggedValue>
+              </appinfo>
+            </annotation>
+          </element>
+          <element minOccurs="0" name="antallAnalyser" type="integer">
+            <annotation>
+              <documentation>antallet utførte kjemiske og/eller mekaniske analyser</documentation>
+              <appinfo>
+                <sc:taggedValue tag="SOSI_navn">ANT_ANALYS</sc:taggedValue>
+              </appinfo>
+            </annotation>
+          </element>
+          <element minOccurs="0" name="tilknyttet" type="nydatakilde:SandGrusOmrPropertyType"/>
+          <element minOccurs="0" name="tilknyttet" type="nydatakilde:PukkOmrPropertyType"/>
+        </sequence>
+      </extension>
+    </complexContent>
+  </complexType>
+  <complexType name="RastoffProvePktPropertyType">
+    <sequence minOccurs="0">
+      <element ref="nydatakilde:RastoffProvePkt"/>
+    </sequence>
+    <attributeGroup ref="gml:AssociationAttributeGroup"/>
+    <attributeGroup ref="gml:OwnershipAttributeGroup"/>
+  </complexType>
+  <element name="SandGrusObservasjon" substitutionGroup="nydatakilde:FelleskomponenterGrusPukk" type="nydatakilde:SandGrusObservasjonType">
+    <annotation>
+      <documentation>lokalitet som gir opplysninger om en sand/grusressurs</documentation>
+    </annotation>
+  </element>
+  <complexType name="SandGrusObservasjonType">
+    <complexContent>
+      <extension base="nydatakilde:FelleskomponenterGrusPukkType">
+        <sequence>
+          <element name="posisjon" type="gml:PointPropertyType">
+            <annotation>
+              <documentation>sted som objektet eksisterer på</documentation>
+              <appinfo>
+                <sc:taggedValue tag="SOSI_navn">Punkt</sc:taggedValue>
+              </appinfo>
+            </annotation>
+          </element>
+          <element name="identRastoffobj" type="integer">
+            <annotation>
+              <documentation>forekomstobjektets identifikasjonskode
+
+Merknad: Består av kommunenummer (4 siffer), og et løpenummer (7 siffer). Ideelt sett består løpenummeret av et område nummer (3 siffer), lokalitetsnummer (2 siffer) og prøvenummer (2 siffer).
+
+Eksempel: 17290010101</documentation>
+              <appinfo>
+                <sc:taggedValue tag="SOSI_navn">FOREKOM_ID</sc:taggedValue>
+              </appinfo>
+            </annotation>
+          </element>
+          <element name="forekomstNummer" type="integer">
+            <annotation>
+              <documentation>unik nummerering av forekomsten som råstoffobjektet tilhører
+
+Merknad: Benyttes som koplingsnøkkel mellom de ulike objektene i forekomsten. Mange viktige egenskaper finnes kun på områdeobjektet som er hovedobjektet til forekomsten
+
+Eks. 1729001</documentation>
+              <appinfo>
+                <sc:taggedValue tag="SOSI_navn">R_FNR</sc:taggedValue>
+              </appinfo>
+            </annotation>
+          </element>
+          <element name="materialType" type="nydatakilde:MaterialTypeType">
+            <annotation>
+              <documentation>hvilken type råstoff som kan være/er gjenstand for utvinning</documentation>
+              <appinfo>
+                <sc:taggedValue tag="SOSI_navn">MATRTYPE</sc:taggedValue>
+              </appinfo>
+            </annotation>
+          </element>
+          <element minOccurs="0" name="materialUndertype" type="string">
+            <annotation>
+              <documentation>underinndeling av materialtypene som kan være/er gjenstand for utvinning
+
+Merknad: Er en mer detaljert inndeling av det råstoff som utvinnes (hovedsakelig kjemiske elementer (Cu, Pb, Zn osv.) og mineralnavn)</documentation>
+              <appinfo>
+                <sc:taggedValue tag="SOSI_navn">MATRUNTYPE</sc:taggedValue>
+              </appinfo>
+            </annotation>
+          </element>
+          <element minOccurs="0" name="navnRastoffobj" type="string">
+            <annotation>
+              <documentation>navn på råstoffobjekt</documentation>
+              <appinfo>
+                <sc:taggedValue tag="SOSI_navn">FOREKNAVN</sc:taggedValue>
+              </appinfo>
+            </annotation>
+          </element>
+          <element minOccurs="0" name="geolBeskrivelse" type="string">
+            <annotation>
+              <documentation>tekstlig beskrivelse av objektet</documentation>
+              <appinfo>
+                <sc:taggedValue tag="SOSI_navn">GEOBESK</sc:taggedValue>
+              </appinfo>
+            </annotation>
+          </element>
+          <element minOccurs="0" name="geolBeskrivelseURL" type="string">
+            <annotation>
+              <documentation>lenke (URL) til tekstlig beskrivelse av objektet</documentation>
+              <appinfo>
+                <sc:taggedValue tag="SOSI_navn">GEOBESK_URL</sc:taggedValue>
+              </appinfo>
+            </annotation>
+          </element>
+          <element minOccurs="0" name="antallAnalyser" type="integer">
+            <annotation>
+              <documentation>antallet utførte kjemiske og/eller mekaniske analyser</documentation>
+              <appinfo>
+                <sc:taggedValue tag="SOSI_navn">ANT_ANALYS</sc:taggedValue>
+              </appinfo>
+            </annotation>
+          </element>
+          <element minOccurs="0" name="tilhører" type="nydatakilde:SandGrusOmrPropertyType"/>
+        </sequence>
+      </extension>
+    </complexContent>
+  </complexType>
+  <complexType name="SandGrusObservasjonPropertyType">
+    <sequence minOccurs="0">
+      <element ref="nydatakilde:SandGrusObservasjon"/>
+    </sequence>
+    <attributeGroup ref="gml:AssociationAttributeGroup"/>
+    <attributeGroup ref="gml:OwnershipAttributeGroup"/>
+  </complexType>
+  <element name="SandGrusOmr" substitutionGroup="nydatakilde:FelleskomponenterGrusPukk" type="nydatakilde:SandGrusOmrType">
+    <annotation>
+      <documentation>område som antas å inneholde potensielle sand- og grusressurser</documentation>
+      <appinfo>
+        <sc:taggedValue tag="SOSI_navn">SANDGRUSOMR</sc:taggedValue>
+      </appinfo>
+    </annotation>
+  </element>
+  <complexType name="SandGrusOmrType">
+    <complexContent>
+      <extension base="nydatakilde:FelleskomponenterGrusPukkType">
+        <sequence>
+          <element name="område" type="gml:SurfacePropertyType">
+            <annotation>
+              <documentation>objektets utstrekning</documentation>
+              <appinfo>
+                <sc:taggedValue tag="SOSI_navn">Flate</sc:taggedValue>
+              </appinfo>
+            </annotation>
+          </element>
+          <element name="identRastoffobj" type="integer">
+            <annotation>
+              <documentation>forekomstobjektets identifikasjonskode
+
+Merknad: Består av kommunenummer (4 siffer), og et løpenummer (7 siffer). Ideelt sett består løpenummeret av et område nummer (3 siffer), lokalitetsnummer (2 siffer) og prøvenummer (2 siffer).
+
+Eksempel: 17290010101</documentation>
+              <appinfo>
+                <sc:taggedValue tag="SOSI_navn">FOREKOM_ID</sc:taggedValue>
+              </appinfo>
+            </annotation>
+          </element>
+          <element name="forekomstNummer" type="integer">
+            <annotation>
+              <documentation>unik nummerering av forekomsten som råstoffobjektet tilhører
+
+Merknad: Benyttes som koplingsnøkkel mellom de ulike objektene i forekomsten. Mange viktige egenskaper finnes kun på områdeobjektet som er hovedobjektet til forekomsten
+
+Eks. 1729001</documentation>
+              <appinfo>
+                <sc:taggedValue tag="SOSI_navn">R_FNR</sc:taggedValue>
+              </appinfo>
+            </annotation>
+          </element>
+          <element name="materialType" type="nydatakilde:MaterialTypeType">
+            <annotation>
+              <documentation>hvilken type råstoff som kan være/er gjenstand for utvinning</documentation>
+              <appinfo>
+                <sc:taggedValue tag="SOSI_navn">MATRTYPE</sc:taggedValue>
+              </appinfo>
+            </annotation>
+          </element>
+          <element name="rastoffBetydning" type="gml:CodeType">
+            <annotation>
+              <documentation>hvorvidt forekomsten er av internasjonal, nasjonal, regional, eller kun av lokal betydning (viktighet)</documentation>
+              <appinfo>
+                <sc:targetCodeListURI>http://skjema.geonorge.no/legg_inn_riktig_url</sc:targetCodeListURI>
+                <sc:taggedValue tag="SOSI_navn">RASTOFFBETYDNING</sc:taggedValue>
+              </appinfo>
+            </annotation>
+          </element>
+          <element minOccurs="0" name="mineralRegistreringType" type="nydatakilde:MineralRegistreringTypeType">
+            <annotation>
+              <documentation>hvilken type mineralforekomst dette er i en økonomisk betraktning
+
+-- Definition --
+The type of mineral occurrence.
+-- Description --
+EXAMPLE: prospect, occurrence, mineral deposit, ore deposit.</documentation>
+            </annotation>
+          </element>
+          <element minOccurs="0" name="navnRastoffobj" type="string">
+            <annotation>
+              <documentation>navn på forekomsten</documentation>
+              <appinfo>
+                <sc:taggedValue tag="SOSI_navn">FOREKNAVN</sc:taggedValue>
+              </appinfo>
+            </annotation>
+          </element>
+          <element minOccurs="0" name="typeRastoffVirksomhet" type="nydatakilde:TypeRastoffVirksomhetType">
+            <annotation>
+              <documentation>angir type/status på eventuell aktivitet</documentation>
+              <appinfo>
+                <sc:taggedValue tag="SOSI_navn">VIRKSOMHET</sc:taggedValue>
+              </appinfo>
+            </annotation>
+          </element>
+          <element minOccurs="0" name="geolBeskrivelse" type="string">
+            <annotation>
+              <documentation>tekstlig beskrivelse av objektet</documentation>
+              <appinfo>
+                <sc:taggedValue tag="SOSI_navn">GEOBESK</sc:taggedValue>
+              </appinfo>
+            </annotation>
+          </element>
+          <element minOccurs="0" name="geolBeskrivelseURL" type="string">
+            <annotation>
+              <documentation>lenke (URL) til tekstlig beskrivelse av objektet</documentation>
+              <appinfo>
+                <sc:taggedValue tag="SOSI_navn">GEOBESK_URL</sc:taggedValue>
+              </appinfo>
+            </annotation>
+          </element>
+          <element minOccurs="0" name="antallAnalyser" type="integer">
+            <annotation>
+              <documentation>antallet utførte kjemiske og/eller mekaniske analyser</documentation>
+              <appinfo>
+                <sc:taggedValue tag="SOSI_navn">ANT_ANALYS</sc:taggedValue>
+              </appinfo>
+            </annotation>
+          </element>
+          <element minOccurs="0" name="avfallType" type="integer">
+            <annotation>
+              <documentation>beskriver avfallstypen i et deponi (avfallsområde)</documentation>
+              <appinfo>
+                <sc:taggedValue tag="SOSI_navn">AVFALLTYPE</sc:taggedValue>
+              </appinfo>
+            </annotation>
+          </element>
+          <element minOccurs="0" name="rastoffVolum" type="integer">
+            <annotation>
+              <documentation>gjennomsnittlig volum av råstoffregistreringen eller summen av alle registreringene i råstoffområdet
+
+Volumet er målt i m3 og anslått med 50 % sannsynlighet. Angir areal multiplisert med gjennomsnittlig mektighet</documentation>
+              <appinfo>
+                <sc:taggedValue tag="SOSI_navn">VOLUM_M3</sc:taggedValue>
+              </appinfo>
+            </annotation>
+          </element>
+          <element minOccurs="0" name="sisteBefaringdato" type="integer">
+            <annotation>
+              <documentation>dato for siste feltbefaring av forekomsten</documentation>
+              <appinfo>
+                <sc:taggedValue tag="SOSI_navn">SISTBEFART</sc:taggedValue>
+              </appinfo>
+            </annotation>
+          </element>
+          <element maxOccurs="unbounded" name="grusPukkOmråderAvgrensning" type="nydatakilde:GeolAvgrLinjePropertyType"/>
+          <element maxOccurs="unbounded" minOccurs="0" name="inneholder" type="nydatakilde:SandGrusUttakPropertyType"/>
+          <element maxOccurs="unbounded" minOccurs="0" name="inneholder" type="nydatakilde:SandGrusObservasjonPropertyType"/>
+          <element maxOccurs="unbounded" minOccurs="0" name="inneholder" type="nydatakilde:SandGrusRegistreringPropertyType"/>
+          <element maxOccurs="unbounded" minOccurs="0" name="inneholder" type="nydatakilde:RastoffProvePktPropertyType"/>
+        </sequence>
+      </extension>
+    </complexContent>
+  </complexType>
+  <complexType name="SandGrusOmrPropertyType">
+    <sequence minOccurs="0">
+      <element ref="nydatakilde:SandGrusOmr"/>
+    </sequence>
+    <attributeGroup ref="gml:AssociationAttributeGroup"/>
+    <attributeGroup ref="gml:OwnershipAttributeGroup"/>
+  </complexType>
+  <element name="SandGrusRegistrering" substitutionGroup="nydatakilde:FelleskomponenterGrusPukk" type="nydatakilde:SandGrusRegistreringType">
+    <annotation>
+      <documentation>avgrensning av areal som inneholder sand- og grusressurs</documentation>
+    </annotation>
+  </element>
+  <complexType name="SandGrusRegistreringType">
+    <complexContent>
+      <extension base="nydatakilde:FelleskomponenterGrusPukkType">
+        <sequence>
+          <element name="område" type="gml:SurfacePropertyType">
+            <annotation>
+              <documentation>objektets utstrekning</documentation>
+              <appinfo>
+                <sc:taggedValue tag="SOSI_navn">Flate</sc:taggedValue>
+              </appinfo>
+            </annotation>
+          </element>
+          <element name="identRastoffobj" type="integer">
+            <annotation>
+              <documentation>forekomstobjektets identifikasjonskode
+
+Merknad: Består av kommunenummer (4 siffer), og et løpenummer (7 siffer). Ideelt sett består løpenummeret av et område nummer (3 siffer), lokalitetsnummer (2 siffer) og prøvenummer (2 siffer).
+
+Eksempel: 17290010101</documentation>
+              <appinfo>
+                <sc:taggedValue tag="SOSI_navn">FOREKOM_ID</sc:taggedValue>
+              </appinfo>
+            </annotation>
+          </element>
+          <element name="forekomstNummer" type="integer">
+            <annotation>
+              <documentation>unik nummerering av forekomsten som råstoffobjektet tilhører
+
+Merknad: Benyttes som koplingsnøkkel mellom de ulike objektene i forekomsten. Mange viktige egenskaper finnes kun på områdeobjektet som er hovedobjektet til forekomsten
+
+Eks. 1729001</documentation>
+              <appinfo>
+                <sc:taggedValue tag="SOSI_navn">R_FNR</sc:taggedValue>
+              </appinfo>
+            </annotation>
+          </element>
+          <element name="materialType" type="nydatakilde:MaterialTypeType">
+            <annotation>
+              <documentation>hvilken type råstoff som kan være/er gjenstand for utvinning</documentation>
+              <appinfo>
+                <sc:taggedValue tag="SOSI_navn">MATRTYPE</sc:taggedValue>
+              </appinfo>
+            </annotation>
+          </element>
+          <element name="rastoffBetydning" type="gml:CodeType">
+            <annotation>
+              <documentation>hvorvidt forekomsten er av internasjonal, nasjonal, regional, eller kun av lokal betydning (viktighet)</documentation>
+              <appinfo>
+                <sc:targetCodeListURI>http://skjema.geonorge.no/legg_inn_riktig_url</sc:targetCodeListURI>
+                <sc:taggedValue tag="SOSI_navn">RASTOFFBETYDNING</sc:taggedValue>
+              </appinfo>
+            </annotation>
+          </element>
+          <element minOccurs="0" name="mineralRegistreringType" type="nydatakilde:MineralRegistreringTypeType">
+            <annotation>
+              <documentation>hvilken type mineralforekomst dette er i en økonomisk betraktning
+
+-- Definition --
+The type of mineral occurrence.
+-- Description --
+EXAMPLE: prospect, occurrence, mineral deposit, ore deposit.</documentation>
+              <appinfo>
+                <sc:taggedValue tag="SOSI_navn">MINERALREGTYPE</sc:taggedValue>
+              </appinfo>
+            </annotation>
+          </element>
+          <element minOccurs="0" name="materialUndertype" type="string">
+            <annotation>
+              <documentation>underinndeling av materialtypene som kan være/er gjenstand for utvinning
+
+Merknad: Er en mer detaljert inndeling av det råstoff som utvinnes (hovedsakelig kjemiske elementer (Cu, Pb, Zn osv.) og mineralnavn)</documentation>
+              <appinfo>
+                <sc:taggedValue tag="SOSI_navn">MATRUNTYPE</sc:taggedValue>
+              </appinfo>
+            </annotation>
+          </element>
+          <element minOccurs="0" name="navnRastoffobj" type="string">
+            <annotation>
+              <documentation>navn på forekomsten</documentation>
+              <appinfo>
+                <sc:taggedValue tag="SOSI_navn">FOREKNAVN</sc:taggedValue>
+              </appinfo>
+            </annotation>
+          </element>
+          <element minOccurs="0" name="rastoffVolum" type="integer">
+            <annotation>
+              <documentation>gjennomsnittlig volum av råstoffregistreringen eller summen av alle registreringene i råstoffområdet
+
+Volumet er målt i m3 og anslått med 50 % sannsynlighet. Angir areal multiplisert med gjennomsnittlig mektighet</documentation>
+              <appinfo>
+                <sc:taggedValue tag="SOSI_navn">VOLUM_M3</sc:taggedValue>
+              </appinfo>
+            </annotation>
+          </element>
+          <element minOccurs="0" name="mektighetFemtiProsent" type="double">
+            <annotation>
+              <documentation>gjennomsnittlig mektighetangivelse med 50% sannsynlighet
+
+Merknad: Gjennomsnittlig lagtykkelse (angitt i meter) i forekomsten, anslått med 50 % sannsynlighet. I NGUs grus- og pukkdatabase er det også oppgitt en mektighet med 10 % og 90 % sannsynlighet</documentation>
+              <appinfo>
+                <sc:taggedValue tag="SOSI_navn">MEKT50</sc:taggedValue>
+              </appinfo>
+            </annotation>
+          </element>
+          <element minOccurs="0" name="geolBeskrivelse" type="string">
+            <annotation>
+              <documentation>tekstlig beskrivelse av objektet</documentation>
+              <appinfo>
+                <sc:taggedValue tag="SOSI_navn">GEOBESK</sc:taggedValue>
+              </appinfo>
+            </annotation>
+          </element>
+          <element minOccurs="0" name="geolBeskrivelseURL" type="string">
+            <annotation>
+              <documentation>lenke (URL) til tekstlig beskrivelse av objektet</documentation>
+              <appinfo>
+                <sc:taggedValue tag="SOSI_navn">GEOBESK_URL</sc:taggedValue>
+              </appinfo>
+            </annotation>
+          </element>
+          <element maxOccurs="unbounded" name="grusPukkRegistreringerAvgrensning" type="nydatakilde:GeolAvgrLinjePropertyType"/>
+          <element minOccurs="0" name="tilhører" type="nydatakilde:SandGrusOmrPropertyType"/>
+        </sequence>
+      </extension>
+    </complexContent>
+  </complexType>
+  <complexType name="SandGrusRegistreringPropertyType">
+    <sequence minOccurs="0">
+      <element ref="nydatakilde:SandGrusRegistrering"/>
+    </sequence>
+    <attributeGroup ref="gml:AssociationAttributeGroup"/>
+    <attributeGroup ref="gml:OwnershipAttributeGroup"/>
+  </complexType>
+  <element name="SandGrusUttak" substitutionGroup="nydatakilde:FelleskomponenterGrusPukk" type="nydatakilde:SandGrusUttakType">
+    <annotation>
+      <documentation>lokalitet hvor sand og grus tas ut
+
+Merknad:  (massetak)</documentation>
+    </annotation>
+  </element>
+  <complexType name="SandGrusUttakType">
+    <complexContent>
+      <extension base="nydatakilde:FelleskomponenterGrusPukkType">
+        <sequence>
+          <element name="identRastoffobj" type="integer">
+            <annotation>
+              <documentation>forekomstobjektets identifikasjonskode
+
+Merknad: Består av kommunenummer (4 siffer), og et løpenummer (7 siffer). Ideelt sett består løpenummeret av et område nummer (3 siffer), lokalitetsnummer (2 siffer) og prøvenummer (2 siffer).
+
+Eksempel: 17290010101</documentation>
+              <appinfo>
+                <sc:taggedValue tag="SOSI_navn">FOREKOM_ID</sc:taggedValue>
+              </appinfo>
+            </annotation>
+          </element>
+          <element name="forekomstNummer" type="integer">
+            <annotation>
+              <documentation>unik nummerering av forekomsten som råstoffobjektet tilhører
+
+Merknad: Benyttes som koplingsnøkkel mellom de ulike objektene i forekomsten. Mange viktige egenskaper finnes kun på områdeobjektet som er hovedobjektet til forekomsten
+
+Eks. 1729001</documentation>
+              <appinfo>
+                <sc:taggedValue tag="SOSI_navn">R_FNR</sc:taggedValue>
+              </appinfo>
+            </annotation>
+          </element>
+          <element name="materialType" type="nydatakilde:MaterialTypeType">
+            <annotation>
+              <documentation>hvilken type råstoff som kan være/er gjenstand for utvinning</documentation>
+            </annotation>
+          </element>
+          <element name="rastoffBetydning" type="gml:CodeType">
+            <annotation>
+              <documentation>hvorvidt forekomsten er av internasjonal, nasjonal, regional, eller kun av lokal betydning (viktighet)</documentation>
+              <appinfo>
+                <sc:targetCodeListURI>http://skjema.geonorge.no/legg_inn_riktig_url</sc:targetCodeListURI>
+                <sc:taggedValue tag="SOSI_navn">RASTOFFBETYDNING</sc:taggedValue>
+              </appinfo>
+            </annotation>
+          </element>
+          <element minOccurs="0" name="mineralRegistreringType" type="nydatakilde:MineralRegistreringTypeType">
+            <annotation>
+              <documentation>hvilken type mineralforekomst dette er i en økonomisk betraktning
+
+-- Definition --
+The type of mineral occurrence.
+-- Description --
+EXAMPLE: prospect, occurrence, mineral deposit, ore deposit.</documentation>
+              <appinfo>
+                <sc:taggedValue tag="SOSI_navn">MINERALREGTYPE</sc:taggedValue>
+              </appinfo>
+            </annotation>
+          </element>
+          <element minOccurs="0" name="materialUndertype" type="string">
+            <annotation>
+              <documentation>underinndeling av materialtypene som kan være/er gjenstand for utvinning
+
+Merknad: Er en mer detaljert inndeling av det råstoff som utvinnes (hovedsakelig kjemiske elementer (Cu, Pb, Zn osv.) og mineralnavn)</documentation>
+              <appinfo>
+                <sc:taggedValue tag="SOSI_navn">MATRUNTYPE</sc:taggedValue>
+              </appinfo>
+            </annotation>
+          </element>
+          <element minOccurs="0" name="navnRastoffobj" type="string">
+            <annotation>
+              <documentation>navn på råstoffobjekt</documentation>
+              <appinfo>
+                <sc:taggedValue tag="SOSI_navn">FOREKNAVN</sc:taggedValue>
+              </appinfo>
+            </annotation>
+          </element>
+          <element minOccurs="0" name="lokalNummer" type="integer">
+            <annotation>
+              <documentation>nummerering av lokalitet i forekomsten
+
+Merknad: Er en del av FOREKOM_ID: Eks: 1729001(01)01</documentation>
+              <appinfo>
+                <sc:taggedValue tag="SOSI_navn">R_LNR</sc:taggedValue>
+              </appinfo>
+            </annotation>
+          </element>
+          <element minOccurs="0" name="losmassetype" type="gml:CodeType">
+            <annotation>
+              <documentation>kvartærgeologiske løsmassetyper (jordartstyper)</documentation>
+              <appinfo>
+                <sc:targetCodeListURI>http://skjema.geonorge.no/legg_inn_riktig_url</sc:targetCodeListURI>
+                <sc:taggedValue tag="SOSI_navn">JORDART</sc:taggedValue>
+              </appinfo>
+            </annotation>
+          </element>
+          <element minOccurs="0" name="driftForhold" type="nydatakilde:DriftForholdType">
+            <annotation>
+              <documentation>angir driftsforholdene
+
+Merknad: Ajour pr. siste oppdatering</documentation>
+            </annotation>
+          </element>
+          <element minOccurs="0" name="stedfestingVerifisert" type="boolean">
+            <annotation>
+              <documentation>angir om stedfestingen (koordinatene) er kontrollert og funnet i orden (verifisert)</documentation>
+              <appinfo>
+                <sc:taggedValue tag="SOSI_navn">STED_VERIF</sc:taggedValue>
+              </appinfo>
+            </annotation>
+          </element>
+          <element minOccurs="0" name="geolBeskrivelse" type="string">
+            <annotation>
+              <documentation>tekstlig beskrivelse av objektet</documentation>
+              <appinfo>
+                <sc:taggedValue tag="SOSI_navn">GEOBESK</sc:taggedValue>
+              </appinfo>
+            </annotation>
+          </element>
+          <element minOccurs="0" name="geolBeskrivelseURL" type="string">
+            <annotation>
+              <documentation>lenke (URL) til tekstlig beskrivelse av objektet</documentation>
+              <appinfo>
+                <sc:taggedValue tag="SOSI_navn">GEOBESK_URL</sc:taggedValue>
+              </appinfo>
+            </annotation>
+          </element>
+          <element minOccurs="0" name="antallAnalyser" type="integer">
+            <annotation>
+              <documentation>antallet utførte kjemiske og/eller mekaniske analyser</documentation>
+              <appinfo>
+                <sc:taggedValue tag="SOSI_navn">ANT_ANALYS</sc:taggedValue>
+              </appinfo>
+            </annotation>
+          </element>
+          <element minOccurs="0" name="typeRastoffVirksomhet" type="nydatakilde:TypeRastoffVirksomhetType">
+            <annotation>
+              <documentation>angir type/status på eventuell aktivitet</documentation>
+            </annotation>
+          </element>
+          <element name="posisjon" type="gml:PointPropertyType">
+            <annotation>
+              <documentation>sted som objektet eksisterer på</documentation>
+              <appinfo>
+                <sc:taggedValue tag="SOSI_navn">PUNKT</sc:taggedValue>
+              </appinfo>
+            </annotation>
+          </element>
+          <element maxOccurs="unbounded" name="grusPukkObservasjonOgUttakAvgrensning" type="nydatakilde:GeolAvgrLinjePropertyType"/>
+          <element minOccurs="0" name="tilhører" type="nydatakilde:SandGrusOmrPropertyType"/>
+        </sequence>
+      </extension>
+    </complexContent>
+  </complexType>
+  <complexType name="SandGrusUttakPropertyType">
+    <sequence minOccurs="0">
+      <element ref="nydatakilde:SandGrusUttak"/>
+    </sequence>
+    <attributeGroup ref="gml:AssociationAttributeGroup"/>
+    <attributeGroup ref="gml:OwnershipAttributeGroup"/>
+  </complexType>
+  <simpleType name="TypeRastoffVirksomhetType">
+    <annotation>
+      <documentation>angir type/status på eventuell aktivitet</documentation>
+    </annotation>
+    <union memberTypes="nydatakilde:TypeRastoffVirksomhetEnumerationType nydatakilde:TypeRastoffVirksomhetOtherType"/>
+  </simpleType>
+  <simpleType name="TypeRastoffVirksomhetEnumerationType">
+    <annotation>
+      <documentation>angir type/status på eventuell aktivitet</documentation>
+    </annotation>
+    <restriction base="string">
+      <enumeration value="Prospektering"/>
+      <enumeration value="Røsking"/>
+      <enumeration value="Skjerp"/>
+      <enumeration value="Prøvedrift"/>
+      <enumeration value="Gruvedrift"/>
+      <enumeration value="Steinbrudd"/>
+      <enumeration value="Mulig fremtidig uttaksområde"/>
+      <enumeration value="Typelokalitet(er)"/>
+      <enumeration value="Anleggspukkverk"/>
+      <enumeration value="Biprodukt pukk"/>
+      <enumeration value="Grustak (massetak)"/>
+      <enumeration value="Utplanert massetak/endret arealbruk"/>
+      <enumeration value="Observasjonslokalitet"/>
+      <enumeration value="Leirtak"/>
+      <enumeration value="Torvtak"/>
+      <enumeration value="Naturlig grunnvannskilde"/>
+      <enumeration value="Borebrønn"/>
+      <enumeration value="Overvåkingsstasjon"/>
+    </restriction>
+  </simpleType>
+  <simpleType name="TypeRastoffVirksomhetOtherType">
+    <restriction base="string">
+      <pattern value="other: \w{2,}"/>
+    </restriction>
+  </simpleType>
+</schema>

@@ -1,0 +1,217 @@
+@startuml
+' For wide diagrams, render with: plantuml -DPLANTUML_LIMIT_SIZE=16384 ...
+' The 'scale max' directive below caps the rendered output to prevent the
+' default PlantUML 4096px size limit from cropping the diagram.
+scale max 4000*4000
+
+title Grus og pukk - Ny datakilde - Objekttyper
+
+skinparam backgroundColor #F5F5F5
+skinparam shadowing false
+skinparam RoundCorner 6
+skinparam ArrowColor #6C8198
+skinparam wrapWidth 200
+skinparam class {
+  BackgroundColor #FBF2E8
+  BorderColor #9C8578
+  FontColor #2D201A
+  HeaderBackgroundColor #EFE1D6
+  HeaderFontColor #2D201A
+  AttributeIconSize 0
+}
+skinparam note {
+  BackgroundColor #FFFFFF
+  BorderColor #6C8198
+  FontColor #2D201A
+}
+skinparam stereotypeCBackgroundColor #EAD9CE
+skinparam stereotypeCBorderColor #9C8578
+skinparam stereotypeCFontColor #2D201A
+
+package "Objekttyper" {
+
+  class GeolAvgrLinje <<featureType>> {
+    + grense [1] : Kurve
+  }
+
+  abstract class FelleskomponenterGrusPukk <<featureType>> {
+    + datauttaksdato [0..1] : Date
+    + kvalitet [0..1] : Posisjonskvalitet
+  }
+
+  class PukkUttak <<featureType>> {
+    + identRastoffobj [1] : Integer
+    + forekomstNummer [1] : Integer
+    + materialType [1] : MaterialType
+    + rastoffBetydning [1] : RastoffBetydning
+    + mineralRegistreringType [0..1] : MineralRegistreringType
+    + materialUndertype [0..1] : CharacterString
+    + navnRastoffobj [0..1] : CharacterString
+    + lokalNummer [0..1] : Integer
+    + driftForhold [0..1] : DriftForhold
+    + stedfestingVerifisert [0..1] : Boolean
+    + geolBeskrivelse [0..1] : CharacterString
+    + geolBeskrivelseURL [0..1] : CharacterString
+    + antallAnalyser [0..1] : Integer
+    + typeRastoffVirksomhet [0..1] : TypeRastoffVirksomhet
+    + posisjon [1] : Punkt
+  }
+
+  class SandGrusUttak <<featureType>> {
+    + identRastoffobj [1] : Integer
+    + forekomstNummer [1] : Integer
+    + materialType [1] : MaterialType
+    + rastoffBetydning [1] : RastoffBetydning
+    + mineralRegistreringType [0..1] : MineralRegistreringType
+    + materialUndertype [0..1] : CharacterString
+    + navnRastoffobj [0..1] : CharacterString
+    + lokalNummer [0..1] : Integer
+    + losmassetype [0..1] : Losmassetype
+    + driftForhold [0..1] : DriftForhold
+    + stedfestingVerifisert [0..1] : Boolean
+    + geolBeskrivelse [0..1] : CharacterString
+    + geolBeskrivelseURL [0..1] : CharacterString
+    + antallAnalyser [0..1] : Integer
+    + typeRastoffVirksomhet [0..1] : TypeRastoffVirksomhet
+    + posisjon [1] : Punkt
+  }
+
+  class SandGrusObservasjon <<featureType>> {
+    + posisjon [1] : Punkt
+    + identRastoffobj [1] : Integer
+    + forekomstNummer [1] : Integer
+    + materialType [1] : MaterialType
+    + materialUndertype [0..1] : CharacterString
+    + navnRastoffobj [0..1] : CharacterString
+    + geolBeskrivelse [0..1] : CharacterString
+    + geolBeskrivelseURL [0..1] : CharacterString
+    + antallAnalyser [0..1] : Integer
+  }
+
+  class PukkObservasjon <<featureType>> {
+    + posisjon [1] : Punkt
+    + identRastoffobj [1] : Integer
+    + forekomstNummer [1] : Integer
+    + materialType [1] : MaterialType
+    + navnRastoffobj [0..1] : CharacterString
+    + stedfestingVerifisert [0..1] : Boolean
+    + geolBeskrivelse [0..1] : CharacterString
+    + geolBeskrivelseURL [0..1] : CharacterString
+    + antallAnalyser [0..1] : Integer
+  }
+
+  class SandGrusOmr <<featureType>> {
+    + område [1] : Flate
+    + identRastoffobj [1] : Integer
+    + forekomstNummer [1] : Integer
+    + materialType [1] : MaterialType
+    + rastoffBetydning [1] : RastoffBetydning
+    + mineralRegistreringType [0..1] : MineralRegistreringType
+    + navnRastoffobj [0..1] : CharacterString
+    + typeRastoffVirksomhet [0..1] : TypeRastoffVirksomhet
+    + geolBeskrivelse [0..1] : CharacterString
+    + geolBeskrivelseURL [0..1] : CharacterString
+    + antallAnalyser [0..1] : Integer
+    + avfallType [0..1] : Integer
+    + rastoffVolum [0..1] : Integer
+    + sisteBefaringdato [0..1] : Integer
+  }
+
+  class PukkOmr <<featureType>> {
+    + område [1] : Flate
+    + identRastoffobj [1] : Integer
+    + forekomstNummer [1] : Integer
+    + materialType [1] : MaterialType
+    + rastoffBetydning [1] : RastoffBetydning
+    + mineralRegistreringType [0..1] : MineralRegistreringType
+    + navnRastoffobj [0..1] : CharacterString
+    + typeRastoffVirksomhet [0..1] : TypeRastoffVirksomhet
+    + geolBeskrivelse [0..1] : CharacterString
+    + geolBeskrivelseURL [0..1] : CharacterString
+    + antallAnalyser [0..1] : Integer
+    + sisteBefaringdato [0..1] : Integer
+  }
+
+  class SandGrusRegistrering <<featureType>> {
+    + område [1] : Flate
+    + identRastoffobj [1] : Integer
+    + forekomstNummer [1] : Integer
+    + materialType [1] : MaterialType
+    + rastoffBetydning [1] : RastoffBetydning
+    + mineralRegistreringType [0..1] : MineralRegistreringType
+    + materialUndertype [0..1] : CharacterString
+    + navnRastoffobj [0..1] : CharacterString
+    + rastoffVolum [0..1] : Integer
+    + mektighetFemtiProsent [0..1] : Real
+    + geolBeskrivelse [0..1] : CharacterString
+    + geolBeskrivelseURL [0..1] : CharacterString
+  }
+
+  class PukkRegistrering <<featureType>> {
+    + område [1] : Flate
+    + identRastoffobj [1] : Integer
+    + forekomstNummer [1] : Integer
+    + materialType [1] : MaterialType
+    + rastoffBetydning [1] : RastoffBetydning
+    + mineralRegistreringType [0..1] : MineralRegistreringType
+    + navnRastoffobj [0..1] : CharacterString
+    + geolBeskrivelse [0..1] : CharacterString
+    + geolBeskrivelseURL [0..1] : CharacterString
+  }
+
+  class RastoffProvePkt <<featureType>> {
+    + posisjon [1] : Punkt
+    + materialType [1] : MaterialType
+    + identRastoffobj [1] : Integer
+    + materialUndertype [0..1] : CharacterString
+    + forekomstNummer [1] : Integer
+    + navnRastoffobj [0..1] : CharacterString
+    + proveNummer [0..1] : Integer
+    + geolBeskrivelse [0..1] : CharacterString
+    + geolBeskrivelseURL [0..1] : CharacterString
+    + antallAnalyser [0..1] : Integer
+  }
+
+  class Esker <<featureType>> {
+    + senterlinje [1] : Kurve
+  }
+
+  class Posisjonskvalitet <<dataType>> {
+    + målemetode [1] : Målemetode
+    + nøyaktighet [0..1] : Integer
+  }
+}
+
+  FelleskomponenterGrusPukk <|-- PukkUttak
+  PukkUttak --> GeolAvgrLinje : grusPukkObservasjonOgUttakAvgrensning [1..*]
+  PukkUttak --> PukkOmr : tilhører [0..1]
+  FelleskomponenterGrusPukk <|-- SandGrusUttak
+  SandGrusUttak --> GeolAvgrLinje : grusPukkObservasjonOgUttakAvgrensning [1..*]
+  SandGrusUttak --> SandGrusOmr : tilhører [0..1]
+  FelleskomponenterGrusPukk <|-- SandGrusObservasjon
+  SandGrusObservasjon --> SandGrusOmr : tilhører [0..1]
+  FelleskomponenterGrusPukk <|-- PukkObservasjon
+  PukkObservasjon --> PukkOmr : tilhører [0..1]
+  FelleskomponenterGrusPukk <|-- SandGrusOmr
+  SandGrusOmr --> GeolAvgrLinje : grusPukkOmråderAvgrensning [1..*]
+  SandGrusOmr --> SandGrusUttak : inneholder [0..*]
+  SandGrusOmr --> SandGrusObservasjon : inneholder [0..*]
+  SandGrusOmr --> SandGrusRegistrering : inneholder [0..*]
+  SandGrusOmr --> RastoffProvePkt : inneholder [0..*]
+  FelleskomponenterGrusPukk <|-- PukkOmr
+  PukkOmr --> GeolAvgrLinje : grusPukkOmråderAvgrensning [1..*]
+  PukkOmr --> PukkUttak : inneholder [0..*]
+  PukkOmr --> PukkObservasjon : inneholder [0..*]
+  PukkOmr --> RastoffProvePkt : inneholder [0..*]
+  PukkOmr --> PukkRegistrering : inneholder [0..*]
+  FelleskomponenterGrusPukk <|-- SandGrusRegistrering
+  SandGrusRegistrering --> GeolAvgrLinje : grusPukkRegistreringerAvgrensning [1..*]
+  SandGrusRegistrering --> SandGrusOmr : tilhører [0..1]
+  FelleskomponenterGrusPukk <|-- PukkRegistrering
+  PukkRegistrering --> GeolAvgrLinje : grusPukkRegistreringerAvgrensning [1..*]
+  PukkRegistrering --> PukkOmr : tilhører [0..1]
+  FelleskomponenterGrusPukk <|-- RastoffProvePkt
+  RastoffProvePkt --> SandGrusOmr : tilknyttet [0..1]
+  RastoffProvePkt --> PukkOmr : tilknyttet [0..1]
+
+@enduml
