@@ -1,0 +1,73 @@
+---
+label: Målemetode
+entries:
+  Aerotriangulert: Aerotriangulert
+  Annet  (denne har ingen mening, bør fjernes?): "Annet  (denne har ingen mening, bør fjernes?)"
+  Annet (spesifiseres i filhode) ( bør vel fjernes, blir borte ved overføring mellom systemer): "Annet (spesifiseres i filhode) ( bør vel fjernes, blir borte ved overføring mellom systemer)"
+  Beregnet: Beregnet
+  Bilbåren laser: Bilbåren laser
+  'Digitaliseringbord: Flybilde, film': "Digitaliseringbord: Flybilde, film"
+  'Digitaliseringbord: Flybilde, fotokopi': "Digitaliseringbord: Flybilde, fotokopi"
+  'Digitaliseringbord: Ortofoto eller flybilde': "Digitaliseringbord: Ortofoto eller flybilde"
+  'Digitaliseringbord: Ortofoto, film': "Digitaliseringbord: Ortofoto, film"
+  'Digitaliseringbord: Ortofoto, fotokopi': "Digitaliseringbord: Ortofoto, fotokopi"
+  'Digitaliseringsbord: Kart': "Digitaliseringsbord: Kart"
+  'Digitaliseringsbord: Kart, blyantoriginal': "Digitaliseringsbord: Kart, blyantoriginal"
+  'Digitaliseringsbord: Kart, papirkopi': "Digitaliseringsbord: Kart, papirkopi"
+  'Digitaliseringsbord: Kart, rissefoile': "Digitaliseringsbord: Kart, rissefoile"
+  'Digitaliseringsbord: Kart, transparent foile, god kvalitet': "Digitaliseringsbord: Kart, transparent foile, god kvalitet"
+  'Digitaliseringsbord: Kart, transparent foile, mindre god kvalitet': "Digitaliseringsbord: Kart, transparent foile, mindre god kvalitet"
+  Digitalisert på skjerm fra andre digitale rasterdata: Digitalisert på skjerm fra andre digitale rasterdata
+  Digitalisert på skjerm fra ortofoto: Digitalisert på skjerm fra ortofoto
+  Digitalisert på skjerm fra satellittbilde: Digitalisert på skjerm fra satellittbilde
+  Digitalisert på skjerm fra skannet kart: Digitalisert på skjerm fra skannet kart
+  Digitalisert på skjerm fra tolkning av seismikk: Digitalisert på skjerm fra tolkning av seismikk
+  Fastsatt punkt: Fastsatt punkt
+  Fastsatt ved dom eller kongelig resolusjon: Fastsatt ved dom eller kongelig resolusjon
+  Flybåren laserscanner: Flybåren laserscanner
+  Frihåndstegning: Frihåndstegning
+  Frihåndstegning på kart: Frihåndstegning på kart
+  Frihåndstegning på skjerm: Frihåndstegning på skjerm
+  'GNSS: Fasemåling , float-løsning': "GNSS: Fasemåling , float-løsning"
+  'GNSS: Fasemåling RTK': "GNSS: Fasemåling RTK"
+  'GNSS: Fasemåling, andre metoder': "GNSS: Fasemåling, andre metoder"
+  'GNSS: Fasemåling, statisk måling': "GNSS: Fasemåling, statisk måling"
+  'GNSS: Kodemåling, enkle målinger': "GNSS: Kodemåling, enkle målinger"
+  'GNSS: Kodemåling, relative målinger': "GNSS: Kodemåling, relative målinger"
+  Genererte data (interpolasjon): Genererte data (interpolasjon)
+  'Genererte data (interpolasjon): Terrengmodell': "Genererte data (interpolasjon): Terrengmodell"
+  'Genererte data (interpolasjon): Vektet middel': "Genererte data (interpolasjon): Vektet middel"
+  'Genererte data: Fra annen geometri': "Genererte data: Fra annen geometri"
+  'Genererte data: Generalisering': "Genererte data: Generalisering"
+  'Genererte data: Sammenknytningspunkt, randpunkt': "Genererte data: Sammenknytningspunkt, randpunkt"
+  'Genererte data: Sentralpunkt': "Genererte data: Sentralpunkt"
+  Kombinasjon av GNSS/Treghet: Kombinasjon av GNSS/Treghet
+  Koordinater hentet fra GAB: Koordinater hentet fra GAB
+  Koordinater hentet fra JREG: Koordinater hentet fra JREG
+  Lineær referanse: Lineær referanse
+  Scannet fra kart: Scannet fra kart
+  'Skannet fra kart: Blyantoriginal': "Skannet fra kart: Blyantoriginal"
+  'Skannet fra kart: Papirkopi': "Skannet fra kart: Papirkopi"
+  'Skannet fra kart: Rissefolie': "Skannet fra kart: Rissefolie"
+  'Skannet fra kart: Transparent folie, god kvalitet': "Skannet fra kart: Transparent folie, god kvalitet"
+  'Skannet fra kart: Transparent folie, mindre god kvalitet': "Skannet fra kart: Transparent folie, mindre god kvalitet"
+  Spesielle metoder: Spesielle metoder
+  'Spesielle metoder: Målt med målehjul': "Spesielle metoder: Målt med målehjul"
+  'Spesielle metoder: Målt med stigningsmåler': "Spesielle metoder: Målt med stigningsmåler"
+  'Spesielle metoder: Målt med stikkstang': "Spesielle metoder: Målt med stikkstang"
+  'Spesielle metoder: Målt med waterstang': "Spesielle metoder: Målt med waterstang"
+  Stereoinstrument: Stereoinstrument
+  'Stereoinstrument: Analytisk plotter': "Stereoinstrument: Analytisk plotter"
+  'Stereoinstrument: Autograf': "Stereoinstrument: Autograf"
+  'Stereoinstrument: Digitalt': "Stereoinstrument: Digitalt"
+  Tatt fra plan: Tatt fra plan
+  'Terrengmålt: Ortogonalmetoden': "Terrengmålt: Ortogonalmetoden"
+  'Terrengmålt: Teodolitt og el avstandsmåler': "Terrengmålt: Teodolitt og el avstandsmåler"
+  'Terrengmålt: Teodolitt og målebånd': "Terrengmålt: Teodolitt og målebånd"
+  'Terrengmålt: Totalstasjon': "Terrengmålt: Totalstasjon"
+  'Terrengmålt: Uspesifisert måleinstrument': "Terrengmålt: Uspesifisert måleinstrument"
+  Treghetsstedfesting: Treghetsstedfesting
+  Ukjent målemetode: Ukjent målemetode
+  Utmål: Utmål
+  Vektorisering av laserdata: Vektorisering av laserdata
+sourceType: TEMPLATES

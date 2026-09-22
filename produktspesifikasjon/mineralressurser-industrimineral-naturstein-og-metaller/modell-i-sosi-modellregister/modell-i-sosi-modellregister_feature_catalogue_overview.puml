@@ -1,0 +1,85 @@
+@startuml
+' For wide diagrams, render with: plantuml -DPLANTUML_LIMIT_SIZE=16384 ...
+' The 'scale max' directive below caps the rendered output to prevent the
+' default PlantUML 4096px size limit from cropping the diagram.
+scale max 4000*4000
+
+title Mineralressurser: industrimineral, naturstein og metaller - Modell i SOSI modellregister - Oversikt
+
+skinparam backgroundColor #F5F5F5
+skinparam shadowing false
+skinparam RoundCorner 6
+skinparam ArrowColor #6C8198
+skinparam wrapWidth 200
+skinparam class {
+  BackgroundColor #FBF2E8
+  BorderColor #9C8578
+  FontColor #2D201A
+  HeaderBackgroundColor #EFE1D6
+  HeaderFontColor #2D201A
+  AttributeIconSize 0
+}
+skinparam note {
+  BackgroundColor #FFFFFF
+  BorderColor #6C8198
+  FontColor #2D201A
+}
+skinparam stereotypeCBackgroundColor #EAD9CE
+skinparam stereotypeCBorderColor #9C8578
+skinparam stereotypeCFontColor #2D201A
+
+package "Mineralressurser 2.0" {
+  abstract class FellesegenskaperMineralressurser <<featureType>> {
+  }
+  class GeolAvgrLinje <<featureType>> {
+  }
+}
+
+package "RåstoffLokaliteter" {
+  class IndustrimineralLokalitet <<featureType>> {
+  }
+  class MalmLokalitet <<featureType>> {
+  }
+  class NatursteinLokalitet <<featureType>> {
+  }
+}
+
+package "RåstoffOmrådeFlater" {
+  class MalmOmrFlate <<featureType>> {
+  }
+  class NatursteinOmrFlate <<featureType>> {
+  }
+  class IndustrimineralOmrFlate <<featureType>> {
+  }
+}
+
+package "RåstoffOmrådePunkt" {
+  class IndustrimineralOmrPkt <<featureType>> {
+  }
+  class MalmOmrPkt <<featureType>> {
+  }
+  class NatursteinOmrPkt <<featureType>> {
+  }
+}
+
+package "Spesielle" {
+  class RastoffProvePkt <<featureType>> {
+  }
+}
+
+
+FellesegenskaperMineralressurser <|-- MalmOmrFlate
+MalmOmrFlate --> GeolAvgrLinje : malmOmrFlateAvgrensning [1..*]
+FellesegenskaperMineralressurser <|-- NatursteinOmrFlate
+NatursteinOmrFlate --> GeolAvgrLinje : natursteinOmrFlateAvgrensning [1..*]
+FellesegenskaperMineralressurser <|-- IndustrimineralOmrFlate
+IndustrimineralOmrFlate --> GeolAvgrLinje : industrimineralOmrFlateAvgrensning [1..*]
+FellesegenskaperMineralressurser <|-- IndustrimineralOmrPkt
+FellesegenskaperMineralressurser <|-- MalmOmrPkt
+FellesegenskaperMineralressurser <|-- NatursteinOmrPkt
+FellesegenskaperMineralressurser <|-- IndustrimineralLokalitet
+FellesegenskaperMineralressurser <|-- MalmLokalitet
+FellesegenskaperMineralressurser <|-- NatursteinLokalitet
+FellesegenskaperMineralressurser <|-- RastoffProvePkt
+
+@enduml

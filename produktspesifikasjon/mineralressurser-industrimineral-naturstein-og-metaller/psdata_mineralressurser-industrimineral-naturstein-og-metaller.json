@@ -110,6 +110,13 @@
         "level": "dataset",
         "levelDescription": "Gjelder hele datasettet. Hvis omfang ikke er oppgitt under en overskrift, gjelder teksten for hele datasettet og alle leveranser"
       }
+    },
+    {
+      "specificationScope": {
+        "scopeIdentification": "Modell i SOSI modellregister",
+        "level": "dataset",
+        "levelDescription": "Datamodell"
+      }
     }
   ],
   "referenceSystemSection": {
@@ -310,6 +317,63 @@
           }
         ],
         "deliveryScope": "Tjeneste"
+      }
+    },
+    {
+      "delivery": {
+        "deliveryMedium": {
+          "deliveryMediumName": "GeoPackage: modell-i-sosi-modellregister",
+          "deliveryService": {
+            "serviceEndpoint": "https://raw.githubusercontent.com/aatjora/produktspesifikasjon_gjennomgang/main/produktspesifikasjon/mineralressurser-industrimineral-naturstein-og-metaller/modell-i-sosi-modellregister/modell-i-sosi-modellregister.gpkg",
+            "serviceProperty": {
+              "type": "Fil",
+              "value": "Nedlasting"
+            }
+          }
+        },
+        "deliveryFormat": [
+          {
+            "formatName": "GPKG"
+          }
+        ]
+      }
+    },
+    {
+      "delivery": {
+        "deliveryMedium": {
+          "deliveryMediumName": "GML/XSD-skjema: modell-i-sosi-modellregister",
+          "deliveryService": {
+            "serviceEndpoint": "https://raw.githubusercontent.com/aatjora/produktspesifikasjon_gjennomgang/main/produktspesifikasjon/mineralressurser-industrimineral-naturstein-og-metaller/modell-i-sosi-modellregister/schema/xsd/INPUT/modell-i-sosi-modellregister.xsd",
+            "serviceProperty": {
+              "type": "Fil",
+              "value": "Nedlasting"
+            }
+          }
+        },
+        "deliveryFormat": [
+          {
+            "formatName": "XSD"
+          }
+        ]
+      }
+    },
+    {
+      "delivery": {
+        "deliveryMedium": {
+          "deliveryMediumName": "JSON Schema: modell-i-sosi-modellregister",
+          "deliveryService": {
+            "serviceEndpoint": "https://raw.githubusercontent.com/aatjora/produktspesifikasjon_gjennomgang/main/produktspesifikasjon/mineralressurser-industrimineral-naturstein-og-metaller/modell-i-sosi-modellregister/schema/jsonschema/INPUT/modellisosimodellregister/modell-i-sosi-modellregister.json",
+            "serviceProperty": {
+              "type": "Fil",
+              "value": "Nedlasting"
+            }
+          }
+        },
+        "deliveryFormat": [
+          {
+            "formatName": "JSON Schema"
+          }
+        ]
       }
     }
   ],
