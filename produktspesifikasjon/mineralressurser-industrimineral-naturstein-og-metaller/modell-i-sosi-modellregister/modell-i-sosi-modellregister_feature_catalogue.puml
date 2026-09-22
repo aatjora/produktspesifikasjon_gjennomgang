@@ -1,0 +1,250 @@
+@startuml
+' For wide diagrams, render with: plantuml -DPLANTUML_LIMIT_SIZE=16384 ...
+' The 'scale max' directive below caps the rendered output to prevent the
+' default PlantUML 4096px size limit from cropping the diagram.
+scale max 4000*4000
+
+title Mineralressurser: industrimineral, naturstein og metaller - Modell i SOSI modellregister - Objekttyper
+
+skinparam backgroundColor #F5F5F5
+skinparam shadowing false
+skinparam RoundCorner 6
+skinparam ArrowColor #6C8198
+skinparam wrapWidth 200
+skinparam class {
+  BackgroundColor #FBF2E8
+  BorderColor #9C8578
+  FontColor #2D201A
+  HeaderBackgroundColor #EFE1D6
+  HeaderFontColor #2D201A
+  AttributeIconSize 0
+}
+skinparam note {
+  BackgroundColor #FFFFFF
+  BorderColor #6C8198
+  FontColor #2D201A
+}
+skinparam stereotypeCBackgroundColor #EAD9CE
+skinparam stereotypeCBorderColor #9C8578
+skinparam stereotypeCFontColor #2D201A
+
+package "Objekttyper" {
+
+  abstract class FellesegenskaperMineralressurser <<featureType>> {
+    + datauttaksdato [1] : Date
+    + førsteDatafangstdato [0..1] : Date
+    + kvalitet [0..1] : Posisjonskvalitet
+    + stedfestingVerifisert [0..1] : Boolean
+  }
+
+  class GeolAvgrLinje <<featureType>> {
+    + grense [1] : Kurve
+  }
+
+  class MalmOmrFlate <<featureType>> {
+    + område [1] : Flate
+    + identRastoffobj [1] : Integer
+    + forekomstNummer [1] : Integer
+    + materialType [1] : MaterialType
+    + rastoffBetydning [1] : RastoffBetydning
+    + mineralRegistreringType [0..1] : MineralRegistreringType
+    + materialUndertype [0..1] : CharacterString
+    + navnRastoffobj [0..1] : CharacterString
+    + typeRastoffVirksomhet [0..1] : TypeRastoffVirksomhet
+    + rastoffReserver [0..1] : Integer
+    + driftMetode [0..1] : DriftMetode
+    + driftForhold [0..1] : DriftForhold
+    + totalProduksjon [0..1] : Integer
+    + geolBeskrivelse [0..1] : CharacterString
+    + antallAnalyser [0..1] : Integer
+    + faktaark_URL [0..1] : CharacterString
+    + ressursEstimatstnd [0..1] : CharacterString
+    + historiskViktig [0..1] : Boolean
+  }
+
+  class NatursteinOmrFlate <<featureType>> {
+    + område [1] : Flate
+    + identRastoffobj [1] : Integer
+    + forekomstNummer [1] : Integer
+    + materialType [1] : MaterialType
+    + rastoffBetydning [1] : RastoffBetydning
+    + mineralRegistreringType [0..1] : MineralRegistreringType
+    + materialUndertype [0..1] : CharacterString
+    + navnRastoffobj [0..1] : CharacterString
+    + typeRastoffVirksomhet [0..1] : TypeRastoffVirksomhet
+    + rastoffReserver [0..1] : Integer
+    + driftMetode [0..1] : DriftMetode
+    + driftForhold [0..1] : DriftForhold
+    + totalProduksjon [0..1] : Integer
+    + geolBeskrivelse [0..1] : CharacterString
+    + antallAnalyser [0..1] : Integer
+    + faktaark_URL [0..1] : CharacterString
+    + ressursEstimatstnd [0..1] : CharacterString
+    + historiskViktig [0..1] : Boolean
+  }
+
+  class IndustrimineralOmrFlate <<featureType>> {
+    + område [1] : Flate
+    + identRastoffobj [1] : Integer
+    + forekomstNummer [1] : Integer
+    + materialType [1] : MaterialType
+    + rastoffBetydning [1] : RastoffBetydning
+    + mineralRegistreringType [0..1] : MineralRegistreringType
+    + materialUndertype [0..1] : CharacterString
+    + navnRastoffobj [0..1] : CharacterString
+    + typeRastoffVirksomhet [0..1] : TypeRastoffVirksomhet
+    + rastoffReserver [0..1] : Integer
+    + driftMetode [0..1] : DriftMetode
+    + driftForhold [0..1] : DriftForhold
+    + totalProduksjon [0..1] : Integer
+    + geolBeskrivelse [0..1] : CharacterString
+    + antallAnalyser [0..1] : Integer
+    + faktaark_URL [0..1] : CharacterString
+    + ressursEstimatstnd [0..1] : CharacterString
+    + historiskViktig [0..1] : Boolean
+  }
+
+  class IndustrimineralOmrPkt <<featureType>> {
+    + posisjon [1] : Punkt
+    + identRastoffobj [1] : Integer
+    + forekomstNummer [1] : Integer
+    + materialType [1] : MaterialType
+    + rastoffBetydning [1] : RastoffBetydning
+    + mineralRegistreringType [0..1] : MineralRegistreringType
+    + materialUndertype [0..1] : CharacterString
+    + navnRastoffobj [0..1] : CharacterString
+    + typeRastoffVirksomhet [0..1] : TypeRastoffVirksomhet
+    + rastoffReserver [0..1] : Integer
+    + driftMetode [0..1] : DriftMetode
+    + driftForhold [0..1] : DriftForhold
+    + totalProduksjon [0..1] : Integer
+    + geolBeskrivelse [0..1] : CharacterString
+    + antallAnalyser [0..1] : Integer
+    + faktaark_URL [0..1] : CharacterString
+    + ressursEstimatstnd [0..1] : CharacterString
+    + historiskViktig [0..1] : Boolean
+  }
+
+  class MalmOmrPkt <<featureType>> {
+    + posisjon [1] : Punkt
+    + identRastoffobj [1] : Integer
+    + forekomstNummer [1] : Integer
+    + materialType [1] : MaterialType
+    + rastoffBetydning [1] : RastoffBetydning
+    + mineralRegistreringType [0..1] : MineralRegistreringType
+    + materialUndertype [0..1] : CharacterString
+    + navnRastoffobj [0..1] : CharacterString
+    + typeRastoffVirksomhet [0..1] : TypeRastoffVirksomhet
+    + rastoffReserver [0..1] : Integer
+    + driftMetode [0..1] : DriftMetode
+    + driftForhold [0..1] : DriftForhold
+    + totalProduksjon [0..1] : Integer
+    + geolBeskrivelse [0..1] : CharacterString
+    + antallAnalyser [0..1] : Integer
+    + faktaark_URL [0..1] : CharacterString
+    + ressursEstimatstnd [0..1] : CharacterString
+    + historiskViktig [0..1] : Boolean
+  }
+
+  class NatursteinOmrPkt <<featureType>> {
+    + posisjon [1] : Punkt
+    + identRastoffobj [1] : Integer
+    + forekomstNummer [1] : Integer
+    + materialType [1] : MaterialType
+    + rastoffBetydning [1] : RastoffBetydning
+    + mineralRegistreringType [0..1] : MineralRegistreringType
+    + materialUndertype [0..1] : CharacterString
+    + navnRastoffobj [0..1] : CharacterString
+    + typeRastoffVirksomhet [0..1] : TypeRastoffVirksomhet
+    + rastoffReserver [0..1] : Integer
+    + driftMetode [0..1] : DriftMetode
+    + driftForhold [0..1] : DriftForhold
+    + totalProduksjon [0..1] : Integer
+    + geolBeskrivelse [0..1] : CharacterString
+    + antallAnalyser [0..1] : Integer
+    + faktaark_URL [0..1] : CharacterString
+    + ressursEstimatstnd [0..1] : CharacterString
+    + historiskViktig [0..1] : Boolean
+  }
+
+  class IndustrimineralLokalitet <<featureType>> {
+    + posisjon [1] : Punkt
+    + identRastoffobj [1] : Integer
+    + forekomstNummer [1] : Integer
+    + materialType [1] : MaterialType
+    + materialUndertype [0..1] : CharacterString
+    + navnRastoffobj [0..1] : CharacterString
+    + typeRastoffVirksomhet [0..1] : TypeRastoffVirksomhet
+    + driftMetode [0..1] : DriftMetode
+    + driftForhold [0..1] : DriftForhold
+    + totalProduksjon [0..1] : Integer
+    + geolBeskrivelse [0..1] : CharacterString
+    + antallAnalyser [0..1] : Integer
+    + historiskViktig [0..1] : Boolean
+  }
+
+  class MalmLokalitet <<featureType>> {
+    + posisjon [1] : Punkt
+    + identRastoffobj [1] : Integer
+    + forekomstNummer [1] : Integer
+    + materialType [1] : MaterialType
+    + materialUndertype [0..1] : CharacterString
+    + navnRastoffobj [0..1] : CharacterString
+    + typeRastoffVirksomhet [0..1] : TypeRastoffVirksomhet
+    + driftMetode [0..1] : DriftMetode
+    + driftForhold [0..1] : DriftForhold
+    + totalProduksjon [0..1] : Integer
+    + geolBeskrivelse [0..1] : CharacterString
+    + antallAnalyser [0..1] : Integer
+    + historiskViktig [0..1] : Boolean
+  }
+
+  class NatursteinLokalitet <<featureType>> {
+    + posisjon [1] : Punkt
+    + identRastoffobj [1] : Integer
+    + forekomstNummer [1] : Integer
+    + materialType [1] : MaterialType
+    + materialUndertype [0..1] : CharacterString
+    + navnRastoffobj [0..1] : CharacterString
+    + typeRastoffVirksomhet [0..1] : TypeRastoffVirksomhet
+    + driftMetode [0..1] : DriftMetode
+    + driftForhold [0..1] : DriftForhold
+    + totalProduksjon [0..1] : Integer
+    + geolBeskrivelse [0..1] : CharacterString
+    + antallAnalyser [0..1] : Integer
+    + historiskViktig [0..1] : Boolean
+  }
+
+  class RastoffProvePkt <<featureType>> {
+    + posisjon [1] : Punkt
+    + materialType [1] : MaterialType
+    + materialUndertype [0..1] : CharacterString
+    + identRastoffobj [1] : Integer
+    + forekomstNummer [1] : Integer
+    + navnRastoffobj [0..1] : CharacterString
+    + proveNummer [0..1] : Integer
+    + antallAnalyser [0..1] : CharacterString
+    + geolBeskrivelse [0..1] : CharacterString
+  }
+
+  class Posisjonskvalitet <<dataType>> {
+    + målemetode [1] : Målemetode
+    + nøyaktighet [0..1] : Integer
+  }
+}
+
+  FellesegenskaperMineralressurser <|-- MalmOmrFlate
+  MalmOmrFlate --> GeolAvgrLinje : malmOmrFlateAvgrensning [1..*]
+  FellesegenskaperMineralressurser <|-- NatursteinOmrFlate
+  NatursteinOmrFlate --> GeolAvgrLinje : natursteinOmrFlateAvgrensning [1..*]
+  FellesegenskaperMineralressurser <|-- IndustrimineralOmrFlate
+  IndustrimineralOmrFlate --> GeolAvgrLinje : industrimineralOmrFlateAvgrensning [1..*]
+  FellesegenskaperMineralressurser <|-- IndustrimineralOmrPkt
+  FellesegenskaperMineralressurser <|-- MalmOmrPkt
+  FellesegenskaperMineralressurser <|-- NatursteinOmrPkt
+  FellesegenskaperMineralressurser <|-- IndustrimineralLokalitet
+  FellesegenskaperMineralressurser <|-- MalmLokalitet
+  FellesegenskaperMineralressurser <|-- NatursteinLokalitet
+  FellesegenskaperMineralressurser <|-- RastoffProvePkt
+
+@enduml

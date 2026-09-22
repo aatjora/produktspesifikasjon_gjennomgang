@@ -1,0 +1,51 @@
+---
+id: modell_i_sosi_modellregister
+label: FIXME
+description: FIXME
+enabled: true
+serviceType: OGC_API
+collections:
+  geolavgrlinje:
+    id: geolavgrlinje
+    label: geolavgrlinje
+    enabled: true
+  industriminerallokalitet:
+    id: industriminerallokalitet
+    label: industriminerallokalitet
+    enabled: true
+  industrimineralomrflate:
+    id: industrimineralomrflate
+    label: industrimineralomrflate
+    enabled: true
+  industrimineralomrpkt:
+    id: industrimineralomrpkt
+    label: industrimineralomrpkt
+    enabled: true
+  malmlokalitet:
+    id: malmlokalitet
+    label: malmlokalitet
+    enabled: true
+  malmomrflate:
+    id: malmomrflate
+    label: malmomrflate
+    enabled: true
+  malmomrpkt:
+    id: malmomrpkt
+    label: malmomrpkt
+    enabled: true
+  natursteinlokalitet:
+    id: natursteinlokalitet
+    label: natursteinlokalitet
+    enabled: true
+  natursteinomrflate:
+    id: natursteinomrflate
+    label: natursteinomrflate
+    enabled: true
+  natursteinomrpkt:
+    id: natursteinomrpkt
+    label: natursteinomrpkt
+    enabled: true
+  rastoffprovepkt:
+    id: rastoffprovepkt
+    label: rastoffprovepkt
+    enabled: true

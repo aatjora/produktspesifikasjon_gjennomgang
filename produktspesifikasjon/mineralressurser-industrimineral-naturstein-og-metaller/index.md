@@ -78,6 +78,26 @@ Dataene gir en oversikt over landets oppføringer av industrimineral, naturstein
 
 **Nivåbeskrivelse**: Gjelder hele datasettet. Hvis omfang ikke er oppgitt under en overskrift, gjelder teksten for hele datasettet og alle leveranser
 
+### Modell i SOSI modellregister
+
+**Nivå**: dataset
+
+**Nivåbeskrivelse**: Datamodell
+
+## Datainnhold og struktur
+
+
+
+### Datamodell - Modell i SOSI modellregister
+
+
+
+<a href="modell-i-sosi-modellregister/modell-i-sosi-modellregister_feature_catalogue_overview.png" title="Klikk for stor visning"><img src="modell-i-sosi-modellregister/modell-i-sosi-modellregister_feature_catalogue_overview.png" alt="Datamodell Modell i SOSI modellregister" style="max-width: 100%; height: auto;" /></a>
+
+
+
+➡️ [Se full datamodell for omfang "Modell i SOSI modellregister" (diagram per pakke og objektkatalog)](modell-i-sosi-modellregister/objektkatalog.html)
+
 ## Referansesystem
 
 | EPSG-kode | Navn på referansesystem |
@@ -134,6 +154,9 @@ Dataene gir en oversikt over landets oppføringer av industrimineral, naturstein
 | Naturstein WMS | [Lenke](https://geo.ngu.no/mapserver/NatursteinWMS3?request=GetCapabilities&service=WMS) | WMS-tjeneste | png |  |
 | Metaller WMS | [Lenke](https://geo.ngu.no/mapserver/MetallerWMS2?request=GetCapabilities&service=WMS) | WMS-tjeneste | WMS-tjeneste |  |
 | Industrimineraler WMS | [Lenke](https://geo.ngu.no/mapserver/IndustrimineralerWMS3?request=GetCapabilities&service=WMS) | WMS-tjeneste | WMS-tjeneste |  |
+| GeoPackage: modell-i-sosi-modellregister | [Lenke](https://raw.githubusercontent.com/aatjora/produktspesifikasjon_gjennomgang/main/produktspesifikasjon/mineralressurser-industrimineral-naturstein-og-metaller/modell-i-sosi-modellregister/modell-i-sosi-modellregister.gpkg) | Nedlasting | GPKG |  |
+| GML/XSD-skjema: modell-i-sosi-modellregister | [Lenke](https://raw.githubusercontent.com/aatjora/produktspesifikasjon_gjennomgang/main/produktspesifikasjon/mineralressurser-industrimineral-naturstein-og-metaller/modell-i-sosi-modellregister/schema/xsd/INPUT/modell-i-sosi-modellregister.xsd) | Nedlasting | XSD |  |
+| JSON Schema: modell-i-sosi-modellregister | [Lenke](https://raw.githubusercontent.com/aatjora/produktspesifikasjon_gjennomgang/main/produktspesifikasjon/mineralressurser-industrimineral-naturstein-og-metaller/modell-i-sosi-modellregister/schema/jsonschema/INPUT/modellisosimodellregister/modell-i-sosi-modellregister.json) | Nedlasting | JSON Schema |  |
 
 ## Metadata
 
