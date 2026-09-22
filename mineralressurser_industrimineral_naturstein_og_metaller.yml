@@ -2,3 +2,9 @@ metadataId: 5a887d78-07ef-44c6-8941-cb8017c6328c
 output_directory: produktspesifikasjon
 product_slug: mineralressurser_industrimineral_naturstein_og_metaller
 updated: '2026-09-22'
+outputs: geopackage,xsd,jsonschema,odcs,ldproxy
+scopes:
+- name: Modell i SOSI modellregister
+  url: https://sosi.geonorge.no/svn/SOSI/SOSI%20Del%203/NGU/Mineralressurser%202.0.xml
+  generator: xmi
+  description: Datamodell
