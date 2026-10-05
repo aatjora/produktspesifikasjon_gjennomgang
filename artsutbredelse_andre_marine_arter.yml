@@ -1,0 +1,9 @@
+metadataId: 7c36da6f-3bb3-49cc-8968-5d246ee9eb46
+output_directory: produktspesifikasjon
+product_slug: artsutbredelse_andre_marine_arter
+updated: '2026-10-05'
+scopes:
+- name: Collections?f=text%2fhtml
+  url: https://kart.hi.no/data/utbredelseskart/utbredelse_ovrig/ogc/features/v1/collections?f=text%2Fhtml
+  generator: ogc_feature_api
+  description: OGC API-Features fra Havforskningsinstituttet
