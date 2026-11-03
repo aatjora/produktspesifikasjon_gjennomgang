@@ -4,10 +4,6 @@ product_slug: jordressurser
 updated: '2026-11-03'
 outputs: geopackage,postgis,xsd,jsonschema,odcs,pygeoapi,ldproxy
 scopes:
-- name: Jordressurser
-  url: https://ogcapi.nibio.no/felles/jordressurser
-  generator: ogc_feature_api
-  description: OGC API-Features fra Norsk institutt for bioøkonomi
 - name: UML-modell
   url: https://sosi.geonorge.no/svn/SOSI/SOSI%20Del%203/Skog%20og%20landskap/Produktspesifikasjon%20Jordressurser%20-%2020260901.xml
   generator: xmi
