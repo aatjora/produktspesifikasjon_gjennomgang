@@ -1,0 +1,141 @@
+{
+  "overview": "Denne produktspesifikasjonen er autogenerert fra metadata i Geonorge og datamodell fra SOSI modellregister og/eller OGC API Features. Noe ekstra informasjon kan ha blitt lagt til gjennom manuell prosess. Produktspesifikasjonen er i henhold til standarden: 'Geografisk informasjon - Dataproduktspesifikasjoner' (ISO19131:2022)",
+  "title": "Kolonihager, Stavanger kommune",
+  "format": "text/html",
+  "date": {
+    "creation": "2023-10-23",
+    "revision": "2023-01-06"
+  },
+  "contact": {
+    "organizationName": "Stavanger kommune",
+    "logo": "https://register.geonorge.no/data/organizations/46px-Stavanger_komm.svg.png",
+    "electronicMailAddress": "anne.grethe.marthinsen@stavanger.kommune.no",
+    "role": "owner"
+  },
+  "identificationSection": {
+    "title": "Kolonihager, Stavanger kommune",
+    "abstract": "Kolonihagene i Stavanger. Parsellene har stort sett en nøyaktighet bedre en 2 meter. Men det forekommer store unøyaktigheter på noen grenser.",
+    "uniqueId": "6b383473-522a-4299-b2ee-2ad822e41e59",
+    "keyword": [
+      "Landbruk"
+    ],
+    "restriction": {
+      "legalConstraints": {
+        "useConstraints": "Andre restriksjoner"
+      }
+    },
+    "contact": [
+      {
+        "organizationName": "Stavanger kommune",
+        "electronicMailAddress": "anne.grethe.marthinsen@stavanger.kommune.no",
+        "role": "owner"
+      },
+      {
+        "organizationName": "Stavanger kommune",
+        "electronicMailAddress": "alexandra.bjork@stavanger.kommune.no",
+        "role": "pointOfContact"
+      },
+      {
+        "organizationName": "Stavanger kommune",
+        "electronicMailAddress": "anita.helmikstol@stavanger.kommune.no",
+        "role": "publisher"
+      }
+    ],
+    "maintenance": "Etter behov",
+    "extent": {
+      "geographicElement": {
+        "westBoundLongitude": "5.499034",
+        "eastBoundLongitude": "6.131311",
+        "southBoundLatitude": "58.884659",
+        "northBoundLatitude": "59.312102"
+      },
+      "geographicDescription": [
+        "Stavanger kommune"
+      ],
+      "temporalElement": {
+        "timePeriod": {
+          "beginPosition": "2023-10-23",
+          "endPosition": "2023-01-06"
+        }
+      }
+    },
+    "date": {
+      "creation": "2023-10-23",
+      "publication": "2023-10-23",
+      "revision": "2023-01-06"
+    }
+  },
+  "scopeSection": [
+    {
+      "specificationScope": {
+        "scopeIdentification": "Hele datasettet",
+        "level": "dataset",
+        "levelDescription": "Gjelder hele datasettet. Hvis omfang ikke er oppgitt under en overskrift, gjelder teksten for hele datasettet og alle leveranser"
+      }
+    }
+  ],
+  "dataQualitySection": {
+    "scope": {
+      "level": "dataset"
+    }
+  },
+  "maintenanceSection": {
+    "maintenanceAndUpdateFrequency": "Etter behov"
+  },
+  "dataCaptureAndProductionSection": {
+    "DataAcquisitionAndProcessing": {
+      "dataCaptureStatement": "Digitalisert på digbord fra strekkart 2003."
+    }
+  },
+  "deliverySection": [
+    {
+      "delivery": {
+        "deliveryMedium": {
+          "deliveryMediumName": "Geonorge filnedlastning",
+          "deliveryService": {
+            "serviceEndpoint": "https://nedlasting.geonorge.no/geonorge/kommunaleDokData/6b383473-522a-4299-b2ee-2ad822e41e59.zip",
+            "serviceProperty": {
+              "type": "Geonorge filnedlastning",
+              "value": "GEONORGE:FILEDOWNLOAD"
+            }
+          }
+        }
+      }
+    }
+  ],
+  "metadataSection": {
+    "metadataStandard": "ISO19115:Norsk versjon",
+    "metadataStandardVersion": "2003",
+    "metadataDate": "2023-10-25",
+    "language": "nor",
+    "contact": {
+      "organizationName": "Stavanger kommune",
+      "logo": "https://register.geonorge.no/data/organizations/46px-Stavanger_komm.svg.png",
+      "electronicMailAddress": "alexandra.bjork@stavanger.kommune.no",
+      "role": "pointOfContact"
+    },
+    "metadataIdentifier": {
+      "authority": "Geonorge",
+      "code": "6b383473-522a-4299-b2ee-2ad822e41e59",
+      "codeSpace": "https://kartkatalog.geonorge.no/metadata/",
+      "metadataLinkage": "https://kartkatalog.geonorge.no/metadata/6b383473-522a-4299-b2ee-2ad822e41e59"
+    }
+  },
+  "chapterAutofill": {
+    "om_spesifikasjonen": 7,
+    "om_produktet": 44,
+    "formaal": 0,
+    "bruksomraade": 0,
+    "omfang": 22,
+    "datainnhold_og_struktur": 0,
+    "referansesystem": 0,
+    "datakvalitet": 1,
+    "datafangst_og_produksjon": 6,
+    "vedlikehold": 2,
+    "presentasjon": 0,
+    "leveranse": 6,
+    "metadata": 14,
+    "tilleggsinformasjon": 0
+  },
+  "specificationContact": "Stavanger kommune, [anne.grethe.marthinsen@stavanger.kommune.no](mailto:anne.grethe.marthinsen@stavanger.kommune.no)"
+}
